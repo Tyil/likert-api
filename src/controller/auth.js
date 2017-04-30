@@ -2,96 +2,45 @@ const router = require("express").Router();
 const bcrypt = require("bcrypt-nodejs");
 const randomstring = require("randomstring");
 
+const registerAccount = require("../actions/register-account");
+const login = require("../actions/login");
+const refreshToken = require("../actions/refresh-token");
+
 router
-  .post("/register", (req, res) => {
-    req.app.get("models").user.create({
-      username: req.body.username,
-      password: bcrypt.hashSync(req.body.password)
-    }).then(user => {
-      res.json({
-        ok: true
-      });
-    }).catch(err => {
-      res.json({
-        ok: false,
-        message: err.message || err
-      });
-    });
-  })
-  .post("/login", (req, res) => {
-    req.app.get("models").user.find({
-      where: {
-        username: req.body.username
-      }
-    }).then(user => {
-      if (!bcrypt.compareSync(req.body.password, user.password)) {
-        throw new Error("Username or password is incorrect");
-      }
+	.post("/register", (req, res) => {
+		registerAccount(req.body.username, req.body.password).then (response => {
+			res.json(response);
+		});
+	})
+	.post("/login", (req, res) => {
+		login(req.body.username, req.body.password).then (response => {
+			res.json(response);
+		});
+	})
+	.post("/refresh", (req, res) => {
+		if (!req.authenticated) {
+			return res.json({
+				ok: false,
+				message: "You must be authenticated"
+			});
+		}
 
-      const expiry = new Date();
-      expiry.setHours(expiry.getHours() + 1);
+		refreshToken(req.token.id).then(response => {
+			res.json(response);
+		});
+	})
+	.post("/logout", (req, res) => {
+		if (!req.authenticated) {
+			return res.json({
+				ok: false,
+				message: "You are not logged in"
+			});
+		}
 
-      return req.app.get("models").token.create({
-        userId: user.id,
-        token: randomstring.generate(60),
-        expiresAt: expiry
-      })
-    }).then(token => {
-      return res.json({
-        ok: true,
-        token: token.token,
-        expires: token.expiresAt
-      })
-    }).catch(err => {
-      return res.json({
-        ok: false,
-        message: err.message || err
-      });
-    });
-  })
-  .post("/refresh", (req, res) => {
-    if (!req.authenticated) {
-      return res.json({
-        ok: false,
-        message: "You must be authenticated"
-      });
-    }
-
-    const expiry = new Date();
-    expiry.setHours(expiry.getHours() + 1);
-
-    req.app.get("models").token.update({
-      expiresAt: expiry
-    }, {
-      where: {
-        id: req.token.id
-      }
-    }).then(records => {
-      return res.json({
-        ok: true,
-        expires: expiry
-      });
-    }).catch(err => {
-      return res.json({
-        ok: false,
-        message: err.message || err
-      });
-    });
-  })
-  post("/logout", (req, res) => {
-    if (req.authenticated) {
-      return req.app.get("models").token.destroy({
-        where: {
-          id: req.token.id
-        }
-      });
-    }
-
-    return res.json({
-      ok: true
-    });
-  })
+		destroyToken(req.token.id).then(response => {
+			res.json(response);
+		});
+	})
 ;
 
 module.exports = router;
-
