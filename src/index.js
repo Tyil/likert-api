@@ -18,6 +18,7 @@ app.use(bodyParser.json());
 // add controllers
 [
 	"auth",
+	"genrecontroller"
 ].forEach(x => app.use("/" + x, require("./controller/" + x)));
 
 // start the application
