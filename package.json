@@ -18,7 +18,12 @@
   },
   "homepage": "https://github.com/Tyil/likert-api#readme",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.17.1",
+    "randomstring": "^1.1.5",
     "sequelize": "^3.30.4"
+  },
+  "devDependancies": {
+    "pg": "^6.1.5"
   }
 }
