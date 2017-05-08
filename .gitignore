@@ -1,3 +1,6 @@
+# configuration
+config/database.json
+
 # ignore editor specific files
 .*.sw? # vim
 
