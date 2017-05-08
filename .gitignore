@@ -1,6 +1,8 @@
 # configuration
 config/database.json
 /node_modules/
+/src/config/config.json
+
 # ignore editor specific files
 .*.sw? # vim
 

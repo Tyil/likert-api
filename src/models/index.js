@@ -10,7 +10,9 @@ const connection = new sequelize(
 
 [
   "token",
-  "user"
+  "user",
+  "genre",
+  "like_dislike_genre"
 ].forEach(model => {
   module.exports[model] = connection.import(__dirname + "/" + model);
 });
