@@ -17,27 +17,28 @@ sub MAIN
 	my $output-dir = "/tmp";
 	my $files = find(:dir($music-dir), :type("file"), :keep-going(True)).cache;
 
-	# Add all genres
-	extract-genres(
-		files => $files,
-		output-path => "$output-dir/genres.sql"
-	);
-
-	# Add all artists
-	extract-artists(
-		files => $files,
-		output-path => "$output-dir/artists.sql"
-	);
-
-	# Add all albums
-	extract-albums(
-		files => $files,
-		output-path => "$output-dir/albums.sql"
-	);
-
-	# Add all songs
+#	# Add all genres
+#	extract-genres(
+#		files => $files,
+#		output-path => "$output-dir/genres.sql"
+#	);
+#
+#	# Add all artists
+#	extract-artists(
+#		files => $files,
+#		output-path => "$output-dir/artists.sql"
+#	);
+#
+#	# Add all albums
+#	extract-albums(
+#		files => $files,
+#		output-path => "$output-dir/albums.sql"
+#	);
+#
+#	# Add all songs
 	extract-songs(
 		files => $files,
+		file-prefix => $music-dir,
 		output-path => "$output-dir/songs.sql"
 	);
 
