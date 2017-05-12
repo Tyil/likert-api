@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "nodemon",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jasmine"
   },
   "repository": {
     "type": "git",
@@ -23,7 +23,11 @@
     "randomstring": "^1.1.5",
     "sequelize": "^3.30.4"
   },
-  "devDependancies": {
+  "devDependencies": {
+    "jasmine": "^2.6.0",
+    "jasmine-node": "^1.14.5",
+    "sequelize-mock": "^0.7.0",
+    "supertest": "^3.0.0",
     "pg": "^6.1.5"
   }
 }

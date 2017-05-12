@@ -4,11 +4,10 @@ module.exports = {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
-        allowNull: false
+        autoIncrement: true
       },
       name: {
         type: Sequelize.STRING,
-        primaryKey: true,
         allowNull: false
       },
       createdAt: {
@@ -17,11 +16,7 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
-      },
-      expiresAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
+      }
     });
   },
 

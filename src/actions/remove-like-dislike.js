@@ -1,13 +1,6 @@
 const like_dislike = require("../models").like_dislike_genre;
 
-module.exports = (isAuthenticated, userId, genre, likeOrDislike) => {
-	if (!isAuthenticated) {
-		return res.json({
-			ok: false,
-			message: "Not logged in."
-		});
-	}
-    
+module.exports = (userId, genre, likeOrDislike) => {    
 	like_dislike.findOne({
 		user: userId,
 		genre_name: genre,

@@ -14,6 +14,9 @@ app.set("models", require("./models"));
 
 // apply middleware
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
 
 // add controllers
 [
@@ -21,5 +24,9 @@ app.use(bodyParser.json());
 	"genre"
 ].forEach(x => app.use("/" + x, require("./controller/" + x)));
 
+process.env.NODE_ENV = 'test';
+
 // start the application
 app.listen(port, () => console.log("Starting the LikertAPI on port " + port));
+
+module.exports = app;
