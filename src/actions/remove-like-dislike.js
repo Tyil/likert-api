@@ -2,8 +2,8 @@ const like_dislike = require("../models").like_dislike_genre;
 
 module.exports = (userId, genre, likeOrDislike) => {    
 	like_dislike.findOne({
-		user: userId,
-		genre_name: genre,
+		userId: userId,
+		genreId: genre,
 		like_dislike: likeOrDislike
 	}).then(result => {
 		result.destroy();

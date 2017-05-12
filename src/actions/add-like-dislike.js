@@ -12,12 +12,12 @@ module.exports = (user, genreName, likeOrDislike) => {
 	}
 
 	genre.findOne({
-		Name: genreName
+		name: genreName
 	}).then(result => {
 		like_dislike.create({
-			user: token,
-			like_dislike: likeOrDislike,
-			genre_name: result.Name
+			userId: user,
+			genreId: result.id,
+			like_dislike: likeOrDislike
 		}).then(result => {
 			return res.json({
 				ok: true,

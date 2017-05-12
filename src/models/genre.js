@@ -6,13 +6,10 @@ module.exports = (sequelize, dataTypes) => {
         autoIncrement: true
       },
       name: {
-        type: dataTypes.STRING
+        type: dataTypes.STRING,
+        allowNull: false
       },
-      createdAt: {
-        type: dataTypes.DATE
-      },
-      updatedAt: {
-        type: dataTypes.DATE
-      }
+      createdAt: dataTypes.DATE,
+      updatedAt: dataTypes.DATE
     });
-}
+};

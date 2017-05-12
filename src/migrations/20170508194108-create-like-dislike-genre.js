@@ -1,4 +1,3 @@
-'use strict';
 module.exports = {
   up: function(queryInterface, Sequelize) {
     return queryInterface.createTable('like_dislike_genres', {
@@ -8,13 +7,23 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      user: {
-        type: Sequelize.STRING
+      userId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'users',
+          key: 'id'
+        },
+        allowNull: false
+      },
+      genreId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'genres',
+          key:  'id'
+        },
+        allowNull: false
       },
       like_dislike: {
-        type: Sequelize.STRING
-      },
-      genre_name: {
         type: Sequelize.STRING
       },
       createdAt: {
