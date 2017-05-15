@@ -11,10 +11,17 @@ module.exports = (user, genreName, likeOrDislike) => {
 		});
 	}
 
-	genre.findOne({
+	return genre.findOne({
 		name: genreName
 	}).then(result => {
-		like_dislike.create({
+		if(result !== null) {
+			return {
+				ok: false,
+				message: 'Genre already exists.'
+			};
+		}
+		
+		return like_dislike.create({
 			userId: user,
 			genreId: result.id,
 			like_dislike: likeOrDislike
@@ -35,4 +42,4 @@ module.exports = (user, genreName, likeOrDislike) => {
 			message: "The specific genre does not exist."
 		});
 	});
-}
+};

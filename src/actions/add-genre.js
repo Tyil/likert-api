@@ -6,19 +6,19 @@ module.exports = (genreName) => {
 			name: genreName,
 		}
 	}).then(result => {
-		if (result === null) {
-			genre.create({
-				name: genreName,
-			});
-			return {
-				ok: true,
-				message: "This genre has been added."
-			};
-		} else {
+		if (result !== null) {
 			return {
 				ok: false,
 				message: "This genre already exists."
 			};
 		}
-	})
+		return genre.create({
+			name: genreName,
+		}).then(result => {
+			return {
+				ok: true,
+				message: "This genre has been added."
+			};
+		});
+	});
 };
