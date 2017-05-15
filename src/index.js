@@ -22,7 +22,8 @@ app.use(bodyParser.urlencoded({
 [
 	"auth",
 	"genre",
-	"mood"
+	"mood",
+	"user",
 ].forEach(x => app.use("/" + x, require("./controller/" + x)));
 
 process.env.NODE_ENV = 'test';

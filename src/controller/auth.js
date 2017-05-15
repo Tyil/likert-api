@@ -6,7 +6,7 @@ const registerAccount = require("../actions/register-account");
 const login = require("../actions/login");
 const refreshToken = require("../actions/refresh-token");
 
-router
+module.exports = router
 	.post("/register", (req, res) => {
 		registerAccount(req.body.username, req.body.password).then (response => {
 			res.json(response);
@@ -42,5 +42,3 @@ router
 		});
 	})
 ;
-
-module.exports = router;
