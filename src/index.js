@@ -21,7 +21,8 @@ app.use(bodyParser.urlencoded({
 // add controllers
 [
 	"auth",
-	"genre"
+	"genre",
+	"mood"
 ].forEach(x => app.use("/" + x, require("./controller/" + x)));
 
 process.env.NODE_ENV = 'test';
