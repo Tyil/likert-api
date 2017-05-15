@@ -1,36 +1,36 @@
 module.exports = {
   up: function(queryInterface, Sequelize) {
     return queryInterface.createTable('songs', {
-      SongId: {
+          SongId: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: DataTypes.INTEGER
       },
       Name: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       Path: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       Tag: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
-      ArtistId: {
-        type: Sequelize.INTEGER,
+      Artist_ArtistId: {
+        type: DataTypes.INTEGER,
       },
-      AlbumId: {
-        type: Sequelize.INTEGER
+      Album_AlbumId: {
+        type: DataTypes.INTEGER
       },
-      GenreId: {
-        type: Sequelize.INTEGER,
+      Genre_GenreId: {
+        type: DataTypes.INTEGER,
         references: {
           model: 'genres',
           key: 'GenreId'
         },
       },
-      MoodId: {
-        type: Sequelize.INTEGER,
+      Mood_MoodId: {
+        type: DataTypes.INTEGER,
         references: {
           model: 'moods',
           key: 'MoodId'
