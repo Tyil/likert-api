@@ -1,6 +1,6 @@
 module.exports = (sequelize, dataTypes) => {
     return sequelize.define("genre", {
-      id: {
+      genreId: {
         type: dataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
@@ -8,8 +8,8 @@ module.exports = (sequelize, dataTypes) => {
       name: {
         type: dataTypes.STRING,
         allowNull: false
-      },
-      createdAt: dataTypes.DATE,
-      updatedAt: dataTypes.DATE
+      }
+    }, {
+      timestamps: false
     });
 };
