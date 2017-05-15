@@ -4,7 +4,7 @@
   "description": "The API for Likert",
   "main": "src/index.js",
   "scripts": {
-	  "start": "nodemon",
+    "start": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,5 +16,14 @@
   "bugs": {
     "url": "https://github.com/Tyil/likert-api/issues"
   },
-  "homepage": "https://github.com/Tyil/likert-api#readme"
+  "homepage": "https://github.com/Tyil/likert-api#readme",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.17.1",
+    "randomstring": "^1.1.5",
+    "sequelize": "^3.30.4"
+  },
+  "devDependancies": {
+    "pg": "^6.1.5"
+  }
 }

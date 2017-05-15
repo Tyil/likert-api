@@ -1,6 +1,9 @@
 # configuration
 config/database.json
 
+# local things that should not be in the repo
+/node_modules
+.precomp
+
 # ignore editor specific files
 .*.sw? # vim
-
