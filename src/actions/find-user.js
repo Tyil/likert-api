@@ -1,6 +1,12 @@
 const user = require("../models").user;
 
-module.exports = (userId) => {
+module.exports = (isAuthenticated, userId) => {
+	if (!isAuthenticated && process.env.NODE_ENV != 'test') {
+		return {
+			ok: false,
+			message: "Not logged in."
+		};
+	}
 	return user.findOne({
 		where: {
 			UserId: userId
@@ -15,10 +21,10 @@ module.exports = (userId) => {
 		return {
 			ok: true,
 			message: {
-                id: result.id,
-                username: result.username,
-                password: result.password
-            }
+				id: result.id,
+				username: result.username,
+				password: result.password
+			}
 		};
 	});
 };
