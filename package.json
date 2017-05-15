@@ -1,0 +1,35 @@
+{
+  "name": "likert-api",
+  "version": "0.1.0",
+  "description": "The API for Likert",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "nodemon",
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tyil/likert-api.git"
+  },
+  "author": "",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Tyil/likert-api/issues"
+  },
+  "homepage": "https://github.com/Tyil/likert-api#readme",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.17.1",
+    "mysql": "^2.13.0",
+    "mysql2": "^1.2.0",
+    "randomstring": "^1.1.5",
+    "sequelize": "^3.30.4"
+  },
+  "devDependencies": {
+    "jasmine": "^2.6.0",
+    "jasmine-node": "^1.14.5",
+    "sequelize-mock": "^0.7.0",
+    "supertest": "^3.0.0",
+    "pg": "^6.1.5"
+  }
+}
