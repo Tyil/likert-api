@@ -3,22 +3,22 @@ const user = require("../models").user;
 module.exports = (userId) => {
 	return user.findOne({
 		where: {
-			id: userId
+			UserId: userId
 		}
 	}).then(result => {
 		if (result === null) {
-			return res.json({
+			return {
 				ok: false,
 				message: 'This user does not exist.'
-			});
+			};
 		}
-		return res.json({
+		return {
 			ok: true,
 			message: {
                 id: result.id,
                 username: result.username,
                 password: result.password
             }
-		});
+		};
 	});
 };

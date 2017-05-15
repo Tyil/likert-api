@@ -14,7 +14,7 @@ module.exports = router
         });
     })
     .post('/update', (req, res) => {
-        updateUser(req.body.id, req.body.username, req.body.password).then(result => {
+        updateUser(req.token.id, req.body.username, req.body.password).then(result => {
             return res.json(result);
         });
     })
