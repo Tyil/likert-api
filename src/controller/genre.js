@@ -5,7 +5,7 @@ const router = require("express").Router(),
 	removeGenre = require("../actions/remove-genre.js"),
 	genre = require("../models").genre;
 
-router
+module.exports = router
 	.get("/", (req, res) => {
 		genre.findAll().then(genres => {
 			return res.json(genres);
@@ -88,6 +88,5 @@ router
 			.then(result => {
 				return res.json(result);
 			});
-	});
-
-module.exports = router;
+	})
+	;
