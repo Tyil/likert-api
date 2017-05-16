@@ -13,7 +13,8 @@ const connection = new sequelize(
   "user",
   "genre",
   "like_dislike_genre",
-  "mood"
+  "mood",
+  "song",
 ].forEach(model => {
   module.exports[model] = connection.import(__dirname + "/" + model);
 });
