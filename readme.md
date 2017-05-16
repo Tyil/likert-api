@@ -21,8 +21,6 @@ Request Body | Type
 #### POST [/auth/refresh](https://mood-io.herokuapp.com/auth/refresh)
 Request Body | Type
 --- | ---
-username | String
-password | String
 
 #### POST [/auth/register](https://mood-io.herokuapp.com/auth/register)
 Request Body | Type
