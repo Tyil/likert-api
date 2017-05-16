@@ -15,7 +15,7 @@ app.set("models", require("./models"));
 // apply middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-    extended: false
+	extended: false
 }));
 
 // add controllers
