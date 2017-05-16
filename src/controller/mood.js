@@ -4,7 +4,7 @@ const router = require("express").Router(),
     specific = require('../actions/specific-moods'),
     moods = require('../models').mood;
 
-router
+module.exports = router
 	.get('/', (req, res) => {
         moods.findAll().then(result => {
             return res.json(result);
@@ -31,5 +31,3 @@ router
         });
     })
     ;
-
-module.exports = router;
