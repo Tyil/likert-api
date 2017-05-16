@@ -1,6 +1,6 @@
 const fs = require("fs");
 const sequelize = require("sequelize");
-
+const sequelizeMock = require("sequelize-mock");
 const db_config = __dirname + "/../../config/database.json";
 
 let config;
@@ -20,23 +20,44 @@ if (fs.existsSync(db_config)) {
 	};
 }
 
-const connection = new sequelize(
-  config.database,
-  config.username,
-  config.password,
-  config
-);
+let connection;
 
-[
-  "token",
-  "user",
-  "genre",
-  "like_dislike_genre",
-  "mood",
-  "song",
-].forEach(model => {
-  module.exports[model] = connection.import(__dirname + "/" + model);
-});
+if (process.env.NODE_ENV !== "test") {
+	connection = new sequelize(
+		config.database,
+		config.username,
+		config.password,
+		config
+	);
+
+	[
+		"token",
+		"user",
+		"genre",
+		"like_dislike_genre",
+		"mood",
+		"song",
+	].forEach(model => {
+		module.exports[model] = connection.import(__dirname + "/" + model);
+	});
+} else {
+	connection = new sequelizeMock();
+
+	module.exports.token = connection.define("token", {
+		userId: 1,
+		token: "token"
+	});
+
+	module.exports.user = connection.define("user", {
+		UserId: 1,
+		Username: "mood",
+		Password: "test"
+	});
+
+	module.exports.genre = connection.define("genre", {
+		GenreId: 1,
+		Name: "rock"
+	});
+}
 
 module.exports.sequelize = connection;
-
