@@ -1,6 +1,5 @@
 const fs = require("fs");
 const sequelize = require("sequelize");
-
 const db_config = __dirname + "/../../config/database.json";
 
 let config;
@@ -21,22 +20,21 @@ if (fs.existsSync(db_config)) {
 }
 
 const connection = new sequelize(
-  config.database,
-  config.username,
-  config.password,
-  config
+	config.database,
+	config.username,
+	config.password,
+	config
 );
 
 [
-  "token",
-  "user",
-  "genre",
-  "like_dislike_genre",
-  "mood",
-  "song",
+	"token",
+	"user",
+	"genre",
+	"like_dislike_genre",
+	"mood",
+	"song",
 ].forEach(model => {
-  module.exports[model] = connection.import(__dirname + "/" + model);
+	module.exports[model] = connection.import(__dirname + "/" + model);
 });
 
 module.exports.sequelize = connection;
-
