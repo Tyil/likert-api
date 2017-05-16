@@ -1,6 +1,6 @@
 # Routes
-## AUTH
 ---
+## AUTH
 #### POST [/register](https://mood-io.herokuapp.com/auth/register)
 Request Body | Type
 --- | ---
@@ -24,7 +24,6 @@ Request Body | Type
 --- | ---
 
 ## USER
----
 #### GET [/](https://mood-io.herokuapp.com/user/)
 Request Body | Type
 --- | ---
@@ -46,7 +45,6 @@ username | String
 password | String
 
 ## GENRE
-----
 #### GET [/](https://mood-io.herokuapp.com/genre/)
 Request Body | Type
 --- | ---
@@ -82,7 +80,6 @@ Request Body | Type
 genreName | String
 
 ## MOOD
----
 #### GET [/](https://mood-io.herokuapp.com/mood/)
 Request Body | Type
 --- | ---
