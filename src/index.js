@@ -27,8 +27,6 @@ app.use(bodyParser.urlencoded({
 	"song",
 ].forEach(x => app.use("/" + x, require("./controller/" + x)));
 
-process.env.NODE_ENV = 'test';
-
 // start the application
 app.listen(port, () => console.log("Starting the LikertAPI on port " + port));
 
