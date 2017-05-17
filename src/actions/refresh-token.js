@@ -14,14 +14,14 @@ module.exports = (id) => {
 			id: id
 		}
 	}).then(records => {
-		return res.json({
+		return {
 			ok: true,
 			expires: expiry
-		});
+		};
 	}).catch(err => {
-		return res.json({
+		return {
 			ok: false,
 			message: err.message || err
-		});
+		};
 	});
 };

@@ -23,15 +23,15 @@ module.exports = (username, password) => {
 			expiresAt: expiry
 		});
 	}).then(token => {
-		return res.json({
+		return {
 			ok: true,
 			token: token.token,
 			expires: token.expiresAt
-		});
+		};
 	}).catch(err => {
-		return res.json({
+		return {
 			ok: false,
 			message: err.message || err
-		});
+		};
 	});
 };
