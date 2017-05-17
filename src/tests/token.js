@@ -1,6 +1,5 @@
 const actionLogin = require("../actions/login");
 const actionRefresh = require("../actions/refresh-token");
-const mock = require('sequelize-mock');
 const token = require("../models").token;
 const user = require("../models").user;
 const bcrypt = require("bcrypt-nodejs");
@@ -11,9 +10,9 @@ describe("Authentication token", () => {
 		expiry.setHours(expiry.getHours() + (1 * 24 * 7) - 10);
 
 		user.create({
-			id: 1,
-			username: "mood",
-			password: bcrypt.hashSync("test"),
+			UserId: 1,
+			Username: "mood",
+			Password: bcrypt.hashSync("test", bcrypt.genSaltSync(10)),
 		});
 
 		token.create({
@@ -31,7 +30,7 @@ describe("Authentication token", () => {
 		maxTime.setHours(maxTime.getHours() + (1 * 24 * 7) + 1);
 
 		actionLogin("mood", "test").then((response) => {
-			expect(response.ok).toBeTrue;
+			expect(response.ok).toBe(true);
 
 			expect(response.expires).toBeGreaterThan(minTime);
 			expect(response.expires).toBeLessThan(maxTime);
@@ -46,7 +45,7 @@ describe("Authentication token", () => {
 		maxTime.setHours(maxTime.getHours() + (1 * 24 * 7) + 1);
 
 		actionRefresh("testestestestestestest").then((response) => {
-			expect(response.ok).toBeTrue();
+			expect(response.ok).toBe(true);
 			expect(response.expires).toBeGreaterThan(minTime);
 			expect(response.expires).toBeLessThan(maxTime);
 		});
