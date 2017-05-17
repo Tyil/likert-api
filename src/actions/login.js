@@ -15,7 +15,7 @@ module.exports = (username, password) => {
 		}
 
 		const expiry = new Date();
-		expiry.setHours(expiry.getHours() + 1);
+		expiry.setHours(expiry.getHours() + (1 * 24 * 7));
 
 		return tokenModel.create({
 			userId: user.UserId,

@@ -5,7 +5,7 @@ const tokenModel = require("../models").token;
 
 module.exports = (id) => {
 	const expiry = new Date();
-	expiry.setHours(expiry.getHours() + 1);
+	expiry.setHours(expiry.getHours() + (1 * 24 * 7));
 
 	return tokenModel.update({
 		expiresAt: expiry
