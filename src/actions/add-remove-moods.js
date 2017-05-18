@@ -3,7 +3,7 @@ const moods = require('../models').mood;
 module.exports = (moodName, action) => {
 	return moods.findOne({
 		where: {
-			Name: moodName
+			name: moodName
 		}
 	}).then(result => {
 		switch (action) {
@@ -15,7 +15,7 @@ module.exports = (moodName, action) => {
 					};
 				}
 				return moods.create({
-					Name: moodName
+					name: moodName
 				}).then(result => {
 					return {
 						ok: true,
@@ -46,13 +46,4 @@ module.exports = (moodName, action) => {
 			message: err
 		};
 	});
-};
-
-AddMood = (result, moodName) => {
-
-
-};
-
-RemoveMood = (result) => {
-
 };

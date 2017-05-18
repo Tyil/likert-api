@@ -1,8 +1,0 @@
-{
-  "username": "likert",
-  "password": "likert",
-  "database": "likert",
-  "host": "127.0.0.1",
-  "dialect": "postgres",
-  "logging": false
-}

@@ -1,16 +1,20 @@
 const router = require("express").Router(),
-    likert = require("../models").likert_template;
+    find_likert = require("../actions/find-likert")
+    ;
 
 module.exports = router
-    .get('/', (req, res) => {
-        likert.findAll().then(result => {
-            return res.json({
-                ok: true,
-                message: result
-            });
+    .get('/:id', (req, res) => {
+        find_likert(req.params.id).then(result => {
+            return res.json(result);
         });
     })
-    .post('/new', (req, res) => {
+    .post('/:id', (req, res) => {
         
+    })
+    .put('/:id', (req, res) => {
+
+    })
+    .patch('/:id', (req, res) => {
+
     })
     ;

@@ -1,13 +1,13 @@
 module.exports = {
   up: function(queryInterface, Sequelize) {
     return queryInterface.createTable('moods', {
-      MoodId: {
+      id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      Name: {
+      name: {
         type: Sequelize.STRING
       }
     });

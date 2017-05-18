@@ -9,7 +9,11 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       templateId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'likert_templates',
+          key: 'id'
+        }
       },
       step: {
         type: Sequelize.INTEGER
