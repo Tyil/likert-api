@@ -1,6 +1,4 @@
-const likert = require("../models").likert_template,
-    likert_result = require("../models").likert_result,
-    likert_steps = require("../models").likert_steps;
+const likert = require("../models").likert_template;
 
 module.exports = (id) => {
 	return likert.findOne({
@@ -14,9 +12,10 @@ module.exports = (id) => {
 				message: 'The likert scale could not be found.'
 			};
 		}
+        result.destroy();
         return {
             ok: true, 
-            message: result
+            message: 'The likert scale has been removed.'
         };
 	});
 };

@@ -1,4 +1,3 @@
-'use strict';
 module.exports = {
   up: function(queryInterface, Sequelize) {
     return queryInterface.createTable('likert_template_steps', {
@@ -15,11 +14,8 @@ module.exports = {
           key: 'id'
         }
       },
-      step: {
+      steps: {
         type: Sequelize.INTEGER
-      },
-      description: {
-        type: Sequelize.TEXT
       },
       createdAt: {
         allowNull: false,

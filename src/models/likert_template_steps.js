@@ -7,7 +7,6 @@ module.exports = function(sequelize, DataTypes) {
         key: 'id'
       }
     },
-    step: DataTypes.INTEGER,
-    description: DataTypes.TEXT
+    steps: DataTypes.INTEGER
   });
 };
