@@ -1,4 +1,4 @@
-const likert = require("../models").likert_template;
+const likert = require("../../models").likert_template;
 
 module.exports = (id) => {
 	return likert.findOne({
