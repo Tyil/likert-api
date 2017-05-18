@@ -20,6 +20,7 @@ app.use(bodyParser.urlencoded({
 
 // add controllers
 [
+	"artists",
 	"auth",
 	"genre",
 	"mood",
