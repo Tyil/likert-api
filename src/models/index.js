@@ -31,6 +31,7 @@ if (process.env.NODE_ENV !== "test") {
 	);
 
 	[
+		"artist",
 		"token",
 		"user",
 		"genre",
