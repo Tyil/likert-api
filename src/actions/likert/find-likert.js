@@ -28,6 +28,7 @@ module.exports = (id, user) => {
 					id: result.scaleId
 				}
 			}).then(value => {
+				value = JSON.parse(value);
 				response.ok = true;
 				response.message = {
 					result,
