@@ -8,6 +8,13 @@ module.exports = {
 				primaryKey: true,
 				type: Sequelize.INTEGER
 			},
+			templateId: {
+				type: Sequelize.INTEGER,
+				references: {
+					model: 'likert_templates',
+					key: 'id'
+				}
+			},
 			value: {
 				type: Sequelize.STRING
 			},

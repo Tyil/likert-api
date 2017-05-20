@@ -35,13 +35,6 @@ module.exports = {
 					key: 'id'
 				}
 			},
-			scaleId: {
-				type: Sequelize.INTEGER,
-				references: {
-					model: 'likert_template_values',
-					key: 'id'
-				}
-			},
 			scaleScore: {
 				type: Sequelize.INTEGER
 			},

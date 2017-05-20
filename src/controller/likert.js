@@ -11,9 +11,12 @@ module.exports = router
 			return res.json(result);
 		});
 	})
+	.get('/:id/scale', (req, res) => {
+        
+	})
 	.post('/:id', (req, res) => {
 		add_response(req.params.id, req.body.userId, req.body.songId, req.body.moodId).then(result => {
-
+			return res.json(result);
 		});
 	})
 	.post('/', (req, res) => {

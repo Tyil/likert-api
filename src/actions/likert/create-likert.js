@@ -13,6 +13,7 @@ module.exports = (name, description, max_value, scaleItems) => {
 		max_value: max_value
 	}).then(x => {
 		return likert_value.create({
+			templateId: x.id,
 			value: JSON.stringify(scaleItems)
 		}).then(y => {
 			response.ok = true;
