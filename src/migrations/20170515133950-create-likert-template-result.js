@@ -1,4 +1,3 @@
-'use strict';
 module.exports = {
   up: function(queryInterface, Sequelize) {
     return queryInterface.createTable('likert_template_results', {
@@ -19,6 +18,13 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: {
           model: 'likert_templates',
+          key: 'id'
+        }
+      },
+      songId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'songs',
           key: 'id'
         }
       },

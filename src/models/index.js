@@ -1,44 +1,62 @@
-const sequelize = require("sequelize"),
-	config = require(__dirname + "/../../config/database.json"),
-  SequelizeMock = require("sequelize-mock"),
-	bcrypt = require("bcrypt-nodejs");
+const fs = require("fs");
+const sequelize = require("sequelize");
+const sequelizeMock = require("sequelize-mock");
+const db_config = __dirname + "/../../config/database.json";
+
+let config;
+
+// get a database config, either by file or by env
+if (fs.existsSync(db_config)) {
+	console.log("Reading database config from " + db_config);
+	config = require(db_config);
+} else {
+	console.log("Reading database config from environment");
+	config = {
+		database: process.env.DB_DATABASE,
+		username: process.env.DB_USERNAME,
+		password: process.env.DB_PASSWORD,
+		host: process.env.DB_HOST,
+		dialect: process.env.DB_DIALECT,
+	};
+}
+
 let connection;
 
-process.env.NODE_ENV = '';
-
-if (process.env.NODE_ENV != 'test') {
+if (process.env.NODE_ENV !== "test") {
 	connection = new sequelize(
 		config.database,
 		config.username,
 		config.password,
 		config
 	);
+
 	[
 		"token",
 		"user",
 		"genre",
 		"like_dislike_genre",
 		"mood",
-		"likert_template",
-		"likert_template_result",
-		"likert_template_steps",
+		"song",
 	].forEach(model => {
 		module.exports[model] = connection.import(__dirname + "/" + model);
 	});
 } else {
-  console.log("Mocking");
-	connection = new SequelizeMock();
-	[
-		"token",
-		"user",
-		"genre",
-		"like_dislike_genre",
-		"mood",
-		"likert_template",
-		"likert_template_result",
-		"likert_template_steps",
-	].forEach(model => {
-		module.exports[model] = connection.import(__dirname + "/" + "mocks" + "/" + model);
+	connection = new sequelizeMock();
+
+	module.exports.token = connection.define("token", {
+		userId: 1,
+		token: "token"
+	});
+
+	module.exports.user = connection.define("user", {
+		UserId: 1,
+		Username: "mood",
+		Password: "test"
+	});
+
+	module.exports.genre = connection.define("genre", {
+		GenreId: 1,
+		Name: "rock"
 	});
 }
 

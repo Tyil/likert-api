@@ -13,6 +13,6 @@ module.exports = {
     });
   },
   down: function(queryInterface, Sequelize) {
-    return queryInterface.dropTable('moods');
+	return queryInterface.dropTable('moods');
   }
 };

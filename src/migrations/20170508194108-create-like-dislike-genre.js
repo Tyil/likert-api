@@ -37,6 +37,6 @@ module.exports = {
     });
   },
   down: function(queryInterface, Sequelize) {
-    return queryInterface.dropTable('like_dislike_genres');
+	return queryInterface.dropTable('like_dislike_genres');
   }
 };

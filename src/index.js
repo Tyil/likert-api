@@ -1,5 +1,5 @@
 // set basic variables
-const port = process.env.app_port || 3000;
+const port = process.env.PORT || 3000;
 const controllerDir = "./controller/";
 
 // require dependencies
@@ -15,7 +15,7 @@ app.set("models", require("./models"));
 // apply middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-    extended: false
+	extended: false
 }));
 
 // add controllers
@@ -25,9 +25,14 @@ app.use(bodyParser.urlencoded({
 	"mood",
 	"user",
 	"likert",
+	"song",
 ].forEach(x => app.use("/" + x, require("./controller/" + x)));
 
-process.env.NODE_ENV = 'test';
+app.get("/", (req, res) => {
+	res.json({
+		version: "0.2.0"
+	});
+});
 
 // start the application
 app.listen(port, () => console.log("Starting the LikertAPI on port " + port));
