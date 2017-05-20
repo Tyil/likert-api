@@ -12,10 +12,10 @@ module.exports = (id) => {
 				message: 'The likert scale could not be found.'
 			};
 		}
-        result.destroy();
-        return {
-            ok: true, 
-            message: 'The likert scale has been removed.'
-        };
+		result.destroy();
+		return {
+			ok: true,
+			message: 'The likert scale has been removed.'
+		};
 	});
 };

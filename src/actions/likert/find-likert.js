@@ -23,12 +23,7 @@ module.exports = (id, user) => {
 			return {
 				ok: true,
 				message: {
-					id: result.id,
-					name: result.name,
-					max_value: result.max_value,
-					description: result.description,
-					createdAt: result.createdAt,
-					updatedAt: result.updatedAt,
+					result,
 					answers
 				}
 			};

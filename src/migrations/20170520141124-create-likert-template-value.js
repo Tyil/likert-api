@@ -1,16 +1,18 @@
+'use strict';
 module.exports = {
 	up: function (queryInterface, Sequelize) {
-		return queryInterface.createTable("genres", {
+		return queryInterface.createTable('likert_template_values', {
 			id: {
-				type: Sequelize.INTEGER,
+				allowNull: false,
+				autoIncrement: true,
 				primaryKey: true,
-				autoIncrement: true
+				type: Sequelize.INTEGER
 			},
 			name: {
-				type: Sequelize.STRING,
-				allowNull: false
+				type: Sequelize.STRING
 			},
 			createdAt: {
+				allowNull: false,
 				type: Sequelize.DATE
 			},
 			updatedAt: {
@@ -19,8 +21,7 @@ module.exports = {
 			}
 		});
 	},
-
 	down: function (queryInterface, Sequelize) {
-		return queryInterface.dropTable('genres');
+		return queryInterface.dropTable('likert_template_values');
 	}
 };

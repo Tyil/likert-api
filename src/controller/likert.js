@@ -5,8 +5,8 @@ const router = require("express").Router(),
     delete_likert = require("../actions/likert/remove-likert");
 
 module.exports = router
-    .get('/:id', (req, res) => {
-        find_likert(req.params.id).then(result => {
+    .get('/:id/:userId', (req, res) => {
+        find_likert(req.params.id, req.params.userId).then(result => {
             return res.json(result);
         });
     })

@@ -37,6 +37,9 @@ if (process.env.NODE_ENV !== "test") {
 		"like_dislike_genre",
 		"mood",
 		"song",
+		"likert_template",
+		"likert_template_result",
+		"likert_template_steps",
 	].forEach(model => {
 		module.exports[model] = connection.import(__dirname + "/" + model);
 	});
