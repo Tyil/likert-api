@@ -14,13 +14,13 @@ module.exports = function (sequelize, DataTypes) {
 				key: 'key'
 			}
 		},
-    moodId: {
-      type: DataTypes.INTEGER,
+		moodId: {
+			type: DataTypes.INTEGER,
 			references: {
 				model: 'moods',
 				key: 'id'
 			}
-    },
+		},
 		songId: {
 			type: DataTypes.INTEGER,
 			references: {
@@ -28,6 +28,13 @@ module.exports = function (sequelize, DataTypes) {
 				key: 'id'
 			}
 		},
-		score: DataTypes.INTEGER
+		scaleId: {
+			type: DataTypes.INTEGER,
+			references: {
+				model: 'likert_template_values',
+				key: 'id'
+			}
+		},
+		scaleScore: DataTypes.INTEGER
 	});
 };
