@@ -19,8 +19,7 @@ module.exports = (id, user) => {
 		}
 		return likert_result.findAll({
 			where: {
-				userId: user,
-				templateId: result.id
+				userId: user
 			}
 		}).then(answers => {
 			return likert_value.findOne({

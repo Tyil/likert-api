@@ -1,6 +1,6 @@
 const likert = require("../../models").likert_template,
 	likert_result = require("../../models").likert_template_result,
-	likert_value = require(".././models").likert_template_value;
+	likert_value = require("../../models").likert_template_value;
 
 module.exports = (name, description, max_value, scaleItems) => {
 	var response = {
