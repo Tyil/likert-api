@@ -28,12 +28,16 @@ module.exports = router
 		});
 	})
 	.put('/', (req, res) => {
-		alter_likert(req.body.id).then(result => {
-			return res.json(result);
+		req.body.ids.forEach((id, updateItem) => {
+			alter_likert(req.body.ids).then(result => {
+				return res.json(result);
+			});
 		});
 	})
 	.patch('/', (req, res) => {
-		remove_likert(req.body.id).then(result => {
-			return res.json(result);
+		req.body.ids.forEach(id => {
+			remove_likert(id).then(result => {
+				return res.json(result);
+			});
 		});
 	});
