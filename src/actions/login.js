@@ -18,7 +18,7 @@ module.exports = (username, password) => {
 		expiry.setHours(expiry.getHours() + (1 * 24 * 7));
 
 		return tokenModel.create({
-			userId: user.UserId,
+			userId: user.id,
 			token: randomstring.generate(60),
 			expiresAt: expiry
 		});
