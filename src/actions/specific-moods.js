@@ -3,7 +3,7 @@ const moods = require('../models').mood;
 module.exports = (moodName) => {
 	return moods.findOne({
 		where: {
-			Name: moodName
+			name: moodName
 		}
 	}).then(result => {
 		if (result === null) {
@@ -19,7 +19,7 @@ module.exports = (moodName) => {
 	}).catch(err => {
 		return {
 			ok: false,
-			message: 'Something went wrong.'
+			message: err
 		};
 	});
 };
