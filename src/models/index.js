@@ -1,5 +1,7 @@
+const bcrypt = require("bcrypt-nodejs");
 const fs = require("fs");
 const sequelize = require("sequelize");
+
 const db_config = __dirname + "/../../config/database.json";
 
 let config;
@@ -56,7 +58,7 @@ if (process.env.NODE_ENV !== "test") {
 	module.exports.user = connection.define("user", {
 		id: 1,
 		username: "mood",
-		password: "test"
+		password: bcrypt.hashSync("test")
 	});
 
 	module.exports.genre = connection.define("genre", {
