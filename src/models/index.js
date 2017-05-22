@@ -1,6 +1,5 @@
 const fs = require("fs");
 const sequelize = require("sequelize");
-const sequelizeMock = require("sequelize-mock");
 const db_config = __dirname + "/../../config/database.json";
 
 let config;
@@ -41,6 +40,8 @@ if (process.env.NODE_ENV !== "test") {
 		module.exports[model] = connection.import(__dirname + "/" + model);
 	});
 } else {
+	const sequelizeMock = require("sequelize-mock");
+
 	connection = new sequelizeMock();
 
 	module.exports.token = connection.define("token", {
