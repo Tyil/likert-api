@@ -1,5 +1,5 @@
-const actionLogin = require("../actions/login");
-const actionRefresh = require("../actions/refresh-token");
+const actionLogin = require("../actions/auth/login");
+const actionRefresh = require("../actions/auth/refresh-token");
 const token = require("../models").token;
 const user = require("../models").user;
 const bcrypt = require("bcrypt-nodejs");
