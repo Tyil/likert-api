@@ -1,21 +1,22 @@
 'use strict';
 module.exports = {
 	up: function (queryInterface, Sequelize) {
-		return queryInterface.createTable('likert_templates', {
+		return queryInterface.createTable('likert_template_values', {
 			id: {
 				allowNull: false,
 				autoIncrement: true,
 				primaryKey: true,
 				type: Sequelize.INTEGER
 			},
-			name: {
+			templateId: {
+				type: Sequelize.INTEGER,
+				references: {
+					model: 'likert_templates',
+					key: 'id'
+				}
+			},
+			value: {
 				type: Sequelize.STRING
-			},
-			max_value: {
-				type: Sequelize.INTEGER
-			},
-			description: {
-				type: Sequelize.TEXT
 			},
 			createdAt: {
 				allowNull: false,
@@ -24,13 +25,10 @@ module.exports = {
 			updatedAt: {
 				allowNull: false,
 				type: Sequelize.DATE
-			},
-			deletedAt: {
-				type: Sequelize.DATE
 			}
 		});
 	},
 	down: function (queryInterface, Sequelize) {
-		return queryInterface.dropTable('likert_templates');
+		return queryInterface.dropTable('likert_template_values');
 	}
 };

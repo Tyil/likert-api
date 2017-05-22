@@ -24,6 +24,7 @@ app.use(bodyParser.urlencoded({
 	"genre",
 	"mood",
 	"user",
+	"likert",
 	"song",
 ].forEach(x => app.use("/" + x, require("./controller/" + x)));
 
