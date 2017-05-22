@@ -1,7 +1,7 @@
 const bcrypt = require("bcrypt-nodejs");
 const randomstring = require("randomstring");
 
-const tokenModel = require("../models").token;
+const tokenModel = require("../../models").token;
 
 module.exports = (id) => {
 	const expiry = new Date();

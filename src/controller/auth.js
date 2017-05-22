@@ -2,18 +2,18 @@ const router = require("express").Router();
 const bcrypt = require("bcrypt-nodejs");
 const randomstring = require("randomstring");
 
-const registerAccount = require("../actions/register-account");
-const login = require("../actions/login");
-const refreshToken = require("../actions/refresh-token");
+const registerAccount = require("../actions/auth/register-account");
+const login = require("../actions/auth/login");
+const refreshToken = require("../actions/auth/refresh-token");
 
 module.exports = router
 	.post("/register", (req, res) => {
-		registerAccount(req.body.username, req.body.password).then (response => {
+		registerAccount(req.body.username, req.body.password).then(response => {
 			res.json(response);
 		});
 	})
 	.post("/login", (req, res) => {
-		login(req.body.username, req.body.password).then (response => {
+		login(req.body.username, req.body.password).then(response => {
 			res.json(response);
 		});
 	})
@@ -40,5 +40,4 @@ module.exports = router
 		destroyToken(req.token.id).then(response => {
 			res.json(response);
 		});
-	})
-;
+	});
