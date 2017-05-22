@@ -10,7 +10,7 @@ module.exports = (isAuthenticated, userId, username, password) => {
 	}
 	return user.findOne({
 		where: {
-			UserId: userId
+			id: userId
 		}
 	}).then(result => {
 		if (result === null) {

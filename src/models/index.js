@@ -50,9 +50,9 @@ if (process.env.NODE_ENV !== "test") {
 	});
 
 	module.exports.user = connection.define("user", {
-		UserId: 1,
-		Username: "mood",
-		Password: "test"
+		id: 1,
+		username: "mood",
+		password: "test"
 	});
 
 	module.exports.genre = connection.define("genre", {

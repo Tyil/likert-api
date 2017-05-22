@@ -9,12 +9,6 @@ describe("Authentication token", () => {
 		const expiry = new Date();
 		expiry.setHours(expiry.getHours() + (1 * 24 * 7) - 10);
 
-		user.create({
-			UserId: 1,
-			Username: "mood",
-			Password: bcrypt.hashSync("test", bcrypt.genSaltSync(10)),
-		});
-
 		token.create({
 			userId: 1,
 			token: "testestestestestestest",
