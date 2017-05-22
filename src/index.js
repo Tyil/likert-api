@@ -21,11 +21,11 @@ app.use(bodyParser.urlencoded({
 // add controllers
 [
 	"auth",
-	"genre",
-	"mood",
-	"user",
-	"likert",
-	"song",
+	"genres",
+	"moods",
+	"users",
+	"likerts",
+	"songs",
 ].forEach(x => app.use("/" + x, require("./controller/" + x)));
 
 // root handler
