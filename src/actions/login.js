@@ -5,12 +5,12 @@ const userModel = require("../models").user;
 const tokenModel = require("../models").token;
 
 module.exports = (username, password) => {
-	return userModel.find({
+	return userModel.findOne({
 		where: {
-			Username: username
+			username: username
 		}
 	}).then(user => {
-		if (!bcrypt.compareSync(password, user.Password)) {
+		if (!bcrypt.compareSync(password, user.get("password"))) {
 			throw new Error("Username or password is incorrect");
 		}
 
@@ -25,8 +25,8 @@ module.exports = (username, password) => {
 	}).then(token => {
 		return {
 			ok: true,
-			token: token.token,
-			expires: token.expiresAt
+			token: token.get("token"),
+			expires: token.get("expiresAt")
 		};
 	}).catch(err => {
 		return {
