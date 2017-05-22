@@ -5,4 +5,3 @@ module.exports = (sequelize, dataTypes) => {
 		expiresAt: dataTypes.DATE
 	});
 };
-
