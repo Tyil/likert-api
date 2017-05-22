@@ -24,7 +24,7 @@ module.exports = (id, updateItem) => {
 		}).then(value => {
 			return {
 				ok: true,
-				message: 'The likert scale has been removed.'
+				message: 'The likert scale has been altered.'
 			};
 		});
 	});
