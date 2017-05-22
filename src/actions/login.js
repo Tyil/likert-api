@@ -5,17 +5,17 @@ const userModel = require("../models").user;
 const tokenModel = require("../models").token;
 
 module.exports = (username, password) => {
-	return userModel.find({
+	return userModel.findOne({
 		where: {
 			username: username
 		}
 	}).then(user => {
-		if (!bcrypt.compareSync(password, user.password)) {
+		if (!bcrypt.compareSync(password, user.get("password"))) {
 			throw new Error("Username or password is incorrect");
 		}
 
 		const expiry = new Date();
-		expiry.setHours(expiry.getHours() + 1);
+		expiry.setHours(expiry.getHours() + (1 * 24 * 7));
 
 		return tokenModel.create({
 			userId: user.id,
@@ -23,15 +23,15 @@ module.exports = (username, password) => {
 			expiresAt: expiry
 		});
 	}).then(token => {
-		return res.json({
+		return {
 			ok: true,
-			token: token.token,
-			expires: token.expiresAt
-		});
+			token: token.get("token"),
+			expires: token.get("expiresAt")
+		};
 	}).catch(err => {
-		return res.json({
+		return {
 			ok: false,
 			message: err.message || err
-		});
+		};
 	});
 };

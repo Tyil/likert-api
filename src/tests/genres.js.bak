@@ -9,13 +9,6 @@ var app = require('../../index.js'),
 var db = new mock(),
 	date = new Date(),
 	baseUri = "/genre",
-	commonHeader = {
-		'token': {
-			'userId': 1,
-			'token': rs.generate(60),
-			'expires': date.setHours(date.getHours() + 1)
-		}
-	},
 	genreCreationTest = {
 		genreName: "test_genre"
 	},
@@ -24,26 +17,6 @@ var db = new mock(),
 	};
 
 describe("[Genre]", function () {
-	beforeAll(function () {
-		token.create({
-			userId: commonHeader.token.userId,
-			token: commonHeader.token.token,
-			expiresAt: commonHeader.token.expires
-		});
-		genre.findOne({
-			where: {
-				name: genreLikeDislike
-			}
-		}).then(result => {
-			if (result === null) {
-				genre.create({
-					name: genreLikeDislike
-				});
-			}
-		});
-
-	});
-
 	it("The API should give a list of genres", done => {
 		request
 			.get(baseUri + '/')
@@ -53,7 +26,6 @@ describe("[Genre]", function () {
 	it("An admin should be able to add a genre.", done => {
 		request
 			.post(baseUri + '/add')
-			.set(commonHeader)
 			.send(genreCreationTest)
 			.end((err, result) => {
 				assert.equal(result.body.ok, true);
@@ -65,7 +37,6 @@ describe("[Genre]", function () {
 	it("An admin should be able to remove a genre.", done => {
 		request
 			.delete(baseUri + '/remove')
-			.set(commonHeader)
 			.send(genreCreationTest)
 			.end((err, result) => {
 				assert.equal(result.body.ok, true);
@@ -77,7 +48,7 @@ describe("[Genre]", function () {
 	it("A user should be able to like a genre", done => {
 		request
 			.post(baseUri + '/like')
-			.set(commonHeader)
+			.set('Authorization', 'Bearer token')
 			.send(genreLikeDislike)
 			.end((err, result) => {
 				assert.equal(result.body.ok, true);
@@ -89,7 +60,6 @@ describe("[Genre]", function () {
 	it("A user should be able to dislike a genre", done => {
 		request
 			.post(baseUri + '/dislike')
-			.set(commonHeader)
 			.send(genreLikeDislike)
 			.end((err, result) => {
 				assert.equal(result.body.ok, true);
@@ -101,7 +71,6 @@ describe("[Genre]", function () {
 	it("A user should be able to unlike a genre", done => {
 		request
 			.delete(baseUri + '/like')
-			.set(commonHeader)
 			.send(genreLikeDislike)
 			.end((err, result) => {
 				assert.equal(result.body.ok, true);
@@ -113,30 +82,11 @@ describe("[Genre]", function () {
 	it("A user should be able to unlike a disliked a genre", done => {
 		request
 			.delete(baseUri + '/dislike')
-			.set(commonHeader)
 			.send(genreLikeDislike)
 			.end((err, result) => {
 				assert.equal(result.body.ok, true);
 				assert.equal(result.body.message, "Preference got removed.");
 				done();
 			});
-	});
-
-	afterAll(function () {
-		token.findOne({
-			where: {
-				userId: 1
-			}
-		}).then(result => {
-			result.destroy();
-		});
-
-		genre.findOne({
-			where: {
-				name: genreLikeDislike
-			}
-		}).then(result => {
-			result.destroy();
-		});
 	});
 });
