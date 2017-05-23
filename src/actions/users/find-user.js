@@ -15,7 +15,7 @@ module.exports = (userId) => {
 
 		return {
 			ok: true,
-			message: {
+			user: {
 				id: result.get("id"),
 				username: result.get("username"),
 				password: result.get("password")
