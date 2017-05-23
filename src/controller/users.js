@@ -9,7 +9,7 @@ module.exports = router
 		if (!req.authenticated) {
 			return res.json(notLoggedIn);
 		}
-		findUser(req.token.id).then(result => {
+		findUser(req.token.userId).then(result => {
 			return res.json(result);
 		});
 	})
@@ -25,7 +25,7 @@ module.exports = router
 		if (!req.authenticated) {
 			return res.json(notLoggedIn);
 		}
-		updateUser(req.token.id, req.body.username, req.body.password).then(result => {
+		updateUser(req.token.userId, req.body.username, req.body.password).then(result => {
 			return res.json(result);
 		});
 	})
