@@ -7,7 +7,7 @@ const findUser = require("../actions/users/find-user"),
 describe("Users", () => {
 	beforeAll(() => {
 		user.create({
-			userId: 999,
+			id: 999,
 			username: "MoodAPI",
 			password: bcrypt.hashSync("MoodAPI")
 		});
