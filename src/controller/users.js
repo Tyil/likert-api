@@ -2,10 +2,7 @@ const router = require("express").Router(),
 	auth = require("../middlewares/bearer"),
 	updateUser = require("../actions/users/update-user"),
 	findUser = require("../actions/users/find-user"),
-	notLoggedIn = {
-		ok: false,
-		message: 'You are not logged in. Please login to use this functionality.'
-	};
+	notLoggedIn = require("../responses/unauthenticated.json");
 
 module.exports = router
 	.get('/', auth, (req, res) => {
