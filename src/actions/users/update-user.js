@@ -15,7 +15,7 @@ module.exports = (userId, username, password) => {
 		}
 		result.update({
 			Username: username,
-			Password: bcrypt.hashSync(password)
+			Password: bcrypt.hashSync(password, bcrypt.genSaltSync(10))
 		}).then(result => {
 			return {
 				ok: true,

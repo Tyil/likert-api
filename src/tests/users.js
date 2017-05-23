@@ -23,6 +23,9 @@ describe("Users", () => {
 	});
 
 	it("Update an existing user", () => {
-		
+		updateUser(999, "Mood", "Vis").then(result => {
+			expect(result.ok).toBe(true);
+			expect(result.message).toBe('The user has been updated.');
+		});
 	});
 });
