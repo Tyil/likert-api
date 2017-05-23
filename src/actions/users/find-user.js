@@ -12,12 +12,13 @@ module.exports = (userId) => {
 				message: 'This user does not exist.'
 			};
 		}
+
 		return {
 			ok: true,
 			message: {
-				id: result.id,
-				username: result.username,
-				password: result.password
+				id: result.get("id"),
+				username: result.get("username"),
+				password: result.get("password")
 			}
 		};
 	});

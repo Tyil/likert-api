@@ -13,13 +13,19 @@ module.exports = (userId, username, password) => {
 				message: 'The user does not exist.'
 			};
 		}
-		result.update({
+
+		return result.update({
 			Username: username,
 			Password: bcrypt.hashSync(password, bcrypt.genSaltSync(10))
 		}).then(result => {
 			return {
 				ok: true,
 				message: 'The user has been updated.'
+			};
+		}).catch(err => {
+			return {
+				ok: false,
+				message: err.message || err
 			};
 		});
 	});
