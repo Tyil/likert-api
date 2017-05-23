@@ -1,26 +1,39 @@
 const router = require("express").Router(),
-	updateUser = require("../actions/update-user"),
-	findUser = require("../actions/find-user");
+	auth = require("../middlewares/bearer"),
+	updateUser = require("../actions/users/update-user"),
+	findUser = require("../actions/users/find-user"),
+	notLoggedIn = require("../responses/unauthenticated.json");
 
 module.exports = router
-	.get('/', (req, res) => {
-		findUser(req.authenticated, req.token.id).then(result => {
+	.get('/', auth, (req, res) => {
+		if (!req.authenticated) {
+			return res.json(notLoggedIn);
+		}
+		findUser(req.token.id).then(result => {
 			return res.json(result);
 		});
 	})
-	.get('/:user', (req, res) => {
-		findUser(req.authenticated, req.params.user).then(result => {
+	.get('/:user', auth, (req, res) => {
+		if (!req.authenticated) {
+			return res.json(notLoggedIn);
+		}
+		findUser(req.params.user).then(result => {
 			return res.json(result);
 		});
 	})
-	.post('/update', (req, res) => {
-		updateUser(req.authenticated, req.token.id, req.body.username, req.body.password).then(result => {
+	.put('/', auth, (req, res) => {
+		if (!req.authenticated) {
+			return res.json(notLoggedIn);
+		}
+		updateUser(req.token.id, req.body.username, req.body.password).then(result => {
 			return res.json(result);
 		});
 	})
-	.post('/update/:id', (req, res) => {
-		updateUser(req.authenticated, req.params.id, req.body.username, req.body.password).then(result => {
+	.put('/:id', auth, (req, res) => {
+		if (!req.authenticated) {
+			return res.json(notLoggedIn);
+		}
+		updateUser(req.params.id, req.body.username, req.body.password).then(result => {
 			return res.json(result);
 		});
-	})
-	;
+	});

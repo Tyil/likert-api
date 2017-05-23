@@ -31,7 +31,6 @@ module.exports = (req, res, next) => {
 
 		return next();
 	}).catch(err => {
-		console.error(err);
 		req.authenticated = false;
 
 		return next();
