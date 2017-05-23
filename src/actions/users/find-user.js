@@ -1,12 +1,6 @@
-const user = require("../models").user;
+const user = require("../../models").user;
 
-module.exports = (isAuthenticated, userId) => {
-	if (!isAuthenticated && process.env.NODE_ENV != 'test') {
-		return {
-			ok: false,
-			message: "Not logged in."
-		};
-	}
+module.exports = (userId) => {
 	return user.findOne({
 		where: {
 			id: userId

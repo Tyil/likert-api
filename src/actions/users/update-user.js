@@ -1,13 +1,7 @@
 const bcrypt = require("bcrypt-nodejs"),
-	user = require("../models").user;
+	user = require("../../models").user;
 
-module.exports = (isAuthenticated, userId, username, password) => {
-	if (!isAuthenticated && process.env.NODE_ENV != 'test') {
-		return {
-			ok: false,
-			message: "Not logged in."
-		};
-	}
+module.exports = (userId, username, password) => {
 	return user.findOne({
 		where: {
 			id: userId
