@@ -4,7 +4,7 @@ const findUser = require("../actions/users/find-user"),
 	user = require("../models").user,
 	bcrypt = require("bcrypt-nodejs");
 
-describe("Users", () => {
+describe("User routes", () => {
 	beforeAll(() => {
 		user.create({
 			id: 999,
@@ -13,7 +13,7 @@ describe("Users", () => {
 		});
 	});
 
-	it("Find the logged in user", () => {
+	it("can find the logged in user", () => {
 		findUser(999).then(result => {
 			expect(result.ok).toBe(true);
 			expect(result.message.id).toBe(999);
@@ -22,7 +22,7 @@ describe("Users", () => {
 		});
 	});
 
-	it("Update an existing user", () => {
+	it("can update an existing user", () => {
 		updateUser(999, "Mood", "Vis").then(result => {
 			expect(result.ok).toBe(true);
 			expect(result.message).toBe('The user has been updated.');
