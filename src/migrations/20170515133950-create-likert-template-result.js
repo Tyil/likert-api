@@ -1,6 +1,6 @@
 module.exports = {
 	up: function (queryInterface, Sequelize) {
-		return queryInterface.createTable('like_dislike_genres', {
+		return queryInterface.createTable('likert_template_results', {
 			id: {
 				allowNull: false,
 				autoIncrement: true,
@@ -12,19 +12,31 @@ module.exports = {
 				references: {
 					model: 'users',
 					key: 'id'
-				},
-				allowNull: false
+				}
 			},
-			genreId: {
+			templateId: {
 				type: Sequelize.INTEGER,
 				references: {
-					model: 'genres',
+					model: 'likert_templates',
 					key: 'id'
-				},
-				allowNull: false
+				}
 			},
-			like_dislike: {
-				type: Sequelize.STRING
+			moodId: {
+				type: Sequelize.INTEGER,
+				references: {
+					model: 'moods',
+					key: 'id'
+				}
+			},
+			songId: {
+				type: Sequelize.INTEGER,
+				references: {
+					model: 'songs',
+					key: 'id'
+				}
+			},
+			scaleScore: {
+				type: Sequelize.INTEGER
 			},
 			createdAt: {
 				allowNull: false,
@@ -37,6 +49,6 @@ module.exports = {
 		});
 	},
 	down: function (queryInterface, Sequelize) {
-		return queryInterface.dropTable('like_dislike_genres');
+		return queryInterface.dropTable('likert_template_results');
 	}
 };

@@ -1,41 +1,41 @@
-module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('song', {
-	SongId: {
-		allowNull: false,
-		autoIncrement: true,
-		primaryKey: true,
-		type: DataTypes.INTEGER
-	  },
-	  Name: {
-		type: DataTypes.STRING
-	  },
-	  Path: {
-		type: DataTypes.STRING
-	  },
-	  Tag: {
-		type: DataTypes.STRING
-	  },
-	  Artist_ArtistId: {
-		type: DataTypes.INTEGER,
-	  },
-	  Album_AlbumId: {
-		type: DataTypes.INTEGER
-	  },
-	  Genre_GenreId: {
-		type: DataTypes.INTEGER,
-		references: {
-		  model: 'genres',
-		  key: 'GenreId'
+module.exports = function (sequelize, DataTypes) {
+	return sequelize.define('song', {
+		id: {
+			allowNull: false,
+			autoIncrement: true,
+			primaryKey: true,
+			type: DataTypes.INTEGER
 		},
-	  },
-	  Mood_MoodId: {
-		type: DataTypes.INTEGER,
-		references: {
-		  model: 'moods',
-		  key: 'MoodId'
+		name: {
+			type: DataTypes.STRING
 		},
-	  }
-  }, {
-	timestamps: false
-  });
+		path: {
+			type: DataTypes.STRING
+		},
+		tag: {
+			type: DataTypes.STRING
+		},
+		artistId: {
+			type: DataTypes.INTEGER,
+		},
+		albumId: {
+			type: DataTypes.INTEGER
+		},
+		genreId: {
+			type: DataTypes.INTEGER,
+			references: {
+				model: 'genres',
+				key: 'id'
+			},
+		},
+		moodId: {
+			type: DataTypes.INTEGER,
+			references: {
+				model: 'moods',
+				key: 'id'
+			},
+		}
+	}, {
+		timestamps: false
+	});
 };

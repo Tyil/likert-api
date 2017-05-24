@@ -1,6 +1,7 @@
+const bcrypt = require("bcrypt-nodejs");
 const fs = require("fs");
 const sequelize = require("sequelize");
-const sequelizeMock = require("sequelize-mock");
+
 const db_config = __dirname + "/../../config/database.json";
 
 let config;
@@ -38,10 +39,16 @@ if (process.env.NODE_ENV !== "test") {
 		"like_dislike_genre",
 		"mood",
 		"song",
+		"likert_template",
+		"likert_template_result",
+		"likert_template_steps",
+		"likert_template_value",
 	].forEach(model => {
 		module.exports[model] = connection.import(__dirname + "/" + model);
 	});
 } else {
+	const sequelizeMock = require("sequelize-mock");
+
 	connection = new sequelizeMock();
 
 	module.exports.token = connection.define("token", {
@@ -50,9 +57,9 @@ if (process.env.NODE_ENV !== "test") {
 	});
 
 	module.exports.user = connection.define("user", {
-		UserId: 1,
-		Username: "mood",
-		Password: "test"
+		id: 1,
+		username: "mood",
+		password: bcrypt.hashSync("test")
 	});
 
 	module.exports.genre = connection.define("genre", {

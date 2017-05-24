@@ -1,11 +1,10 @@
-module.exports = (req, res ,next) => {
-	if (!req.headers.auth) {
+module.exports = (req, res, next) => {
+	if (!req.headers.authorization) {
 		req.authenticated = false;
-
 		return next();
 	}
 
-	const megumin = req.headers.auth.split(" ");
+	const megumin = req.headers.authorization.split(" ");
 
 	if (megumin[0] != "Bearer") {
 		return next();
@@ -32,7 +31,6 @@ module.exports = (req, res ,next) => {
 
 		return next();
 	}).catch(err => {
-		console.error(err);
 		req.authenticated = false;
 
 		return next();

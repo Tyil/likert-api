@@ -1,30 +1,21 @@
 module.exports = {
 	up: function (queryInterface, Sequelize) {
-		return queryInterface.createTable('like_dislike_genres', {
+		return queryInterface.createTable('likert_template_steps', {
 			id: {
 				allowNull: false,
 				autoIncrement: true,
 				primaryKey: true,
 				type: Sequelize.INTEGER
 			},
-			userId: {
+			templateId: {
 				type: Sequelize.INTEGER,
 				references: {
-					model: 'users',
+					model: 'likert_templates',
 					key: 'id'
-				},
-				allowNull: false
+				}
 			},
-			genreId: {
-				type: Sequelize.INTEGER,
-				references: {
-					model: 'genres',
-					key: 'id'
-				},
-				allowNull: false
-			},
-			like_dislike: {
-				type: Sequelize.STRING
+			steps: {
+				type: Sequelize.INTEGER
 			},
 			createdAt: {
 				allowNull: false,
@@ -37,6 +28,6 @@ module.exports = {
 		});
 	},
 	down: function (queryInterface, Sequelize) {
-		return queryInterface.dropTable('like_dislike_genres');
+		return queryInterface.dropTable('likert_template_steps');
 	}
 };

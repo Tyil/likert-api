@@ -1,12 +1,12 @@
 module.exports = (sequelize, DataTypes) => {
 	return sequelize.define('mood', {
-		MoodId: {
+		id: {
 			allowNull: false,
 			autoIncrement: true,
 			primaryKey: true,
 			type: DataTypes.INTEGER
 		},
-		Name: DataTypes.STRING
+		name: DataTypes.STRING
 	}, {
 		timestamps: false
 	});

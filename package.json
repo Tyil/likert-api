@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/index.js",
     "serve": "nodemon",
-    "test": "jasmine src"
+    "test": "jasmine --config=config/jasmine.json"
   },
   "repository": {
     "type": "git",

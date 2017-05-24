@@ -1,16 +1,10 @@
 const bcrypt = require("bcrypt-nodejs"),
-	user = require("../models").user;
+	user = require("../../models").user;
 
-module.exports = (isAuthenticated, userId, username, password) => {
-	if (!isAuthenticated && process.env.NODE_ENV != 'test') {
-		return {
-			ok: false,
-			message: "Not logged in."
-		};
-	}
+module.exports = (userId, username, password) => {
 	return user.findOne({
 		where: {
-			UserId: userId
+			id: userId
 		}
 	}).then(result => {
 		if (result === null) {
@@ -19,13 +13,19 @@ module.exports = (isAuthenticated, userId, username, password) => {
 				message: 'The user does not exist.'
 			};
 		}
-		result.update({
+
+		return result.update({
 			Username: username,
-			Password: bcrypt.hashSync(password)
+			Password: bcrypt.hashSync(password, bcrypt.genSaltSync(10))
 		}).then(result => {
 			return {
 				ok: true,
 				message: 'The user has been updated.'
+			};
+		}).catch(err => {
+			return {
+				ok: false,
+				message: err.message || err
 			};
 		});
 	});

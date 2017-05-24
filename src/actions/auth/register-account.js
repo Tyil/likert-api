@@ -1,11 +1,11 @@
 const bcrypt = require("bcrypt-nodejs");
 
-const userModel = require("../models").user;
+const userModel = require("../../models").user;
 
 module.exports = (username, password) => {
 	return userModel.create({
-		Username: username,
-		Password: bcrypt.hashSync(password)
+		username: username,
+		password: bcrypt.hashSync(password, bcrypt.genSaltSync(10))
 	}).then(user => {
 		return {
 			ok: true
