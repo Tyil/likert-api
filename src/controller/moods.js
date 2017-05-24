@@ -21,7 +21,7 @@ module.exports = router
 		});
 	})
 	.post('/', (req, res) => {
-		if (!req.authentication) {
+		if (!req.authenticated) {
 			return res.json(notLoggedIn);
 		}
 		add(req.body.mood).then(result => {
@@ -29,7 +29,7 @@ module.exports = router
 		});
 	})
 	.put('/', (req, res) => {
-		if (!req.authentication) {
+		if (!req.authenticated) {
 			return res.json(notLoggedIn);
 		}
 		update(req.body.oldMood, req.body.newMood).then(result => {
@@ -37,7 +37,7 @@ module.exports = router
 		});
 	})
 	.delete('/', (req, res) => {
-		if (!req.authentication) {
+		if (!req.authenticated) {
 			return res.json(notLoggedIn);
 		}
 		remove(req.body.mood).then(result => {
