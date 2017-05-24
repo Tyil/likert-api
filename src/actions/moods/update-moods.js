@@ -13,7 +13,7 @@ module.exports = (oldMood, newMood) => {
 			};
 		}
 		return result.update({
-			Name: newMood
+			name: newMood
 		}).then(result => {
 			return {
 				ok: true,
