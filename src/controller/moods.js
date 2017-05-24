@@ -1,13 +1,17 @@
 const router = require("express").Router(),
-	actions = require('../actions/add-remove-moods'),
-	update = require('../actions/update-moods'),
-	specific = require('../actions/specific-moods'),
-	moods = require('../models').mood;
+	actions = require('../actions/moods/add-remove-moods'),
+	update = require('../actions/moods/update-moods'),
+	specific = require('../actions/moods/specific-moods'),
+	moods = require('../models').mood,
+	notLoggedIn = require("../responses/unauthenticated.json");
 
 module.exports = router
 	.get('/', (req, res) => {
 		moods.findAll().then(result => {
-			return res.json(result);
+			return res.json({
+				ok: true,
+				message: result
+			});
 		});
 	})
 	.get('/:mood', (req, res) => {
@@ -15,19 +19,27 @@ module.exports = router
 			return res.json(result);
 		});
 	})
-	.post('/add', (req, res) => {
+	.post('/', (req, res) => {
+		if (!req.authentication) {
+			return res.json(notLoggedIn);
+		}
 		actions(req.body.mood, 'add').then(result => {
 			return res.json(result);
 		});
 	})
-	.post('/update', (req, res) => {
+	.put('/', (req, res) => {
+		if (!req.authentication) {
+			return res.json(notLoggedIn);
+		}
 		update(req.body.oldMood, req.body.newMood).then(result => {
 			return res.json(result);
 		});
 	})
-	.delete('/remove', (req, res) => {
+	.delete('/', (req, res) => {
+		if (!req.authentication) {
+			return res.json(notLoggedIn);
+		}
 		actions(req.body.mood, 'remove').then(result => {
 			return res.json(result);
 		});
-	})
-	;
+	});

@@ -1,4 +1,4 @@
-const moods = require('../models').mood;
+const moods = require('../../models').mood;
 
 module.exports = (oldMood, newMood) => {
 	return moods.findOne({

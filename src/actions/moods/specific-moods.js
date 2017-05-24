@@ -1,4 +1,4 @@
-const moods = require('../models').mood;
+const moods = require('../../models').mood;
 
 module.exports = (moodName) => {
 	return moods.findOne({
@@ -14,7 +14,7 @@ module.exports = (moodName) => {
 		}
 		return {
 			ok: true,
-			message: result.Name
+			message: result.name
 		};
 	}).catch(err => {
 		return {

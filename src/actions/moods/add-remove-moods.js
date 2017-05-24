@@ -1,4 +1,4 @@
-const moods = require('../models').mood;
+const moods = require('../../models').mood;
 
 module.exports = (moodName, action) => {
 	return moods.findOne({
@@ -21,6 +21,11 @@ module.exports = (moodName, action) => {
 						ok: true,
 						message: 'The mood has been added.'
 					};
+				}).catch(err => {
+					return {
+						ok: false,
+						message: err
+					};
 				});
 			case 'remove':
 				if (result === null) {
@@ -29,11 +34,13 @@ module.exports = (moodName, action) => {
 						message: 'This mood does not exist.'
 					};
 				}
-				result.destroy();
-				return {
-					ok: true,
-					message: 'The mood has been removed.'
-				};
+				result.destroy().then(result => {
+					return {
+						ok: true,
+						message: 'The mood has been removed.'
+					};
+				});
+				break;
 			default:
 				return {
 					ok: false,
