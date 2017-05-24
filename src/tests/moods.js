@@ -4,13 +4,13 @@ const addRemoveMoods = require("../actions/moods/add-remove-moods"),
 
 describe("Moods", () => {
 	it("Add a mood.", () => {
-		addRemoveMoods("Pleased", "add").then(result => {
+		addRemoveMoods("TestTestTest", "add").then(result => {
 			expect(result.ok).toBe(true);
 			expect(result.message).toBe('The mood has been added.');
 		});
 	});
 	it("Remove a mood.", () => {
-		addRemoveMoods("Pleased", "remove").then(result => {
+		addRemoveMoods("Happy", "remove").then(result => {
 			expect(result.ok).toBe(true);
 			expect(result.message).toBe('The mood has been removed.');
 		});

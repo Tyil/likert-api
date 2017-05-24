@@ -12,14 +12,16 @@ module.exports = (moodName) => {
 				message: 'This mood does not exist.'
 			};
 		}
-		return {
-			ok: true,
-			message: result.get("name")
-		};
-	}).catch(err => {
-		return {
-			ok: false,
-			message: err
-		};
+		return result.destroy().then(result => {
+			return {
+				ok: true,
+				message: 'The mood has been removed.'
+			};
+		}).catch(err => {
+			return {
+				ok: false,
+				message: err
+			};
+		});
 	});
 };

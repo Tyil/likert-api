@@ -1,5 +1,6 @@
 const router = require("express").Router(),
-	actions = require('../actions/moods/add-remove-moods'),
+	add = require('../actions/moods/add-moods'),
+	remove = require('../actions/moods/remove-moods'),
 	update = require('../actions/moods/update-moods'),
 	specific = require('../actions/moods/specific-moods'),
 	moods = require('../models').mood,
@@ -23,7 +24,7 @@ module.exports = router
 		if (!req.authentication) {
 			return res.json(notLoggedIn);
 		}
-		actions(req.body.mood, 'add').then(result => {
+		add(req.body.mood).then(result => {
 			return res.json(result);
 		});
 	})
@@ -39,7 +40,7 @@ module.exports = router
 		if (!req.authentication) {
 			return res.json(notLoggedIn);
 		}
-		actions(req.body.mood, 'remove').then(result => {
+		remove(req.body.mood).then(result => {
 			return res.json(result);
 		});
 	});
