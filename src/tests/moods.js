@@ -4,31 +4,31 @@ const add = require("../actions/moods/add-moods"),
 	updateMoods = require("../actions/moods/update-moods"),
 	mood = require("../models").mood;
 
-describe("Moods", () => {
+describe("Moods routes", () => {
 	beforeAll(() => {
 		mood.create({
 			name: "Vis"
 		});
 	});
-	it("Add a mood.", () => {
+	it("can add a mood.", () => {
 		add("TestTestTest").then(result => {
 			expect(result.ok).toBe(true);
 			expect(result.message).toBe('The mood has been added.');
 		});
 	});
-	it("Remove a mood.", () => {
+	it("can remove a mood.", () => {
 		remove("Vis").then(result => {
 			expect(result.ok).toBe(true);
 			expect(result.message).toBe('The mood has been removed.');
 		});
 	});
-	it("Get a specific mood.", () => {
+	it("can get a specific mood.", () => {
 		specificMoods("Happy").then(result => {
 			expect(result.ok).toBe(true);
 			expect(result.message).toBe('Happy');
 		});
 	});
-	it("Update a mood.", () => {
+	it("can update a mood.", () => {
 		updateMoods("Happy", "Sad").then(result => {
 			expect(result.ok).toBe(true);
 			expect(result.message).toBe('The mood has been updated.');
