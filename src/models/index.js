@@ -66,10 +66,7 @@ if (process.env.NODE_ENV !== "test") {
 		Name: "rock"
 	});
 
-	module.exports.mood = connection.define("mood", {
-		id: 1,
-		name: "Happy"
-	});
+	module.exports.mood = connection.define("mood", {});
 }
 
 module.exports.sequelize = connection;

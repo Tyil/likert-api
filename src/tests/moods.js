@@ -1,16 +1,23 @@
-const addRemoveMoods = require("../actions/moods/add-remove-moods"),
+const add = require("../actions/moods/add-moods"),
+	remove = require("../actions/moods/remove-moods"),
 	specificMoods = require("../actions/moods/specific-moods"),
-	updateMoods = require("../actions/moods/update-moods");
+	updateMoods = require("../actions/moods/update-moods"),
+	mood = require("../models").mood;
 
 describe("Moods", () => {
+	beforeAll(() => {
+		mood.create({
+			name: "Vis"
+		});
+	});
 	it("Add a mood.", () => {
-		addRemoveMoods("TestTestTest", "add").then(result => {
+		add("TestTestTest").then(result => {
 			expect(result.ok).toBe(true);
 			expect(result.message).toBe('The mood has been added.');
 		});
 	});
 	it("Remove a mood.", () => {
-		addRemoveMoods("Happy", "remove").then(result => {
+		remove("Vis").then(result => {
 			expect(result.ok).toBe(true);
 			expect(result.message).toBe('The mood has been removed.');
 		});
