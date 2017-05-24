@@ -1,4 +1,4 @@
-const Artist = require("../models").artist;
+const Artist = require("../../models").artist;
 
 module.exports = name => {
 	return Artist.findOne({
