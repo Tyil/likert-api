@@ -34,10 +34,15 @@ module.exports = (moodName, action) => {
 						message: 'This mood does not exist.'
 					};
 				}
-				result.destroy().then(result => {
+				return result.destroy().then(result => {
 					return {
 						ok: true,
 						message: 'The mood has been removed.'
+					};
+				}).catch(err => {
+					return {
+						ok: false,
+						message: err
 					};
 				});
 				break;
