@@ -1,5 +1,4 @@
 const router = require("express").Router();
-const Artist = require("../models").artist;
 const unauthenticatedError = require("../responses/unauthenticated.json");
 
 const actions = {
