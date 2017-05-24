@@ -5,6 +5,7 @@ const randomstring = require("randomstring");
 const registerAccount = require("../actions/auth/register-account");
 const login = require("../actions/auth/login");
 const refreshToken = require("../actions/auth/refresh-token");
+const unauthError = require("../responses/unauthenticated.json");
 
 module.exports = router
 	.post("/register", (req, res) => {
@@ -19,10 +20,7 @@ module.exports = router
 	})
 	.post("/refresh", (req, res) => {
 		if (!req.authenticated) {
-			return res.json({
-				ok: false,
-				message: "You must be authenticated"
-			});
+			return res.json(unauthError);
 		}
 
 		refreshToken(req.token.id).then(response => {
@@ -31,10 +29,7 @@ module.exports = router
 	})
 	.post("/logout", (req, res) => {
 		if (!req.authenticated) {
-			return res.json({
-				ok: false,
-				message: "You are not logged in"
-			});
+			return res.json(unauthError);
 		}
 
 		destroyToken(req.token.id).then(response => {
