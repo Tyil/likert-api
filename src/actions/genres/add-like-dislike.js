@@ -1,6 +1,6 @@
-const genre = require("../models").genre;
-const like_dislike = require("../models").like_dislike_genre;
-const userName = require("../models").user;
+const genre = require("../../models").genre;
+const like_dislike = require("../../models").like_dislike_genre;
+const userName = require("../../models").user;
 
 module.exports = (user, genreName, likeOrDislike) => {
 	if (likeOrDislike != "like" &&
@@ -14,13 +14,13 @@ module.exports = (user, genreName, likeOrDislike) => {
 	return genre.findOne({
 		name: genreName
 	}).then(result => {
-		if(result !== null) {
+		if (result !== null) {
 			return {
 				ok: false,
 				message: 'Genre already exists.'
 			};
 		}
-		
+
 		return like_dislike.create({
 			userId: user,
 			genreId: result.id,

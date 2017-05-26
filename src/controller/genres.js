@@ -3,13 +3,32 @@ const router = require("express").Router(),
 	removeLikeDislike = require("../actions/genres/remove-like-dislike"),
 	addGenre = require("../actions/genres/add-genre.js"),
 	removeGenre = require("../actions/genres/remove-genre.js"),
-	genre = require("../models").genre,
+	genre = require('../models').genre,
 	notLoggedIn = require("../responses/unauthenticated.json");
 
 module.exports = router
 	.get("/", (req, res) => {
 		genre.findAll().then(genres => {
 			return res.json(genres);
+		});
+	})
+
+	.get("/:genreName", (req, res) => {
+		genre.findOne({
+			where: {
+				name: req.params.genreName
+			}
+		}).then(result => {
+			if (result === null) {
+				return res.json({
+					ok: false,
+					message: 'The mood could not be found.'
+				});
+			}
+			return res.json({
+				ok: true,
+				message: result.get("name")
+			});
 		});
 	})
 
