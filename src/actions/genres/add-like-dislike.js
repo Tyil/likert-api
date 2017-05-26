@@ -14,10 +14,10 @@ module.exports = (user, genreName, likeOrDislike) => {
 	return genre.findOne({
 		name: genreName
 	}).then(result => {
-		if (result !== null) {
+		if (result === null) {
 			return {
 				ok: false,
-				message: 'Genre already exists.'
+				message: 'Genre does not exist.'
 			};
 		}
 
@@ -39,7 +39,7 @@ module.exports = (user, genreName, likeOrDislike) => {
 	}).catch(error => {
 		return {
 			ok: false,
-			message: "The specific genre does not exist."
+			message: error
 		};
 	});
 };
