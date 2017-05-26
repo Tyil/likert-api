@@ -5,10 +5,10 @@ const userName = require("../../models").user;
 module.exports = (user, genreName, likeOrDislike) => {
 	if (likeOrDislike != "like" &&
 		likeOrDislike != "dislike") {
-		return res.json({
+		return {
 			ok: false,
 			message: "The programmer did not like or dislike, it is a different status."
-		});
+		};
 	}
 
 	return genre.findOne({
@@ -26,20 +26,20 @@ module.exports = (user, genreName, likeOrDislike) => {
 			genreId: result.id,
 			like_dislike: likeOrDislike
 		}).then(result => {
-			return res.json({
+			return {
 				ok: true,
 				message: "Preference has been added."
-			});
+			};
 		}).catch(error => {
-			return res.json({
+			return {
 				ok: false,
 				message: "The result could not be added to the table."
-			});
+			};
 		});
 	}).catch(error => {
-		return res.json({
+		return {
 			ok: false,
 			message: "The specific genre does not exist."
-		});
+		};
 	});
 };

@@ -7,14 +7,14 @@ module.exports = (userId, genre, likeOrDislike) => {
 		like_dislike: likeOrDislike
 	}).then(result => {
 		result.destroy();
-		return res.json({
+		return {
 			ok: true,
 			message: "Preference got removed."
-		});
+		};
 	}).catch(error => {
-		return res.json({
+		return {
 			ok: false,
-			message: "Preference could not be found."
-		});
+			message: error
+		};
 	});
 }

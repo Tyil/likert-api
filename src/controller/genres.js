@@ -29,6 +29,11 @@ module.exports = router
 				ok: true,
 				message: result.get("name")
 			});
+		}).catch(err => {
+			return res.json({
+				ok: false,
+				message: err
+			});
 		});
 	})
 
