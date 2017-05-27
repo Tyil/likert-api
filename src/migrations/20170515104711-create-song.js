@@ -18,9 +18,17 @@ module.exports = {
 			},
 			artistId: {
 				type: Sequelize.INTEGER,
+				references: {
+					model: 'artists',
+					key: 'id'
+				},
 			},
 			albumId: {
-				type: Sequelize.INTEGER
+				type: Sequelize.INTEGER,
+				references: {
+					model: 'albums',
+					key: 'id'
+				}
 			},
 			genreId: {
 				type: Sequelize.INTEGER,
