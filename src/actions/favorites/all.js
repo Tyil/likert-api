@@ -5,4 +5,4 @@ const genre = require("../../models").genre,
 
 module.exports = (userId) => {
 
-}
+};
