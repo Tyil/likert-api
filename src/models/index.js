@@ -70,6 +70,11 @@ if (process.env.NODE_ENV !== "test") {
 		id: 1,
 		name: "rock"
 	});
+
+	module.exports.album = connection.define("album");
+	module.exports.artist = connection.define("artist");
+	module.exports.mood = connection.define("mood");
+	module.exports.song = connection.define("song");
 }
 
 module.exports.sequelize = connection;
