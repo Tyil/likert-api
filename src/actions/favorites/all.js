@@ -8,7 +8,7 @@ module.exports = (userId) => {
 	var response = {
 		ok: false,
 		message: ''
-	}
+	};
 	return user.findOne({
 		where: {
 			id: userId
