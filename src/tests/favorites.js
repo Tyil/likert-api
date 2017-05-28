@@ -21,25 +21,25 @@ const album = require("../models").album,
 
 describe("Favorites routes", function () {
 	beforeAll(() => {
-		models.album.create({
+		album.create({
 			id: 1,
 			name: "A Night at the Opera",
 			artistId: 1,
 			art_Path: ""
 		});
-		models.artist.create({
+		artist.create({
 			id: 1,
 			name: "Freddy Mercury"
 		});
-		models.mood.create({
+		mood.create({
 			id: 1,
 			name: "Sad"
 		});
-		models.genre.create({
+		genre.create({
 			id: 1,
 			name: "rock"
 		});
-		models.song.create({
+		song.create({
 			id: 1,
 			name: "Bohemian Rhapsody",
 			path: "https://www.youtube.com/watch?v=tgbNymZ7vqY",
