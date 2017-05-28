@@ -70,6 +70,8 @@ if (process.env.NODE_ENV !== "test") {
 		id: 1,
 		name: "rock"
 	});
+
+	module.exports.
 }
 
 module.exports.sequelize = connection;

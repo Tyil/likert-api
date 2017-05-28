@@ -1,10 +1,8 @@
-const models = {
-		album: require("../models").album,
-		artist: require("../models").artist,
-		mood: require("../models").mood,
-		genre: require("../models").genre,
-		song: require("../models").song,
-	},
+const album = require("../models").album,
+	artist = require("../models").artist,
+	mood = require("../models").mood,
+	genre = require("../models").genre,
+	song = require("../models").song,
 	actions = {
 		findAll: require("../actions/favorites/all"),
 		add: {
