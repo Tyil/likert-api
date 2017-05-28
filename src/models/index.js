@@ -77,7 +77,7 @@ if (process.env.NODE_ENV !== "test") {
 	module.exports.song = connection.define("song");
 	module.exports.favorite_album = connection.define("favorite_album");
 	module.exports.favorite_artist = connection.define("favorite_artist");
-	module.exports.favorite_songs = connection.define("favorite_song");
+	module.exports.favorite_song = connection.define("favorite_song");
 	module.exports.favorite_genre = connection.define("favorite_genre");
 }
 
