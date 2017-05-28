@@ -29,6 +29,7 @@ module.exports = (userId, songId) => {
 				userId: userId,
 				songId: songId
 			}).then(result => {
+				console.log(result);
 				return {
 					ok: true,
 					message: 'The song has been added to the favorites.'
