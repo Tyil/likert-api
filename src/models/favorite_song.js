@@ -1,5 +1,5 @@
 module.exports = (sequelize, dataTypes) => {
-	return sequelize.define("favo_song", {
+	return sequelize.define("favorite_song", {
 		userId: dataTypes.INTEGER,
 		songId: dataTypes.INTEGER
 	});
