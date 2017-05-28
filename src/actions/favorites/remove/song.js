@@ -1,6 +1,7 @@
 const favorite = require("../../../models").favorite_song;
 
 module.exports = (userId, songId) => {
+	console.log(favorite);
 	return favorite.findOne({
 		where: {
 			userId: userId,
