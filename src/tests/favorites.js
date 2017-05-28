@@ -4,7 +4,7 @@ const album = require("../models").album,
 	genre = require("../models").genre,
 	song = require("../models").song,
 	actions = {
-		findAll: require("../actions/favorites/all"),
+		all: require("../actions/favorites/all"),
 		add: {
 			album: require("../actions/favorites/add/album"),
 			artist: require("../actions/favorites/add/artist"),
@@ -52,8 +52,9 @@ describe("Favorites routes", function () {
 	});
 
 	it("can display user preferences", function () {
-		// todo finish this.
-		return true;
+		actions.all(1).then(result => {
+			expect(result.ok).toBe(true);
+		});
 	});
 	it("can favorite albums", function () {
 		actions.add.album(1, 1).then(result => {
