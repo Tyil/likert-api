@@ -70,35 +70,6 @@ if (process.env.NODE_ENV !== "test") {
 		id: 1,
 		name: "rock"
 	});
-
-	module.exports.mood = connection.define("mood", {
-		id: 1,
-		name: "Sad"
-	});
-
-	module.exports.artist = connection.define("artist", {
-		id: 1,
-		name: "Freddy Mercury"
-	});
-
-	module.exports.album = connection.define("album", {
-		id: 1,
-		name: "A Night at the Opera",
-		artistId: 1,
-		art_Path: ""
-	});
-
-	module.exports.song = connection.define("song", {
-		id: 1,
-		name: "Bohemian Rhapsody",
-		path: "https://www.youtube.com/watch?v=tgbNymZ7vqY",
-		tag: "",
-		artistId: 1,
-		albumId: 1,
-		genreId: 1,
-		moodId: 1
-	});
-	
 }
 
 module.exports.sequelize = connection;
