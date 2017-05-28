@@ -10,43 +10,42 @@ module.exports = (userId) => {
 			id: userId
 		}
 	}).then(result => {
-		var response = {
-			ok: false,
-			message: ''
-		};
 		if (result === null) {
-			response.message = 'The requested information could not be found';
-			return response;
+			return {
+				ok: false,
+				message: 'The requested information could not be found'
+			};
 		}
-		reponse.ok = true;
-		favo_album.findAll({
+		return favo_album.findAll({
 			where: {
 				userId: userId
 			}
-		}).then(result => {
-			response.message += result;
+		}).then(album => {
+			return favo_artist.findAll({
+				where: {
+					userId: userId
+				}
+			}).then(artist => {
+				return favo_genre.findAll({
+					where: {
+						userId: userId
+					}
+				}).then(genre => {
+					return favo_song.findAll({
+						where: {
+							userId: userId
+						}
+					}).then(song => {
+						return {
+							ok: true,
+							message: album,
+							artist,
+							genre,
+							song
+						};
+					});
+				});
+			});
 		});
-		favo_artist.findAll({
-			where: {
-				userId: userId
-			}
-		}).then(result => {
-			response.message += result;
-		});
-		favo_genre.findAll({
-			where: {
-				userId: userId
-			}
-		}).then(result => {
-			response.message += result;
-		});
-		favo_song.findAll({
-			where: {
-				userId: userId
-			}
-		}).then(result => {
-			response.message += result;
-		});
-		return response;
 	});
 };
