@@ -30,7 +30,7 @@ module.exports = router
 		if (!req.authenticated) {
 			return res.json(unauthError);
 		}
-		actions.add.genre(req.token.userId, albumId).then(result => {
+		actions.add.genre(req.token.userId, req.body.genreId).then(result => {
 			return res.json(result);
 		});
 	})
@@ -38,7 +38,7 @@ module.exports = router
 		if (!req.authenticated) {
 			return res.json(unauthError);
 		}
-		actions.add.artist(req.token.userId, artistId).then(result => {
+		actions.add.artist(req.token.userId, req.body.artistId).then(result => {
 			return res.json(result);
 		});
 	})
@@ -46,7 +46,7 @@ module.exports = router
 		if (!req.authenticated) {
 			return res.json(unauthError);
 		}
-		actions.add.album(req.token.userId, genreId).then(result => {
+		actions.add.album(req.token.userId, req.body.albumId).then(result => {
 			return res.json(result);
 		});
 	})
@@ -54,7 +54,7 @@ module.exports = router
 		if (!req.authenticated) {
 			return res.json(unauthError);
 		}
-		actions.add.song(req.token.userId, songId).then(result => {
+		actions.add.song(req.token.userId, req.body.songId).then(result => {
 			return res.json(result);
 		});
 	})
@@ -63,7 +63,7 @@ module.exports = router
 		if (!req.authenticated) {
 			return res.json(unauthError);
 		}
-		actions.remove.genre(req.token.userId, genreId).then(result => {
+		actions.remove.genre(req.token.userId, req.body.genreId).then(result => {
 			return res.json(result);
 		});
 	})
@@ -71,7 +71,7 @@ module.exports = router
 		if (!req.authenticated) {
 			return res.json(unauthError);
 		}
-		actions.remove.artist(req.token.userId, artistId).then(result => {
+		actions.remove.artist(req.token.userId, req.body.artistId).then(result => {
 			return res.json(result);
 		});
 	})
@@ -79,7 +79,7 @@ module.exports = router
 		if (!req.authenticated) {
 			return res.json(unauthError);
 		}
-		actions.remove.album(req.token.userId, artistId).then(result => {
+		actions.remove.album(req.token.userId, req.body.artistId).then(result => {
 			return res.json(result);
 		});
 	})
@@ -87,7 +87,7 @@ module.exports = router
 		if (!req.authenticated) {
 			return res.json(unauthError);
 		}
-		actions.remove.song(req.token.userId, songId).then(result => {
+		actions.remove.song(req.token.userId, req.body.songId).then(result => {
 			return res.json(result);
 		});
 	});

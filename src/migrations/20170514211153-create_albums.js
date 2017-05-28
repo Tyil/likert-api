@@ -9,6 +9,16 @@ module.exports = {
 				primaryKey: true,
 				type: Sequelize.INTEGER
 			},
+			name: {
+				type: Sequelize.STRING
+			},
+			artistId: {
+				type: Sequelize.INTEGER,
+				references: {
+					model: 'artists',
+					key: 'id'
+				}
+			},
 			path: {
 				type: Sequelize.STRING,
 				unique: true

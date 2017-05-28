@@ -1,6 +1,9 @@
 module.exports = (sequelize, dataTypes) => {
-	return sequelize.define("favo_album", {
-		id: dataTypes.INTEGER,
+	return sequelize.define("album", {
+		id: {
+			type: dataTypes.INTEGER,
+			primaryKey: true
+		},
 		userId: dataTypes.INTEGER,
 		albumId: dataTypes.INTEGER
 	});

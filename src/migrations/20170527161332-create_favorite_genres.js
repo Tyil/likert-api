@@ -2,7 +2,7 @@
 
 module.exports = {
 	up: function (queryInterface, Sequelize) {
-		return queryInterface.createTable('favorites_genres', {
+		return queryInterface.createTable('favo_genres', {
 			id: {
 				allowNull: false,
 				autoIncrement: true,
@@ -27,6 +27,6 @@ module.exports = {
 	},
 
 	down: function (queryInterface, Sequelize) {
-		return queryInterface.dropTable('favorites_genres');
+		return queryInterface.dropTable('favo_genres');
 	}
 };

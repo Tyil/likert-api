@@ -39,6 +39,7 @@ if (process.env.NODE_ENV !== "test") {
 		"mood",
 		"song",
 		"artist",
+		"album",
 		"favorite_artist",
 		"favorite_genre",
 		"favorite_song",
@@ -68,6 +69,10 @@ if (process.env.NODE_ENV !== "test") {
 	module.exports.genre = connection.define("genre", {
 		GenreId: 1,
 		Name: "rock"
+	});
+
+	module.exports.album = connection.define("album", {
+		
 	});
 }
 
