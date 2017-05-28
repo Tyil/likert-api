@@ -5,15 +5,15 @@ const user = require("../../models").user,
 	favo_song = require("../../models").favorite_song;
 
 module.exports = (userId) => {
-	var response = {
-		ok: false,
-		message: ''
-	};
 	return user.findOne({
 		where: {
 			id: userId
 		}
 	}).then(result => {
+		var response = {
+			ok: false,
+			message: ''
+		};
 		if (result === null) {
 			response.message = 'The requested information could not be found';
 			return response;
