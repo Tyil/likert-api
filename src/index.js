@@ -38,7 +38,7 @@ app.options('*', cors());
 // root handler
 app.get("/", (req, res) => {
 	res.json({
-		version: "0.2.0"
+		version: require("../package.json").version
 	});
 });
 
