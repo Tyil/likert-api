@@ -22,15 +22,8 @@ app.use(require("./middlewares/bearer"));
 //app.use(require("./middlewares/cors"));
 app.use(cors());
 
+// configure cors
 app.options('*', cors());
-
-app.all('/*', function (req, res, next) {
-	res.header("Access-Control-Allow-Origin", "*");
-	res.header('Access-Control-Allow-Methods', 'GET,PUT,PATCH,POST,DELETE,OPTIONS');
-	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-	next();
-});
-
 
 // add controllers
 [
@@ -45,7 +38,7 @@ app.all('/*', function (req, res, next) {
 // root handler
 app.get("/", (req, res) => {
 	res.json({
-		version: "0.2.0"
+		version: require("../package.json").version
 	});
 });
 
