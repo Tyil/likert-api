@@ -5,6 +5,7 @@ const controllerDir = "./controller/";
 // require dependencies
 const express = require("express");
 const bodyParser = require("body-parser");
+const cors = require('cors');
 
 // instantiate application
 const app = express();
@@ -18,7 +19,8 @@ app.use(bodyParser.urlencoded({
 	extended: false
 }));
 app.use(require("./middlewares/bearer"));
-app.use(require("./middlewares/cors"));
+//app.use(require("./middlewares/cors"));
+app.use(cors());
 
 // add controllers
 [
