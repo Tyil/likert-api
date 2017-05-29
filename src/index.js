@@ -21,6 +21,7 @@ app.use(bodyParser.urlencoded({
 app.use(require("./middlewares/bearer"));
 //app.use(require("./middlewares/cors"));
 app.use(cors());
+app.options('*', cors());
 
 // add controllers
 [
