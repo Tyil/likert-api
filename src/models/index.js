@@ -72,6 +72,8 @@ if (process.env.NODE_ENV !== "test") {
 		GenreId: 1,
 		Name: "rock"
 	});
+
+	module.exports.mood = connection.define("mood", {});
 }
 
 module.exports.sequelize = connection;
