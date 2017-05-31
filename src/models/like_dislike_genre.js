@@ -3,5 +3,7 @@ module.exports = function (sequelize, DataTypes) {
 		userId: DataTypes.INTEGER,
 		genreId: DataTypes.INTEGER,
 		like_dislike: DataTypes.STRING
+	}, {
+		timestamps: false
 	});
 };
