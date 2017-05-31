@@ -1,9 +1,10 @@
 const router = require("express").Router(),
-	addLikeDislike = require("../actions/add-like-dislike"),
-	removeLikeDislike = require("../actions/remove-like-dislike"),
-	addGenre = require("../actions/add-genre.js"),
-	removeGenre = require("../actions/remove-genre.js"),
-	genre = require("../models").genre;
+	addLikeDislike = require("../actions/genres/add-like-dislike"),
+	removeLikeDislike = require("../actions/genres/remove-like-dislike"),
+	addGenre = require("../actions/genres/add-genre.js"),
+	removeGenre = require("../actions/genres/remove-genre.js"),
+	genre = require('../models').genre,
+	notLoggedIn = require("../responses/unauthenticated.json");
 
 module.exports = router
 	.get("/", (req, res) => {
@@ -12,12 +13,33 @@ module.exports = router
 		});
 	})
 
-	.post("/add", (req, res) => {
-		if (!req.authenticated && process.env.NODE_ENV != 'test') {
+	.get("/:genreName", (req, res) => {
+		genre.findOne({
+			where: {
+				name: req.params.genreName
+			}
+		}).then(result => {
+			if (result === null) {
+				return res.json({
+					ok: false,
+					message: 'The mood could not be found.'
+				});
+			}
+			return res.json({
+				ok: true,
+				message: result.get("name")
+			});
+		}).catch(err => {
 			return res.json({
 				ok: false,
-				message: "Not logged in."
+				message: err
 			});
+		});
+	})
+
+	.post("/", (req, res) => {
+		if (!req.authenticated) {
+			return res.json(notLoggedIn);
 		}
 		addGenre(req.body.genreName)
 			.then(result => {
@@ -25,12 +47,9 @@ module.exports = router
 			});
 	})
 
-	.delete("/remove", (req, res) => {
-		if (!req.authenticated && process.env.NODE_ENV != 'test') {
-			return res.json({
-				ok: false,
-				message: "Not logged in."
-			});
+	.delete("/", (req, res) => {
+		if (!req.authenticated) {
+			return res.json(notLoggedIn);
 		}
 		removeGenre(req.body.genreName)
 			.then(result => {
@@ -39,11 +58,8 @@ module.exports = router
 	})
 
 	.post("/like", (req, res) => {
-		if (!req.authenticated && process.env.NODE_ENV != 'test') {
-			return res.json({
-				ok: false,
-				message: "Not logged in."
-			});
+		if (!req.authenticated) {
+			return res.json(notLoggedIn);
 		}
 		addLikeDislike(req.token.userId, req.body.genreName, "like")
 			.then(result => {
@@ -52,11 +68,8 @@ module.exports = router
 	})
 
 	.post("/dislike", (req, res) => {
-		if (!req.authenticated && process.env.NODE_ENV != 'test') {
-			return res.json({
-				ok: false,
-				message: "Not logged in."
-			});
+		if (!req.authenticated) {
+			return res.json(notLoggedIn);
 		}
 		addLikeDislike(req.token.userId, req.body.genreName, "dislike")
 			.then(result => {
@@ -65,11 +78,8 @@ module.exports = router
 	})
 
 	.delete("/like", (req, res) => {
-		if (!req.authenticated && process.env.NODE_ENV != 'test') {
-			return res.json({
-				ok: false,
-				message: "Not logged in."
-			});
+		if (!req.authenticated) {
+			return res.json(notLoggedIn);
 		}
 		removeLikeDislike(req.token.userId, req.body.genreName, "like")
 			.then(result => {
@@ -78,15 +88,11 @@ module.exports = router
 	})
 
 	.delete("/dislike", (req, res) => {
-		if (!req.authenticated && process.env.NODE_ENV != 'test') {
-			return res.json({
-				ok: false,
-				message: "Not logged in."
-			});
+		if (!req.authenticated) {
+			return res.json(notLoggedIn);
 		}
 		removeLikeDislike(req.token.userId, req.body.genreName, "dislike")
 			.then(result => {
 				return res.json(result);
 			});
-	})
-	;
+	});
