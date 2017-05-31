@@ -27,6 +27,7 @@ app.options('*', cors());
 
 // add controllers
 [
+	"artists",
 	"auth",
 	"genres",
 	"moods",

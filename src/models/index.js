@@ -32,6 +32,7 @@ if (process.env.NODE_ENV !== "test") {
 	);
 
 	[
+		"artist",
 		"token",
 		"user",
 		"genre",
@@ -60,6 +61,12 @@ if (process.env.NODE_ENV !== "test") {
 		username: "mood",
 		password: bcrypt.hashSync("test")
 	});
+
+	module.exports.artist = connection.define("artist", {
+			id: 1,
+			name: "Micro Jackson"
+		}
+	);
 
 	module.exports.genre = connection.define("genre", {
 		GenreId: 1,
