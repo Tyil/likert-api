@@ -2,7 +2,7 @@ module.exports = (req, res, next) => {
 	const headers = [
 		"Origin",
 		"X-Requested-With",
-		"Content-Type",
+		"content-type",
 		"Accept",
 		"Authorization",
 	];
