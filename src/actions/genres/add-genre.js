@@ -1,4 +1,4 @@
-const genre = require("../models").genre;
+const genre = require("../../models").genre;
 
 module.exports = (genreName) => {
 	return genre.findOne({

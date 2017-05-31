@@ -5,6 +5,7 @@ const controllerDir = "./controller/";
 // require dependencies
 const express = require("express");
 const bodyParser = require("body-parser");
+const cors = require('cors');
 
 // instantiate application
 const app = express();
@@ -17,21 +18,28 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
 	extended: false
 }));
+app.use(require("./middlewares/bearer"));
+//app.use(require("./middlewares/cors"));
+app.use(cors());
+
+// configure cors
+app.options('*', cors());
 
 // add controllers
 [
+	"artists",
 	"auth",
-	"genre",
-	"mood",
-	"user",
-	"likert",
-	"song",
+	"genres",
+	"moods",
+	"users",
+	"likerts",
+	"songs",
 ].forEach(x => app.use("/" + x, require("./controller/" + x)));
 
 // root handler
 app.get("/", (req, res) => {
 	res.json({
-		version: "0.2.0"
+		version: require("../package.json").version
 	});
 });
 
