@@ -5,6 +5,7 @@ const controllerDir = "./controller/";
 // require dependencies
 const express = require("express");
 const bodyParser = require("body-parser");
+const cors = require('cors');
 
 // instantiate application
 const app = express();
@@ -18,6 +19,11 @@ app.use(bodyParser.urlencoded({
 	extended: false
 }));
 app.use(require("./middlewares/bearer"));
+//app.use(require("./middlewares/cors"));
+app.use(cors());
+
+// configure cors
+app.options('*', cors());
 
 // add controllers
 [
@@ -33,7 +39,7 @@ app.use(require("./middlewares/bearer"));
 // root handler
 app.get("/", (req, res) => {
 	res.json({
-		version: "0.2.0"
+		version: require("../package.json").version
 	});
 });
 
