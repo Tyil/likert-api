@@ -1,4 +1,4 @@
-const moods = require('../models').mood;
+const moods = require('../../models').mood;
 
 module.exports = (oldMood, newMood) => {
 	return moods.findOne({
@@ -13,7 +13,7 @@ module.exports = (oldMood, newMood) => {
 			};
 		}
 		return result.update({
-			Name: newMood
+			name: newMood
 		}).then(result => {
 			return {
 				ok: true,
