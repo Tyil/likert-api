@@ -10,7 +10,12 @@ const unauthError = require("../responses/unauthenticated.json");
 module.exports = router
 	.post("/register", (req, res) => {
 		registerAccount(req.body.username, req.body.password).then(response => {
-			res.json(response);
+			if (response.ok = false) {
+				res.json(response);
+			}
+			login(req.body.username, req.body.password).then(token => {
+				res.json(token);
+			});
 		});
 	})
 	.post("/login", (req, res) => {
