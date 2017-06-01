@@ -1,4 +1,4 @@
-const tokenModel = require("../models").token;
+const tokenModel = require("../../models").token;
 
 module.exports = (id) => {
 	return tokenModel.destroy({
