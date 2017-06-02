@@ -59,49 +59,41 @@ describe("Favorites routes", function () {
 	it("can favorite albums", function () {
 		actions.add.album(1, 1).then(result => {
 			expect(result.ok).toBe(true);
-			expect(result.message).toBe('The album has been added to the favorites.');
 		});
 	});
 	it("can favorite artists", function () {
 		actions.add.artist(1, 1).then(result => {
 			expect(result.ok).toBe(true);
-			expect(result.message).toBe('The artist has been added to the favorites.');
 		});
 	});
 	it("can favorite genres", function () {
 		actions.add.genre(1, 1).then(result => {
 			expect(result.ok).toBe(true);
-			expect(result.message).toBe('The genre has been added to the favorites.');
 		});
 	});
 	it("can favorite songs", function () {
 		actions.add.song(1, 1).then(result => {
 			expect(result.ok).toBe(true);
-			expect(result.message).toBe('The song has been added to the favorites.');
 		});
 	});
 	it("can remove the favorited album", function () {
 		actions.remove.album(1, 1).then(result => {
 			expect(result.ok).toBe(true);
-			expect(result.message).toBe('The album preference has been removed.');
 		});
 	});
 	it("can remove the favorited artist", function () {
 		actions.remove.artist(1, 1).then(result => {
 			expect(result.ok).toBe(true);
-			expect(result.message).toBe('The artist preference has been removed.');
 		});
 	});
 	it("can remove the favorited genre", function () {
 		actions.remove.genre(1, 1).then(result => {
 			expect(result.ok).toBe(true);
-			expect(result.message).toBe('The genre preference has been removed.');
 		});
 	});
 	it("can remove the favorited song", function () {
 		actions.remove.song(1, 1).then(result => {
 			expect(result.ok).toBe(true);
-			expect(result.message).toBe('The song preference has been removed.');
 		});
 	});
 });
