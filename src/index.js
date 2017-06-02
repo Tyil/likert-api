@@ -34,6 +34,7 @@ app.options('*', cors());
 	"users",
 	"likerts",
 	"songs",
+	"favorites",
 ].forEach(x => app.use("/" + x, require("./controller/" + x)));
 
 // root handler

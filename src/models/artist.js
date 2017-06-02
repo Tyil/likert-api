@@ -1,11 +1,11 @@
 module.exports = (sequelize, dataTypes) => {
 	return sequelize.define("artist", {
-		ArtistId: {
+		id: {
 			type: dataTypes.INTEGER,
 			primaryKey: true,
 			autoIncrement: true
 		},
-		Name: {
+		name: {
 			type: dataTypes.STRING,
 			allowNull: false
 		}
