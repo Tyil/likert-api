@@ -10,7 +10,7 @@ module.exports = (username, password) => {
 			username: username
 		}
 	}).then(user => {
-		if (!bcrypt.compareSync(password, user.get("password"))) {
+		if (user === null || !bcrypt.compareSync(password, user.get("password"))) {
 			throw new Error("Username or password is incorrect");
 		}
 
