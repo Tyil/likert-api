@@ -11,7 +11,7 @@ module.exports = router
 	.post("/register", (req, res) => {
 		registerAccount(req.body.username, req.body.password).then(response => {
 			if (!response.ok) {
-				res.json(response);
+				return res.json(response);
 			}
 			login(req.body.username, req.body.password).then(token => {
 				res.json(token);
