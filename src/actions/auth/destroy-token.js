@@ -5,5 +5,14 @@ module.exports = (id) => {
 		where: {
 			id: id
 		}
+	}).then(response => {
+		return {
+			ok: true
+		}
+	}).catch(err => {
+		return {
+			ok: false,
+			message: err
+		}
 	});
 };
