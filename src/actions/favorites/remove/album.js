@@ -15,8 +15,7 @@ module.exports = (userId, albumId) => {
 		}
 		return result.destroy().then(result => {
 			return {
-				ok: true,
-				message: 'The album preference has been removed.'
+				ok: true
 			};
 		});
 	});

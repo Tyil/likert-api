@@ -15,8 +15,7 @@ module.exports = (userId, genreId) => {
 		}
 		return result.destroy().then(result => {
 			return {
-				ok: true,
-				message: 'The genre preference has been removed.'
+				ok: true
 			}
 		});
 	});

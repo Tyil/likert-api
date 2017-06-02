@@ -25,13 +25,13 @@ module.exports = (userId, artistId) => {
 					message: 'The artist could not be found.'
 				};
 			}
+
 			return favorite.create({
 				userId: userId,
 				artistId: artistId
 			}).then(result => {
 				return {
-					ok: true,
-					message: 'The artist has been added to the favorites.'
+					ok: true
 				};
 			});
 		});

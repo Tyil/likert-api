@@ -25,13 +25,13 @@ module.exports = (userId, genreId) => {
 					message: 'The genre could not be found.'
 				};
 			}
+
 			return favorite.create({
 				userId: userId,
 				genreId: genreId
 			}).then(result => {
 				return {
-					ok: true,
-					message: 'The genre has been added to the favorites.'
+					ok: true
 				};
 			});
 		});

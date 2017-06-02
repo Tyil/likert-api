@@ -15,8 +15,7 @@ module.exports = (userId, songId) => {
 		}
 		return result.destroy().then(result => {
 			return {
-				ok: true,
-				message: 'The song preference has been removed.'
+				ok: true
 			}
 		});
 	});
