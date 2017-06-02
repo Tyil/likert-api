@@ -25,13 +25,13 @@ module.exports = (userId, albumId) => {
 					message: 'The album could not be found.'
 				};
 			}
+
 			return favorite.create({
 				userId: userId,
 				albumId: albumId
 			}).then(result => {
 				return {
-					ok: true,
-					message: 'The album has been added to the favorites.'
+					ok: true
 				};
 			});
 		});
