@@ -16,6 +16,31 @@ const router = require("express").Router(),
 		}
 	};
 
+function handleRequest(req, res, action) {
+	if (!req.authenticated) {
+		return res.json(unauthError);
+	}
+
+	const favorables = [
+		"genre",
+		"artist",
+		"album",
+		"song",
+	];
+
+	if (!favorables.includes(req.body.type)) {
+		return {
+			ok: false,
+			message: "Yo what the fuck"
+		};
+	}
+
+	// something like this, not tested!
+	actions[action][req.body.type]()(req.token.userId, req.body.genreId).then(result => {
+		return res.json(result);
+	});
+}
+
 module.exports = router
 	.get('/', (req, res) => {
 		if (!req.authenticated) {
@@ -26,53 +51,6 @@ module.exports = router
 		});
 	})
 
-	.post('/', (req, res) => {
-		if (!req.authenticated) {
-			return res.json(unauthError);
-		}
-
-		const favorables = [
-			"genre",
-			"artist",
-			"album",
-			"song",
-		];
-
-		if (!favorables.includes(req.body.type)) {
-			return {
-				ok: false,
-				message: "Yo what the fuck"
-			};
-		}
-
-		// something like this, not tested!
-		actions.add[req.body.type]()(req.token.userId, req.body.genreId).then(result => {
-			return res.json(result);
-		});
-	})
-
-	.delete('/', (req, res) => {
-		if (!req.authenticated) {
-			return res.json(unauthError);
-		}
-
-		const favorables = [
-			"genre",
-			"artist",
-			"album",
-			"song",
-		];
-
-		if (!favorables.includes(req.body.type)) {
-			return {
-				ok: false,
-				message: "Yo what the fuck"
-			};
-		}
-
-		// something like this, not tested!
-		actions.remove[req.body.type]()(req.token.userId, req.body.genreId).then(result => {
-			return res.json(result);
-		});
-	})
+	.post('/', (req, res) => handleRequest(req, res, "add"))
+	.delete('/', (req, res) => handleRequest(req, req, "remove"))
 ;
