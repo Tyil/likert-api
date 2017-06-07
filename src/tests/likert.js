@@ -20,7 +20,7 @@ describe("Likert route", () => {
 		});
 		likert_values.create({
 			templateId: 1,
-			name: JSON.stringify(['Depression', 'Sad', 'Neutral', 'Happy', 'Euphoric'])
+			name: JSON.stringify(["Depression", "Sad", "Neutral", "Happy", "Euphoric"])
 		});
 		song.create({
 			id: 1,
@@ -41,7 +41,7 @@ describe("Likert route", () => {
 	it("returns the scale for a likert scale", () => {
 		get_scale(1).then(result => {
 			expect(result.ok).toBe(true);
-			expect(result.message).toBe(JSON.parse(['Depression', 'Sad', 'Neutral', 'Happy', 'Euphoric']));
+			expect(result.message).toBe(JSON.parse(["Depression", "Sad", "Neutral", "Happy", "Euphoric"]));
 		});
 	});
 
@@ -52,13 +52,13 @@ describe("Likert route", () => {
 	});
 
 	it("adds a likert response", () => {
-		add_response(1, 1, 1, 1, 'Happy').then(result => {
+		add_response(1, 1, 1, 1, "Happy").then(result => {
 			expect(result.ok).toBe(true);
 		});
 	});
 
 	it("creates a new likert scale", () => {
-		create_likert("test", "This is my new description", 5, ['Bad', 'Good']).then(result => {
+		create_likert("test", "This is my new description", 5, ["Bad", "Good"]).then(result => {
 			expect(result.ok).toBe(true);
 		});
 	});
