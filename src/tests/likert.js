@@ -20,7 +20,7 @@ describe("Likert route", () => {
 		});
 		likert_values.create({
 			templateId: 1,
-			name: "['Depression', 'Sad', 'Neutral', 'Happy', 'Euphoric']"
+			value: "['Depression', 'Sad', 'Neutral', 'Happy', 'Euphoric']"
 		});
 		song.create({
 			id: 1,
