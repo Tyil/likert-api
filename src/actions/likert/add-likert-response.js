@@ -19,6 +19,7 @@ module.exports = (likertTemplateId, userId, songId, moodId, scaleScore) => {
 				templateId: likertTemplateId
 			}
 		}).then(x => {
+			console.log(x);
 			var arr = JSON.parse(x.value);
 			var counter = 0;
 			for (var i in arr) {
