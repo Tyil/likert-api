@@ -26,68 +26,53 @@ module.exports = router
 		});
 	})
 
-	.post('/genre', (req, res) => {
+	.post('/', (req, res) => {
 		if (!req.authenticated) {
 			return res.json(unauthError);
 		}
-		actions.add.genre(req.token.userId, req.body.genreId).then(result => {
-			return res.json(result);
-		});
-	})
-	.post('/artist', (req, res) => {
-		if (!req.authenticated) {
-			return res.json(unauthError);
+
+		const favorables = [
+			"genre",
+			"artist",
+			"album",
+			"song",
+		];
+
+		if (!favorables.includes(req.body.type)) {
+			return {
+				ok: false,
+				message: "Yo what the fuck"
+			};
 		}
-		actions.add.artist(req.token.userId, req.body.artistId).then(result => {
-			return res.json(result);
-		});
-	})
-	.post('/album', (req, res) => {
-		if (!req.authenticated) {
-			return res.json(unauthError);
-		}
-		actions.add.album(req.token.userId, req.body.albumId).then(result => {
-			return res.json(result);
-		});
-	})
-	.post('/song', (req, res) => {
-		if (!req.authenticated) {
-			return res.json(unauthError);
-		}
-		actions.add.song(req.token.userId, req.body.songId).then(result => {
+
+		// something like this, not tested!
+		actions.add[req.body.type]()(req.token.userId, req.body.genreId).then(result => {
 			return res.json(result);
 		});
 	})
 
-	.delete('/genre', (req, res) => {
+	.delete('/', (req, res) => {
 		if (!req.authenticated) {
 			return res.json(unauthError);
 		}
-		actions.remove.genre(req.token.userId, req.body.genreId).then(result => {
+
+		const favorables = [
+			"genre",
+			"artist",
+			"album",
+			"song",
+		];
+
+		if (!favorables.includes(req.body.type)) {
+			return {
+				ok: false,
+				message: "Yo what the fuck"
+			};
+		}
+
+		// something like this, not tested!
+		actions.remove[req.body.type]()(req.token.userId, req.body.genreId).then(result => {
 			return res.json(result);
 		});
 	})
-	.delete('/artist', (req, res) => {
-		if (!req.authenticated) {
-			return res.json(unauthError);
-		}
-		actions.remove.artist(req.token.userId, req.body.artistId).then(result => {
-			return res.json(result);
-		});
-	})
-	.delete('/album', (req, res) => {
-		if (!req.authenticated) {
-			return res.json(unauthError);
-		}
-		actions.remove.album(req.token.userId, req.body.artistId).then(result => {
-			return res.json(result);
-		});
-	})
-	.delete('/song', (req, res) => {
-		if (!req.authenticated) {
-			return res.json(unauthError);
-		}
-		actions.remove.song(req.token.userId, req.body.songId).then(result => {
-			return res.json(result);
-		});
-	});
+;
