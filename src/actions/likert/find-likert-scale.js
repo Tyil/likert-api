@@ -7,14 +7,15 @@ module.exports = (id) => {
 			id: id
 		}
 	}).then(likert => {
-		return likert_value({
+		return likert_value.findOne({
 			where: {
 				templateId: id
 			}
 		}).then(values => {
 			return {
 				ok: true,
-				message: likert, values
+				message: likert,
+				values
 			}
 		});
 	});
