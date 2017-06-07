@@ -63,10 +63,9 @@ if (process.env.NODE_ENV !== "test") {
 	});
 
 	module.exports.artist = connection.define("artist", {
-			id: 1,
-			name: "Micro Jackson"
-		}
-	);
+		id: 1,
+		name: "Micro Jackson"
+	});
 
 	module.exports.genre = connection.define("genre", {
 		GenreId: 1,
@@ -74,6 +73,9 @@ if (process.env.NODE_ENV !== "test") {
 	});
 
 	module.exports.mood = connection.define("mood", {});
+	module.exports.likert_template = connection.define("likert_template", {});
+	module.exports.likert_template_value = connection.define("likert_template_value", {});
+	module.exports.likert_template_result = connection.define("likert_template_result", {});
 }
 
 module.exports.sequelize = connection;

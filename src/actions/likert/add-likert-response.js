@@ -34,7 +34,7 @@ module.exports = (likertTemplateId, userId, songId, moodId, scaleScore) => {
 				scaleScore: counter
 			}).then(result => {
 				response.ok = true;
-				response.message = 'The score has been added.';
+				response.message = '';
 				return response;
 			}).catch(err => {
 				return {
