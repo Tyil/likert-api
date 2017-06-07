@@ -25,6 +25,7 @@ module.exports = (likertTemplateId, userId, songId, moodId, scaleScore) => {
 			for (var i in arr) {
 				if (arr[i] == scaleScore) {
 					counter = i;
+					break;
 				}
 				counter++;
 			}
