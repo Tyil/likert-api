@@ -34,7 +34,6 @@ describe("Likert route", () => {
 	it("returns a default likert scale", () => {
 		find(1).then(result => {
 			expect(result.ok).toBe(true);
-			console.log(result);
 		});
 	});
 
