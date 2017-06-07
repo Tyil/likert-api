@@ -73,6 +73,7 @@ if (process.env.NODE_ENV !== "test") {
 	});
 
 	module.exports.mood = connection.define("mood", {});
+	module.exports.song = connection.define("song", {});
 	module.exports.likert_template = connection.define("likert_template", {});
 	module.exports.likert_template_value = connection.define("likert_template_value", {});
 	module.exports.likert_template_result = connection.define("likert_template_result", {});
