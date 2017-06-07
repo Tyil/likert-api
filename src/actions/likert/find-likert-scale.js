@@ -14,8 +14,10 @@ module.exports = (id) => {
 		}).then(values => {
 			return {
 				ok: true,
-				message: likert,
-				values
+				message: {
+					likert,
+					values
+				}
 			}
 		});
 	});
