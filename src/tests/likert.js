@@ -40,7 +40,7 @@ describe("Likert route", () => {
 	it("returns the scale for a likert scale", () => {
 		get_scale(1).then(result => {
 			expect(result.ok).toBe(true);
-			expect(result.message).toBe(JSON.parse(["Depression", "Sad", "Neutral", "Happy", "Euphoric"]));
+			expect(result.message).toBe(["Depression", "Sad", "Neutral", "Happy", "Euphoric"]);
 		});
 	});
 
