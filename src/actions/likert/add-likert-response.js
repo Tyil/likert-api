@@ -1,6 +1,6 @@
 const likert = require("../../models").likert_template,
 	likert_results = require("../../models").likert_template_result,
-	likert_values = require("../../models").likert_value;
+	likert_values = require("../../models").likert_template_value;
 module.exports = (likertTemplateId, userId, songId, moodId, scaleScore) => {
 	return likert.findOne({
 		where: {
