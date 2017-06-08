@@ -16,9 +16,9 @@ module.exports = (id) => {
 				ok: true,
 				message: {
 					likert,
-					values
+					scale: JSON.parse(values.get("value"))
 				}
-			}
+			};
 		});
 	});
 };

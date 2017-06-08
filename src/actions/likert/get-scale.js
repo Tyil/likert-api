@@ -14,7 +14,7 @@ module.exports = (id) => {
 		if (result === null) {
 			return response;
 		}
-
+		
 		return {
 			ok: true,
 			message: JSON.parse(result.get("value"))
