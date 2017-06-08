@@ -2,22 +2,40 @@
 
 readonly DB_CONFIG_FILE=../config/database.json
 
-pushd src
+write_config_line()
+{
+	if [[ -z "$2" ]]
+	then
+		echo "\"$1\": null"
 
-# write config from environment if on production
-if [[ "${NODE_ENV}" == "production" && ! -f "${DB_CONFIG_FILE}" ]]
-then
-	echo "{" > "${DB_CONFIG_FILE}"
-	echo "  \"username\": \"${DB_USERNAME}\"," > "${DB_CONFIG_FILE}"
-	echo "  \"password\": \"${DB_PASSWORD}\"," > "${DB_CONFIG_FILE}"
-	echo "  \"database\": \"${DB_DATABASE}\"," > "${DB_CONFIG_FILE}"
-	echo "  \"host\": \"${DB_HOST}\"," > "${DB_CONFIG_FILE}"
-	echo "  \"dialect\": \"${DB_DIALECT}\"," > "${DB_CONFIG_FILE}"
-	echo "}" > "${DB_CONFIG_FILE}"
-fi
+		return
+	fi
 
-# run the migration scripts
-node ../node_modules/.bin/sequelize --config="${DB_CONFIG_FILE}" db:migrate
+	echo "\"$1\": \"$2\""
+}
 
-popd
+main()
+{
+	pushd src
+
+	# write config from environment if on production
+	if [[ "${NODE_ENV}" == "production" && ! -f "${DB_CONFIG_FILE}" ]]
+	then
+		echo "Writing database config file from environment"
+		echo "{" > "${DB_CONFIG_FILE}"
+		echo "  $(write_config_line "username" "${DB_USERNAME}")," >> "${DB_CONFIG_FILE}"
+		echo "  $(write_config_line "password" "${DB_PASSWORD}")," >> "${DB_CONFIG_FILE}"
+		echo "  $(write_config_line "database" "${DB_DATABASE}")," >> "${DB_CONFIG_FILE}"
+		echo "  $(write_config_line "host" "${DB_HOST}")," >> "${DB_CONFIG_FILE}"
+		echo "  $(write_config_line "dialect" "${DB_DIALECT}")" >> "${DB_CONFIG_FILE}"
+		echo "}" >> "${DB_CONFIG_FILE}"
+	fi
+
+	# run the migration scripts
+	node ../node_modules/.bin/sequelize --config="${DB_CONFIG_FILE}" db:migrate
+
+	popd
+}
+
+main "$@"
 
