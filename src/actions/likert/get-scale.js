@@ -1,10 +1,11 @@
 const likert = require("../../models").likert_template_value;
 
 module.exports = (id) => {
-	var response = {
+	const response = {
 		ok: false,
 		message: 'Could not find the scale for the likert scale.'
 	};
+
 	return likert.findOne({
 		where: {
 			templateId: id
@@ -13,11 +14,14 @@ module.exports = (id) => {
 		if (result === null) {
 			return response;
 		}
-		response.ok = true;
-		response.message = JSON.parse(result.get("value"));
-		return response;
+
+		return {
+			ok: true,
+			message: JSON.parse(result.get("value"))
+		};
 	}).catch(err => {
 		response.message = err;
+
 		return response;
 	});
 };

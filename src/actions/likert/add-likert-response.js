@@ -8,27 +8,31 @@ module.exports = (likertTemplateId, userId, songId, moodId, scaleScore) => {
 			id: likertTemplateId
 		}
 	}).then(result => {
-		var response = {
+		const response = {
 			ok: false,
-			message: 'The likert template could not be found.'
+			message: "The likert template could not be found."
 		};
+
 		if (result === null) {
 			return response;
 		}
+
 		return likert_values.findOne({
 			where: {
 				templateId: likertTemplateId
 			}
 		}).then(x => {
-			var arr = JSON.parse(x.value);
-			var counter = 0;
-			for (var i in arr) {
+			const arr = JSON.parse(x.get("value"));
+			let found = -1;
+
+			for (i = 0; i < arr.length; i++) {
 				if (arr[i] == scaleScore) {
-					counter = i;
+					found = i;
+
 					break;
 				}
-				counter++;
 			}
+
 			return likert_results.create({
 				userId: userId,
 				templateId: likertTemplateId,
@@ -37,7 +41,8 @@ module.exports = (likertTemplateId, userId, songId, moodId, scaleScore) => {
 				scaleScore: counter
 			}).then(result => {
 				response.ok = true;
-				response.message = '';
+				response.message = "";
+
 				return response;
 			}).catch(err => {
 				return {
