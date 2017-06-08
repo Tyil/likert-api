@@ -5,7 +5,7 @@ readonly DB_CONFIG_FILE=../config/database.json
 pushd src
 
 # write config from environment if on production
-if [[ "${APP_ENV}" == "production" && ! -f "${DB_CONFIG_FILE}" ]]
+if [[ "${NODE_ENV}" == "production" && ! -f "${DB_CONFIG_FILE}" ]]
 then
 	echo "{" > "${DB_CONFIG_FILE}"
 	echo "  \"username\": \"${DB_USERNAME}\"," > "${DB_CONFIG_FILE}"
