@@ -6,6 +6,17 @@ doctor in evaluating their well being.
 ## Installation
 TODO
 
+### Environment
+The application knows three environments, `testing`, `development` and
+`production`. Depending on the environment, some aspects may behave
+differently. You can set the environment by setting the `NODE_ENV` variable in
+the shell starting the application.
+
+In addition, the database configuration can be created using environment
+variables as well. For this, you can use `DB_USERNAME`, `DB_PASSWORD`,
+`DB_DATABASE`, `DB_HOST` and `DB_DIALECT`. Keep in mind that the config
+generation only runs if the `config/database.json` does not exist yet.
+
 ## Usage
 ### Routes
 #### POST [/auth/login](https://mood-io.herokuapp.com/auth/login)
