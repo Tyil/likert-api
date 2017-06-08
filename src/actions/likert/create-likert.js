@@ -17,7 +17,7 @@ module.exports = (name, description, max_value, scaleItems) => {
 			value: JSON.stringify(scaleItems)
 		}).then(y => {
 			response.ok = true;
-			response.message = 'The likert scale has been created.';
+			response.message = x.id;
 			return response;
 		});
 	}).catch(err => {

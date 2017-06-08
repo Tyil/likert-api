@@ -14,7 +14,7 @@ module.exports = (id) => {
 			return response;
 		}
 		response.ok = true;
-		response.message = result;
+		response.message = JSON.parse(result.get("value"));
 		return response;
 	}).catch(err => {
 		response.message = err;

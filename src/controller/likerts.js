@@ -4,9 +4,15 @@ const router = require("express").Router(),
 	alter_likert = require("../actions/likert/alter-likert"),
 	delete_likert = require("../actions/likert/remove-likert"),
 	add_response = require("../actions/likert/add-likert-response"),
-	get_scale = require("../actions/likert/get-scale");
+	get_scale = require("../actions/likert/get-scale"),
+	find = require("../actions/likert/find-likert-scale");
 
 module.exports = router
+	.get('/:id', (req, res) => {
+		find(req.params.id).then(result => {
+			return res.json(result);
+		});
+	})
 	.get('/:id/scale', (req, res) => {
 		get_scale(req.params.id).then(result => {
 			return res.json(result);

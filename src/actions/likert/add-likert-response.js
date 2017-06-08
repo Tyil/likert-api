@@ -1,6 +1,7 @@
 const likert = require("../../models").likert_template,
 	likert_results = require("../../models").likert_template_result,
-	likert_values = require("../../models").likert_values;
+	likert_values = require("../../models").likert_template_value;
+
 module.exports = (likertTemplateId, userId, songId, moodId, scaleScore) => {
 	return likert.findOne({
 		where: {
@@ -24,7 +25,9 @@ module.exports = (likertTemplateId, userId, songId, moodId, scaleScore) => {
 			for (var i in arr) {
 				if (arr[i] == scaleScore) {
 					counter = i;
+					break;
 				}
+				counter++;
 			}
 			return likert_results.create({
 				userId: userId,
@@ -34,7 +37,7 @@ module.exports = (likertTemplateId, userId, songId, moodId, scaleScore) => {
 				scaleScore: counter
 			}).then(result => {
 				response.ok = true;
-				response.message = 'The score has been added.';
+				response.message = '';
 				return response;
 			}).catch(err => {
 				return {
