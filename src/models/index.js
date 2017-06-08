@@ -32,6 +32,7 @@ if (process.env.NODE_ENV !== "test") {
 	);
 
 	[
+		"artist",
 		"token",
 		"user",
 		"genre",
@@ -61,10 +62,18 @@ if (process.env.NODE_ENV !== "test") {
 		password: bcrypt.hashSync("test")
 	});
 
+	module.exports.artist = connection.define("artist", {
+			id: 1,
+			name: "Micro Jackson"
+		}
+	);
+
 	module.exports.genre = connection.define("genre", {
 		GenreId: 1,
 		Name: "rock"
 	});
+
+	module.exports.mood = connection.define("mood", {});
 }
 
 module.exports.sequelize = connection;

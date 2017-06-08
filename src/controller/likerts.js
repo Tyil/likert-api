@@ -18,7 +18,7 @@ module.exports = router
 		});
 	})
 	.post('/:id', (req, res) => {
-		add_response(req.params.id, req.body.userId, req.body.songId, req.body.moodId).then(result => {
+		add_response(req.params.id, req.token.userId, req.body.songId, req.body.moodId, req.body.scaleScore).then(result => {
 			return res.json(result);
 		});
 	})

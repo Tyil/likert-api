@@ -1,8 +1,8 @@
 const bcrypt = require("bcrypt-nodejs");
 const randomstring = require("randomstring");
 
-const userModel = require("../models").user;
-const tokenModel = require("../models").token;
+const userModel = require("../../models").user;
+const tokenModel = require("../../models").token;
 
 module.exports = (username, password) => {
 	return userModel.findOne({
@@ -10,7 +10,7 @@ module.exports = (username, password) => {
 			username: username
 		}
 	}).then(user => {
-		if (!bcrypt.compareSync(password, user.get("password"))) {
+		if (user === null || !bcrypt.compareSync(password, user.get("password"))) {
 			throw new Error("Username or password is incorrect");
 		}
 

@@ -1,4 +1,4 @@
-const genre = require("../models").genre;
+const genre = require("../../models").genre;
 
 module.exports = (genreName) => {
 	return genre.findOne({
@@ -13,10 +13,11 @@ module.exports = (genreName) => {
 					message: "This genre does not exist."
 				};
 			}
-			result.destroy();
-			return {
-				ok: true,
-				message: "The genre has been removed."
-			};
+			return result.destroy().then(result => {
+				return {
+					ok: true,
+					message: "The genre has been removed."
+				};
+			});
 		});
 };
