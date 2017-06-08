@@ -18,8 +18,7 @@ main()
 {
 	pushd src
 
-	# write config from environment if on production
-	if [[ "${NODE_ENV}" == "production" && ! -f "${DB_CONFIG_FILE}" ]]
+	if [[ ! -f "${DB_CONFIG_FILE}" ]]
 	then
 		echo "Writing database config file from environment"
 		echo "{" > "${DB_CONFIG_FILE}"
