@@ -2,6 +2,11 @@
 
 readonly DB_CONFIG_FILE=../config/database.json
 
+run_sequelize()
+{
+	node ../node_modules/.bin/sequelize --config="${DB_CONFIG_FILE}" "$@"
+}
+
 write_config_line()
 {
 	if [[ -z "$2" ]]
@@ -18,6 +23,7 @@ main()
 {
 	pushd src
 
+	# make sure the config file exists
 	if [[ ! -f "${DB_CONFIG_FILE}" ]]
 	then
 		echo "Writing database config file from environment"
@@ -31,7 +37,14 @@ main()
 	fi
 
 	# run the migration scripts
-	node ../node_modules/.bin/sequelize --config="${DB_CONFIG_FILE}" db:migrate
+	run_sequelize db:migrate
+
+	# reseed the database
+	if [[ "${NODE_ENV}" == "development" ]]
+	then
+		run_sequelize db:seed:undo:all
+		run_sequelize db:seed:all
+	fi
 
 	popd
 }
