@@ -16,7 +16,7 @@ module.exports = (id) => {
 				ok: true,
 				message: {
 					likert,
-					scale: JSON.parse(values.get("value"))
+					scale: values.get("value").split(',')
 				}
 			};
 		});

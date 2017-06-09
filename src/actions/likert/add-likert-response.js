@@ -22,7 +22,7 @@ module.exports = (likertTemplateId, userId, songId, moodId, scaleScore) => {
 				templateId: likertTemplateId
 			}
 		}).then(x => {
-			const arr = JSON.parse(x.get("value"));
+			const arr = x.get("value").split(',');
 			let found = -1;
 
 			for (i = 0; i < arr.length; i++) {
@@ -38,7 +38,7 @@ module.exports = (likertTemplateId, userId, songId, moodId, scaleScore) => {
 				templateId: likertTemplateId,
 				songId: songId,
 				moodId: moodId,
-				scaleScore: counter
+				scaleScore: found
 			}).then(result => {
 				response.ok = true;
 				response.message = "";

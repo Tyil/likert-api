@@ -24,14 +24,14 @@ module.exports = (id, user) => {
 		}).then(answers => {
 			return likert_value.findOne({
 				where: {
-					id: result.scaleId
+					templateId: result.id
 				}
-			}).then(value => {
+			}).then(scale => {
 				response.ok = true;
 				response.message = {
-					result,
-					value,
-					answers
+					likert: result,
+					scale: scale.get("value").split(','),
+					answers: answers
 				};
 				return response;
 			});

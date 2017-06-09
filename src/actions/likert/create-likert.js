@@ -7,14 +7,15 @@ module.exports = (name, description, scaleItems) => {
 		ok: false,
 		message: 'I have encountered the following error: '
 	};
+	let l = scaleItems.split(',').length;
 	return likert.create({
 		name: name,
 		description: description,
-		max_value: scaleItems.length
+		max_value: l
 	}).then(x => {
 		return likert_value.create({
 			templateId: x.id,
-			value: JSON.stringify(scaleItems)
+			value: scaleItems
 		}).then(y => {
 			response.ok = true;
 			response.message = x.id;
