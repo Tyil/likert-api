@@ -29,7 +29,7 @@ module.exports = router
 		});
 	})
 	.post('/', (req, res) => {
-		create_likert(req.body.name, req.body.description, req.body.max_value, req.body.scaleItems).then(result => {
+		create_likert(req.body.name, req.body.description, req.body.scaleItems).then(result => {
 			return res.json(result);
 		});
 	})

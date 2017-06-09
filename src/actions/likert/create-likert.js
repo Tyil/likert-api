@@ -2,7 +2,7 @@ const likert = require("../../models").likert_template,
 	likert_result = require("../../models").likert_template_result,
 	likert_value = require("../../models").likert_template_value;
 
-module.exports = (name, description, max_value, scaleItems) => {
+module.exports = (name, description, scaleItems) => {
 	var response = {
 		ok: false,
 		message: 'I have encountered the following error: '
@@ -10,7 +10,7 @@ module.exports = (name, description, max_value, scaleItems) => {
 	return likert.create({
 		name: name,
 		description: description,
-		max_value: max_value
+		max_value: scaleItems.length
 	}).then(x => {
 		return likert_value.create({
 			templateId: x.id,
