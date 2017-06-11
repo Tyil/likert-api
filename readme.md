@@ -107,7 +107,7 @@ Request Body | Type
 username | String
 password | String
 
-### Likers
+### Likerts
 #### GET [/:id](https://mood-io.herokuapp.com/likerts/0)
 Request Body | Type
 --- | ---
