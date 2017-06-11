@@ -1,5 +1,5 @@
 const likert = require("../../models").likert_template,
-	likert_value = require("");
+	likert_value = require("../../models").likert_template_value;
 
 module.exports = (id, name, description, scaleItems) => {
 	return likert.findOne({
