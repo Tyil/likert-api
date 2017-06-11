@@ -105,6 +105,42 @@ Request Body | Type
 username | String
 password | String
 
+#### GET [/:id](https://mood-io.herokuapp.com/likerts/0)
+Request Body | Type
+--- | ---
+
+#### GET [/:id/scale](https://mood-io.herokuapp.com/likerts/0/scale)
+Request Body | Type
+--- | ---
+
+#### GET [/:id/:userId](https://mood-io.herokuapp.com/likerts/0/0)
+Request Body | Type
+--- | ---
+
+#### POST [/](https://mood-io.herokuapp.com/likerts/)
+Request Body | Type
+--- | ---
+name | String
+description | String
+scaleItems | String (Comma Seperated Values)
+
+#### POST [/:id](https://mood-io.herokuapp.com/likerts/0)
+Request Body | Type
+--- | ---
+songId | INT
+moodId | INT
+scaleScore | String
+
+#### PUT [/](https://mood-io.herokuapp.com/likerts/)
+Request Body | Type
+--- | ---
+updateItems | Array (id, name, description, scaleItems)
+
+#### PATCH [/](https://mood-io.herokuapp.com/likerts/)
+Request Body | Type
+--- | ---
+removeItems | Array (id)
+
 ## Contributing
 ### Code style
 - Indent using tabs.

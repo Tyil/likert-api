@@ -29,7 +29,8 @@ module.exports = (id, name, description, scaleItems) => {
 			}, {
 				where: {
 					templateId: id
-				}
+				},
+				returning: true
 			}).then(value => {
 				return {
 					ok: true
