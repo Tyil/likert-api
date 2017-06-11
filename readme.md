@@ -28,36 +28,36 @@ Request Body | Type
 username | String
 password | String
 ### Genres
-#### GET [/genres](https://mood-io.herokuapp.com/genres/)
+#### GET [/](https://mood-io.herokuapp.com/genres/)
 Request Body | Type
 --- | ---
 
-#### POST [/genres](https://mood-io.herokuapp.com/genres/add)
-Request Body | Type
---- | ---
-genreName | String
-
-#### DELETE [/genres](https://mood-io.herokuapp.com/genres/remove)
+#### POST [/](https://mood-io.herokuapp.com/genres/)
 Request Body | Type
 --- | ---
 genreName | String
 
-#### POST [/genres/dislike](https://mood-io.herokuapp.com/genres/dislike)
+#### DELETE [/](https://mood-io.herokuapp.com/genres/)
 Request Body | Type
 --- | ---
 genreName | String
 
-#### DELETE [/genres/dislike](https://mood-io.herokuapp.com/genres/dislike)
+#### POST [/dislike](https://mood-io.herokuapp.com/genres/dislike)
 Request Body | Type
 --- | ---
 genreName | String
 
-#### POST [/genres/like](https://mood-io.herokuapp.com/genres/like)
+#### DELETE [/dislike](https://mood-io.herokuapp.com/genres/dislike)
 Request Body | Type
 --- | ---
 genreName | String
 
-#### DELETE [/genres/like](https://mood-io.herokuapp.com/genres/like)
+#### POST [/like](https://mood-io.herokuapp.com/genres/like)
+Request Body | Type
+--- | ---
+genreName | String
+
+#### DELETE [/like](https://mood-io.herokuapp.com/genres/like)
 Request Body | Type
 --- | ---
 genreName | String
