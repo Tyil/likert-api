@@ -15,12 +15,12 @@ describe("Likert route", () => {
 		likert.create({
 			id: 1,
 			name: "MoodMusic track rating",
-			max_value: 5,
+			max_value: 3,
 			description: "A likert-scale to let the user rate the track he is currently listening to"
 		});
 		likert_values.create({
 			templateId: 1,
-			value: '["Depression", "Sad", "Neutral", "Happy", "Euphoric"]'
+			value: 'sad,neutral,great'
 		});
 		song.create({
 			id: 1,
@@ -40,7 +40,7 @@ describe("Likert route", () => {
 	it("returns the scale for a likert scale", () => {
 		get_scale(1).then(result => {
 			expect(result.ok).toBe(true);
-			expect(result.message).toBe(["Depression", "Sad", "Neutral", "Happy", "Euphoric"]);
+			expect(result.message).toBe(["sad", "neutral", "great"]);
 		});
 	});
 
@@ -51,23 +51,19 @@ describe("Likert route", () => {
 	});
 
 	it("adds a likert response", () => {
-		add_response(1, 1, 1, 1, "Happy").then(result => {
+		add_response(1, 1, 1, 1, "great").then(result => {
 			expect(result.ok).toBe(true);
 		});
 	});
 
 	it("creates a new likert scale", () => {
-		create_likert("test", "This is my new description", 5, ["Bad", "Good"]).then(result => {
+		create_likert("test", "This is my new description", "bad,good").then(result => {
 			expect(result.ok).toBe(true);
 		});
 	});
 
 	it("update a likert scale", () => {
-		alter_likert(1, {
-			name: "Test",
-			description: "Asdhasdhasdhsah",
-			max_value: 3
-		}).then(result => {
+		alter_likert(1, "NG+7", "This is my new description", "worse,bad,neutral,good,fantastic").then(result => {
 			expect(result.ok).toBe(true);
 		});
 	});
