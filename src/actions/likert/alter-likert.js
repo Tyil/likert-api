@@ -23,7 +23,7 @@ module.exports = (id, name, description, scaleItems) => {
 				id: id,
 			},
 			returning: true
-		}).then(result => {
+		}).then(update => {
 			likert_value.update({
 				value: scaleItems
 			}, {
