@@ -53,8 +53,8 @@ module.exports = router
 		if (!req.authenticated) {
 			return res.json(unauthError);
 		}
-		req.body.ids.forEach((id, updateItem) => {
-			alter_likert(req.body.ids).then(result => {
+		req.body.updateItems.forEach((id, name, description, scaleItems) => {
+			alter_likert(id, name, description, scaleItems).then(result => {
 				return res.json(result);
 			});
 		});
@@ -63,7 +63,7 @@ module.exports = router
 		if (!req.authenticated) {
 			return res.json(unauthError);
 		}
-		req.body.ids.forEach(id => {
+		req.body.removeItems.forEach(id => {
 			remove_likert(id).then(result => {
 				return res.json(result);
 			});
