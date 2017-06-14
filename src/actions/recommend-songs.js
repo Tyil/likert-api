@@ -53,4 +53,4 @@ function newMusic(genreId, moodId){ //, artistId, albumId){
 			j++;
 		}
 	});
-}
+};
