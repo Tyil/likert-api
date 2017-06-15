@@ -49,4 +49,7 @@ module.exports = router
 			return res.json(result);
 		});
 	})
+	.post('/:id', (req, res) => {
+		
+	})
 	;
