@@ -14,6 +14,10 @@ module.exports = {
 			{
 				id: 3,
 				name: "Jazz",
+			},
+			{
+				id: 4:
+				name: "Ambient"
 			}
 		]);
 	},
@@ -23,7 +27,8 @@ module.exports = {
 			name: [
 				"Rock",
 				"Soul",
-				"Jazz"
+				"Jazz",
+				"Ambient",
 			]
 		});
 	}
