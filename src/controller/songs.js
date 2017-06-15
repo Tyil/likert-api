@@ -1,6 +1,7 @@
 const router = require("express").Router(),
 	song = require("../models").song,
 	genre = require("../models").genre,
+	listened = require("../models").previously_listened,
 	gimme = require("../actions/recommend-songs");
 
 module.exports = router
@@ -18,7 +19,7 @@ module.exports = router
 				SongId: req.params.id
 			}
 		}).then(result => {
-			if(result === null){
+			if (result === null) {
 				return res.json({
 					ok: false,
 					message: 'The song does not exist.'
@@ -50,6 +51,7 @@ module.exports = router
 		});
 	})
 	.post('/:id', (req, res) => {
-		
-	})
-	;
+		req.token.userId;
+
+	});
+;

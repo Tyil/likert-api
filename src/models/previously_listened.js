@@ -6,16 +6,24 @@ module.exports = function (sequelize, DataTypes) {
 			primaryKey: true,
 			type: DataTypes.INTEGER
 		},
-        songId: {
-            allowNull: false,
-            references: {
+		userId: {
+			allowNull: false,
+			references: {
+				model: 'users',
+				key: 'id'
+			},
+			type: DataTypes.INTEGER
+		},
+		songId: {
+			allowNull: false,
+			references: {
 				model: 'songs',
 				key: 'id'
 			},
-            type: DataTypes.INTEGER
-        }
-	}, 
-    {
-		timestamps: false
-	});
+			type: DataTypes.INTEGER
+		}
+	},
+		{
+			timestamps: false
+		});
 };

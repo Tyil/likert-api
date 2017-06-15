@@ -9,6 +9,14 @@ module.exports = {
         primaryKey: true,
         type: DataTypes.INTEGER
       },
+      userId: {
+        allowNull: false,
+        references: {
+          model: 'users',
+          key: 'id'
+        },
+        type: DataTypes.INTEGER
+      },
       songId: {
         allowNull: false,
         references: {
