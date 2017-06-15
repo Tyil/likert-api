@@ -1,10 +1,10 @@
 {
   "name": "likert-api",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "The API for Likert",
   "main": "src/index.js",
   "scripts": {
-    "start": "node src/index.js",
+    "start": "bash migrate.sh && node src/index.js",
     "serve": "nodemon",
     "test": "jasmine --config=config/jasmine.json"
   },
@@ -27,7 +27,8 @@
     "mysql": "^2.13.0",
     "mysql2": "^1.2.0",
     "randomstring": "^1.1.5",
-    "sequelize": "^3.30.4"
+    "sequelize": "^3.30.4",
+    "sequelize-cli": "^2.7.0"
   },
   "devDependencies": {
     "jasmine": "^2.6.0",
