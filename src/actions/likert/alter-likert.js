@@ -1,6 +1,7 @@
-const likert = require("../../models").likert_template;
+const likert = require("../../models").likert_template,
+	likert_value = require("../../models").likert_template_value;
 
-module.exports = (id, updateItem) => {
+module.exports = (id, name, description, scaleItems) => {
 	return likert.findOne({
 		where: {
 			id: id
@@ -12,20 +13,29 @@ module.exports = (id, updateItem) => {
 				message: 'The likert scale could not be found.'
 			};
 		}
+		let len = scaleItems.split(',').length;
 		return result.update({
-			name: updateItem.name,
-			description: updateItem.description,
-			max_value: updateItem.max_value
+			name: name,
+			description: description,
+			max_value: len
 		}, {
 			where: {
 				id: id,
 			},
 			returning: true
-		}).then(value => {
-			return {
-				ok: true,
-				message: 'The likert scale has been altered.'
-			};
+		}).then(update => {
+			likert_value.update({
+				value: scaleItems
+			}, {
+				where: {
+					templateId: id
+				},
+				returning: true
+			}).then(value => {
+				return {
+					ok: true
+				};
+			});
 		});
 	});
 };
