@@ -4,8 +4,9 @@
   "description": "The API for Likert",
   "main": "src/index.js",
   "scripts": {
-    "start": "bash migrate.sh && node src/index.js",
+    "list-routes": "node src/index.js --list-routes",
     "serve": "nodemon",
+    "start": "bash migrate.sh && node src/index.js",
     "test": "jasmine --config=config/jasmine.json"
   },
   "repository": {
@@ -31,10 +32,11 @@
     "sequelize-cli": "^2.7.0"
   },
   "devDependencies": {
+    "express-list-routes": "^0.1.4",
     "jasmine": "^2.6.0",
     "jasmine-node": "^1.14.5",
+    "pg": "^6.1.5",
     "sequelize-mock": "^0.7.0",
-    "supertest": "^3.0.0",
-    "pg": "^6.1.5"
+    "supertest": "^3.0.0"
   }
 }
