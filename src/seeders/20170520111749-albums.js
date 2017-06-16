@@ -60,12 +60,10 @@ const entries = [
 
 module.exports = {
 	up: function (queryInterface, Sequelize) {
-		return queryInterface.bulkInsert("artusts", entries);
+		return queryInterface.bulkInsert("albums", entries);
 	},
 
 	down: function (queryInterface, Sequelize) {
-		return queryInterface.bulkDelete("artists", {
-			id: entries.map(x => x.id)
-		});
+		return queryInterface.bulkDelete("albums");
 	}
 };

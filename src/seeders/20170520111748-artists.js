@@ -47,19 +47,6 @@ module.exports = {
 	},
 
 	down: function (queryInterface, Sequelize) {
-		return queryInterface.bulkDelete("artists", {
-			name: [
-				"Caravan Palace",
-				"Basshunter",
-				"Dschinghis Khan",
-				"Bob Marley",
-				"E.S. Posthumus",
-				"Fleetwood Mac",
-				"Puscifer",
-				"Enya",
-				"Vitamin String Quartet",
-				"Queen",
-			]
-		});
+		return queryInterface.bulkDelete("artists");
 	}
 };

@@ -16,20 +16,13 @@ module.exports = {
 				name: "Jazz",
 			},
 			{
-				id: 4:
-				name: "Ambient"
+				id: 4,
+				name: "Ambient",
 			}
 		]);
 	},
 
 	down: function (queryInterface, Sequelize) {
-		return queryInterface.bulkDelete("genres", {
-			name: [
-				"Rock",
-				"Soul",
-				"Jazz",
-				"Ambient",
-			]
-		});
+		return queryInterface.bulkDelete("genres");
 	}
 };

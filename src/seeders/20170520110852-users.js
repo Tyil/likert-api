@@ -9,11 +9,6 @@ module.exports = {
 	},
 
 	down: function (queryInterface, Sequelize) {
-		return queryInterface.bulkDelete("users", {
-			username: [
-				"admin",
-				"MoodAPI"
-			]
-		});
+		return queryInterface.bulkDelete("users");
 	}
 };
