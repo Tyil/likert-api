@@ -7,7 +7,7 @@ doctor in evaluating their well being.
 TODO
 
 ## Usage
-### Routes
+### Auth
 #### POST [/auth/login](https://mood-io.herokuapp.com/auth/login)
 Request Body | Type
 --- | ---
@@ -27,83 +27,122 @@ Request Body | Type
 --- | ---
 username | String
 password | String
-
-#### GET [/genre](https://mood-io.herokuapp.com/genre/)
+### Genres
+#### GET [/](https://mood-io.herokuapp.com/genres/)
 Request Body | Type
 --- | ---
 
-#### POST [/genre](https://mood-io.herokuapp.com/genre/add)
-Request Body | Type
---- | ---
-genreName | String
-
-#### DELETE [/genre](https://mood-io.herokuapp.com/genre/remove)
+#### POST [/](https://mood-io.herokuapp.com/genres/)
 Request Body | Type
 --- | ---
 genreName | String
 
-#### POST [/genre/dislike](https://mood-io.herokuapp.com/genre/dislike)
+#### DELETE [/](https://mood-io.herokuapp.com/genres/)
 Request Body | Type
 --- | ---
 genreName | String
 
-#### DELETE [/genre/dislike](https://mood-io.herokuapp.com/genre/dislike)
+#### POST [/dislike](https://mood-io.herokuapp.com/genres/dislike)
 Request Body | Type
 --- | ---
 genreName | String
 
-#### POST [/genre/like](https://mood-io.herokuapp.com/genre/like)
+#### DELETE [/dislike](https://mood-io.herokuapp.com/genres/dislike)
 Request Body | Type
 --- | ---
 genreName | String
 
-#### DELETE [/genre/like](https://mood-io.herokuapp.com/genre/like)
+#### POST [/like](https://mood-io.herokuapp.com/genres/like)
 Request Body | Type
 --- | ---
 genreName | String
 
-#### GET [/mood](https://mood-io.herokuapp.com/mood/)
+#### DELETE [/like](https://mood-io.herokuapp.com/genres/like)
+Request Body | Type
+--- | ---
+genreName | String
+
+### Moods
+#### GET [/](https://mood-io.herokuapp.com/moods/)
 Request Body | Type
 --- | ---
 
-#### POST [/mood](https://mood-io.herokuapp.com/mood/add)
+#### POST [/](https://mood-io.herokuapp.com/moods/)
 Request Body | Type
 --- | ---
 mood | String
 
-#### PUT [/mood](https://mood-io.herokuapp.com/mood/update)
+#### PUT [/](https://mood-io.herokuapp.com/moods/)
 Request Body | Type
 --- | ---
 newMood | String
 
-#### DELETE [/mood](https://mood-io.herokuapp.com/mood/remove)
+#### DELETE [/](https://mood-io.herokuapp.com/moods/)
 Request Body | Type
 --- | ---
 mood | String
 
-#### GET [/mood/:moodName](https://mood-io.herokuapp.com/mood/0)
+#### GET [/:moodName](https://mood-io.herokuapp.com/mood/happy)
 Request Body | Type
 --- | ---
 
-#### GET [/user](https://mood-io.herokuapp.com/user/)
+### Users
+#### GET [/](https://mood-io.herokuapp.com/users/)
 Request Body | Type
 --- | ---
 
-#### PUT [/user](https://mood-io.herokuapp.com/user/update)
+#### PUT [/](https://mood-io.herokuapp.com/users/)
 Request Body | Type
 --- | ---
 username | String
 password | String
 
-#### GET [/user/:userId](https://mood-io.herokuapp.com/user/0)
+#### GET [/:userId](https://mood-io.herokuapp.com/users/0)
 Request Body | Type
 --- | ---
 
-#### PUT [/user/:userId](https://mood-io.herokuapp.com/user/update/0)
+#### PUT [/:userId](https://mood-io.herokuapp.com/users/0)
 Request Body | Type
 --- | ---
 username | String
 password | String
+
+### Likerts
+#### GET [/:id](https://mood-io.herokuapp.com/likerts/0)
+Request Body | Type
+--- | ---
+
+#### GET [/:id/scale](https://mood-io.herokuapp.com/likerts/0/scale)
+Request Body | Type
+--- | ---
+
+#### GET [/:id/:userId](https://mood-io.herokuapp.com/likerts/0/0)
+Request Body | Type
+--- | ---
+
+#### POST [/](https://mood-io.herokuapp.com/likerts/)
+Request Body | Type
+--- | ---
+name | String
+description | String
+scaleItems | String (Comma Seperated Values)
+
+#### POST [/:id](https://mood-io.herokuapp.com/likerts/0)
+Request Body | Type
+--- | ---
+songId | INT
+moodId | INT
+scaleScore | String
+
+#### PUT [/](https://mood-io.herokuapp.com/likerts/)
+Request Body | Type
+--- | ---
+updateItems | Array (id, name, description, scaleItems)
+
+#### PATCH [/](https://mood-io.herokuapp.com/likerts/)
+Request Body | Type
+--- | ---
+removeItems | Array (id)
 
 ## Contributing
 ### Code style
