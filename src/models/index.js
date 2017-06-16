@@ -39,6 +39,11 @@ if (process.env.NODE_ENV !== "test") {
 		"like_dislike_genre",
 		"mood",
 		"song",
+		"artist",
+		"album",
+		"favorite_artist",
+		"favorite_genre",
+		"favorite_song",
 		"likert_template",
 		"likert_template_result",
 		"likert_template_steps",
@@ -68,15 +73,18 @@ if (process.env.NODE_ENV !== "test") {
 	});
 
 	module.exports.genre = connection.define("genre", {
-		GenreId: 1,
-		Name: "rock"
+		id: 1,
+		name: "rock"
 	});
 
-	module.exports.mood = connection.define("mood", {});
-	module.exports.song = connection.define("song", {});
-	module.exports.likert_template = connection.define("likert_template", {});
-	module.exports.likert_template_value = connection.define("likert_template_value", {});
-	module.exports.likert_template_result = connection.define("likert_template_result", {});
+	module.exports.album = connection.define("album");
+	module.exports.artist = connection.define("artist");
+	module.exports.mood = connection.define("mood");
+	module.exports.song = connection.define("song");
+	module.exports.favorite_album = connection.define("favorite_album");
+	module.exports.favorite_artist = connection.define("favorite_artist");
+	module.exports.favorite_song = connection.define("favorite_song");
+	module.exports.favorite_genre = connection.define("favorite_genre");
 }
 
 module.exports.sequelize = connection;

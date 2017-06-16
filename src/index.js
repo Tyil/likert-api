@@ -42,11 +42,12 @@ app.options('*', cors());
 [
 	"artists",
 	"auth",
+	"favorites",
 	"genres",
-	"moods",
-	"users",
 	"likerts",
+	"moods",
 	"songs",
+	"users",
 ].forEach(x => {
 	const controller = require("./controller/" + x);
 
