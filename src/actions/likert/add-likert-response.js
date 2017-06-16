@@ -1,40 +1,48 @@
 const likert = require("../../models").likert_template,
 	likert_results = require("../../models").likert_template_result,
-	likert_values = require("../../models").likert_values;
+	likert_values = require("../../models").likert_template_value;
+
 module.exports = (likertTemplateId, userId, songId, moodId, scaleScore) => {
 	return likert.findOne({
 		where: {
 			id: likertTemplateId
 		}
 	}).then(result => {
-		var response = {
+		const response = {
 			ok: false,
-			message: 'The likert template could not be found.'
+			message: "The likert template could not be found."
 		};
+
 		if (result === null) {
 			return response;
 		}
+
 		return likert_values.findOne({
 			where: {
 				templateId: likertTemplateId
 			}
 		}).then(x => {
-			var arr = JSON.parse(x.value);
-			var counter = 0;
-			for (var i in arr) {
+			const arr = x.get("value").split(',');
+			let found = -1;
+
+			for (i = 0; i < arr.length; i++) {
 				if (arr[i] == scaleScore) {
-					counter = i;
+					found = i;
+
+					break;
 				}
 			}
+
 			return likert_results.create({
 				userId: userId,
 				templateId: likertTemplateId,
 				songId: songId,
 				moodId: moodId,
-				scaleScore: counter
+				scaleScore: found
 			}).then(result => {
 				response.ok = true;
-				response.message = 'The score has been added.';
+				response.message = "";
+
 				return response;
 			}).catch(err => {
 				return {

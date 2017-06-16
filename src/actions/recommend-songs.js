@@ -7,7 +7,7 @@ module.exports = (genreId) => {
 			GenreId: genreId
 		}
 	}).then(result => {
-		if(result === null){
+		if (result === null) {
 			return {
 				ok: false,
 				message: 'Genre could not be found.'

@@ -5,7 +5,20 @@ const controllerDir = "./controller/";
 // require dependencies
 const express = require("express");
 const bodyParser = require("body-parser");
-const cors = require('cors');
+const cors = require("cors");
+
+// parse commandline flags
+let flags = [];
+
+if (process.argv.length > 0) {
+	process.argv.forEach(arg => {
+		if (!arg.startsWith("--")) {
+			return;
+		};
+
+		flags.push(arg.replace(/^--/, ""));
+	});
+}
 
 // instantiate application
 const app = express();
@@ -29,12 +42,26 @@ app.options('*', cors());
 [
 	"artists",
 	"auth",
+	"favorites",
 	"genres",
-	"moods",
-	"users",
 	"likerts",
+	"moods",
 	"songs",
-].forEach(x => app.use("/" + x, require("./controller/" + x)));
+	"users",
+].forEach(x => {
+	const controller = require("./controller/" + x);
+
+	app.use("/" + x, controller);
+
+	if (flags.includes("list-routes")) {
+		require("express-list-routes")({prefix: "/" + x}, null, controller);
+	}
+});
+
+if (flags.includes("list-routes")) {
+	// dont continue execution, all that was requested was a list of all routes
+	process.exit(0);
+}
 
 // root handler
 app.get("/", (req, res) => {
