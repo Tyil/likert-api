@@ -2,7 +2,8 @@ const router = require("express").Router(),
 	song = require("../models").song,
 	genre = require("../models").genre,
 	listened = require("../models").previously_listened,
-	gimme = require("../actions/recommend-songs");
+	gimme = require("../actions/songs/recommend-songs"),
+	previous = require("../actions/songs/add-prevously-listened");
 
 module.exports = router
 	.get('/', (req, res) => {
@@ -51,7 +52,8 @@ module.exports = router
 		});
 	})
 	.post('/:id', (req, res) => {
-		req.token.userId;
-
+		previous(req.params.id, req.token.userId).then(result => {
+			return res.json(result);
+		});
 	});
 ;
