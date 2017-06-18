@@ -36,15 +36,8 @@ main()
 		echo "}" >> "${DB_CONFIG_FILE}"
 	fi
 
-	# run the migration scripts
-	run_sequelize db:migrate
-
-	# reseed the database
-	if [[ "${NODE_ENV}" == "development" ]]
-	then
-		run_sequelize db:seed:undo:all
-		run_sequelize db:seed:all
-	fi
+	run_sequelize db:seed:undo:all
+	run_sequelize db:seed:all
 
 	popd
 }
