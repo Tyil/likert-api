@@ -3,7 +3,7 @@ const router = require("express").Router(),
 	genre = require("../models").genre,
 	listened = require("../models").previously_listened,
 	gimme = require("../actions/songs/recommend-songs"),
-	previous = require("../actions/songs/add-prevously-listened");
+	previous = require("../actions/songs/add-previously-listened");
 
 module.exports = router
 	.get('/', (req, res) => {

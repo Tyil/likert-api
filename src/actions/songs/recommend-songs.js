@@ -1,8 +1,8 @@
-const song = require("../models").song,
-	genre = require("../models").genre,
-	user = require("../models").user,
-	listened = require("../models").previously_listened,
-	songResult = require("../models").likert_template_result,
+const song = require("../../models").song,
+	genre = require("../../models").genre,
+	user = require("../../models").user,
+	listened = require("../../models").previously_listened,
+	songResult = require("../../models").likert_template_result,
 	maxSongs = 10;
 
 var songs, temp = [], amountResults
