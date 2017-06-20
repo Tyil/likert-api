@@ -43,6 +43,7 @@ if (process.env.NODE_ENV !== "test") {
 		"likert_template_result",
 		"likert_template_steps",
 		"likert_template_value",
+		"previously_listened",
 	].forEach(model => {
 		module.exports[model] = connection.import(__dirname + "/" + model);
 	});
@@ -63,9 +64,9 @@ if (process.env.NODE_ENV !== "test") {
 	});
 
 	module.exports.artist = connection.define("artist", {
-			id: 1,
-			name: "Micro Jackson"
-		}
+		id: 1,
+		name: "Micro Jackson"
+	}
 	);
 
 	module.exports.genre = connection.define("genre", {

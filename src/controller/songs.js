@@ -1,7 +1,9 @@
 const router = require("express").Router(),
 	song = require("../models").song,
 	genre = require("../models").genre,
-	gimme = require("../actions/recommend-songs");
+	listened = require("../models").previously_listened,
+	gimme = require("../actions/songs/recommend-songs"),
+	previous = require("../actions/songs/add-previously-listened");
 
 module.exports = router
 	.get('/', (req, res) => {
@@ -18,7 +20,7 @@ module.exports = router
 				SongId: req.params.id
 			}
 		}).then(result => {
-			if(result === null){
+			if (result === null) {
 				return res.json({
 					ok: false,
 					message: 'The song does not exist.'
@@ -49,4 +51,9 @@ module.exports = router
 			return res.json(result);
 		});
 	})
-	;
+	.post('/:id', (req, res) => {
+		previous(req.params.id, req.token.userId).then(result => {
+			return res.json(result);
+		});
+	});
+;
