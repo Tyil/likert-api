@@ -8,12 +8,18 @@ module.exports = (username, password) => {
 			username: username
 		}
 	}).then(result => {
+		console.log(result);
 		if (result !== null) {
 			return {
 				ok: false,
 				message: 'The username is already taken.'
 			};
 		}
+
+		console.log(username);
+		console.log(password);
+		console.log(bcrypt.hashSync(password, bcrypt.genSaltSync(10)));
+
 		return userModel.create({
 			username: username,
 			password: bcrypt.hashSync(password, bcrypt.genSaltSync(10))
