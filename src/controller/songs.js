@@ -1,7 +1,8 @@
-const router = require("express").Router(),
-	song = require("../models").song,
-	genre = require("../models").genre,
-	gimme = require("../actions/recommend-songs");
+const genre = require("../models").genre;
+const gimme = require("../actions/recommend-songs");
+const history = require("../actions/songs/get-history");
+const router = require("express").Router();
+const song = require("../models").song;
 
 module.exports = router
 	.get('/', (req, res) => {
@@ -42,6 +43,11 @@ module.exports = router
 				ok: true,
 				message: result
 			});
+		});
+	})
+	.get("/recent", (req, res) => {
+		history(req.token.userId, 1).then(result => {
+			return res.json(result);
 		});
 	})
 	.get('/recommend/:genre/:likertId', (req, res) => {
