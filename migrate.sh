@@ -27,13 +27,16 @@ main()
 	if [[ ! -f "${DB_CONFIG_FILE}" ]]
 	then
 		echo "Writing database config file from environment"
-		echo "{" > "${DB_CONFIG_FILE}"
-		echo "  $(write_config_line "username" "${DB_USERNAME}")," >> "${DB_CONFIG_FILE}"
-		echo "  $(write_config_line "password" "${DB_PASSWORD}")," >> "${DB_CONFIG_FILE}"
-		echo "  $(write_config_line "database" "${DB_DATABASE}")," >> "${DB_CONFIG_FILE}"
-		echo "  $(write_config_line "host" "${DB_HOST}")," >> "${DB_CONFIG_FILE}"
-		echo "  $(write_config_line "dialect" "${DB_DIALECT}")" >> "${DB_CONFIG_FILE}"
-		echo "}" >> "${DB_CONFIG_FILE}"
+		cat > "${DB_CONFIG_FILE}" <<EOF
+{
+	"username": "${DB_USERNAME}",
+	"password": "${DB_PASSWORD}",
+	"database": "${DB_DATABASE}",
+	"host": "${DB_HOST}",
+	"port": "${DB_PORT}",
+	"dialect": "${DB_DIALECT}"
+}
+EOF
 	fi
 
 	# run the migration scripts

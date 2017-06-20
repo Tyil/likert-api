@@ -14,6 +14,7 @@ module.exports = (username, password) => {
 				message: 'The username is already taken.'
 			};
 		}
+
 		return userModel.create({
 			username: username,
 			password: bcrypt.hashSync(password, bcrypt.genSaltSync(10))
