@@ -5,7 +5,7 @@ const song = require("../../models").song,
 	songResult = require("../../models").likert_template_result,
 	maxSongs = 10;
 
-var songs, temp = [], amountResults
+var songs = [], temp = [], amountResults
 
 module.exports = (genreId, moodId) => {
 	listenedMusic(genreId, moodId)
@@ -38,8 +38,8 @@ module.exports = (genreId, moodId) => {
 function newMusic(genreId, moodId) { //, artistId, albumId){
 	song.findall({
 		where: {
-			Mood_MoodId: moodId,
-			Genre_GenreId: genreId
+			moodId: moodId,
+			genreId: genreId
 		}
 	}).then(result => {
 		for (var i = 0; result.length > i; i++) {
@@ -54,8 +54,8 @@ function newMusic(genreId, moodId) { //, artistId, albumId){
 				}
 			});
 		}
-		var j = 0
-		for (var i = maxSongs; songs.length < i; i--) {
+		var j = 0, tempNumber = maxSongs - songs.length
+		for (var i = tempNumber; songs.length < i; i++) {
 			songs.push({ songId: temp[j], listened: "N" })
 			j++
 		}
@@ -66,8 +66,8 @@ function listenedMusic(genreId, moodId) { //, artistId, albumId){
 	songResult.findall({
 		attributes: ['scaleScore', [sequelize.fn('AVG', sequelize.col('scaleScore')), 'averageScore']],
 		where: {
-			Mood_MoodId: moodId,
-			Genre_GenreId: genreId
+			moodId: moodId,
+			genreId: genreId
 		},
 		group: { songId }
 	}).then(result => {
