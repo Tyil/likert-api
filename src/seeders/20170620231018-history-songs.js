@@ -3,9 +3,9 @@
 module.exports = {
 	up: function (queryInterface, Sequelize) {
 		return queryInterface.bulkInsert("history_songs", [
-			{ userId: 1, songId: 2, createdAt: "2017-06-20 22:11" },
-			{ userId: 1, songId: 7, createdAt: "2017-06-20 23:11" },
-			{ userId: 1, songId: 13, createdAt: "2017-06-20 24:11" },
+			{ userId: 1, songId: 2, createdAt: new Date("2015").toISOString() },
+			{ userId: 1, songId: 7, createdAt: new Date("2016").toISOString() },
+			{ userId: 1, songId: 13, createdAt: new Date("2017").toISOString() },
 		]);
 	},
 
