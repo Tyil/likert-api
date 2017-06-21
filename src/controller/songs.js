@@ -1,4 +1,5 @@
 const addHistory = require("../actions/songs/add-history");
+const artist = require("../models").artist;
 const genre = require("../models").genre;
 const gimme = require("../actions/recommend-songs");
 const history = require("../actions/songs/get-history");
