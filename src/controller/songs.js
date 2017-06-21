@@ -20,6 +20,11 @@ module.exports = router
 			return res.json(result);
 		});
 	})
+	.get("/recent/:count", (req, res) => {
+		history(req.token.userId, req.params.count).then(result => {
+			return res.json(result);
+		});
+	})
 	.get('/:id', (req, res) => {
 		return song.findOne({
 			where: {
