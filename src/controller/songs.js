@@ -55,18 +55,5 @@ module.exports = router
 		previous(req.params.id, req.token.userId).then(result => {
 			return res.json(result);
 		});
-	})
-	.get('/previous', (req, res) => {
-		previous.findAll({
-			where: {
-				userId: req.token.userId
-			}
-		}).then(result => {
-			return res.json({
-				ok: true,
-				message: result
-			});
-		});
-
 	});
 ;
