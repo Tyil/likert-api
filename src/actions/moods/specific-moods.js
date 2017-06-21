@@ -1,9 +1,9 @@
 const moods = require('../../models').mood;
 
-module.exports = (moodName) => {
+module.exports = (moodId) => {
 	return moods.findOne({
 		where: {
-			name: moodName
+			id: moodId
 		}
 	}).then(result => {
 		if (result === null) {
@@ -14,7 +14,7 @@ module.exports = (moodName) => {
 		}
 		return {
 			ok: true,
-			message: result.get("name")
+			message: result
 		};
 	}).catch(err => {
 		return {

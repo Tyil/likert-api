@@ -93,7 +93,31 @@ Request Body | Type
 --- | ---
 mood | String
 
-#### GET [/:moodName](https://mood-io.herokuapp.com/mood/happy)
+#### GET [/:moodId](https://mood-io.herokuapp.com/mood/1)
+Request Body | Type
+--- | ---
+moodId | Integer
+
+#### GET [/my](https://mood-io.herokuapp.com/moods/my/)
+Request the current user's current mood.
+
+Request Body | Type
+--- | ---
+
+#### POST [/my](https://mood-io.herokuapp.com/moods/my/)
+Changes the mood and puts the mood into history
+
+Request Body | Type
+--- | ---
+
+#### GET [/recent](https://mood-io.herokuapp.com/moods/recent)
+First mood in history
+
+Request Body | Type
+--- | ---
+
+#### GET [/recent/:count](https://mood-io.herokuapp.com/moods/recent/12)
+The x amount 
 Request Body | Type
 --- | ---
 
@@ -117,25 +141,6 @@ Request Body | Type
 --- | ---
 username | String
 password | String
-
-#### GET [/users/my/mood](https://mood-io.herokuapp.com/users/my/mood)
-Request the current user's current mood.
-
-Request Body | Type
---- | ---
-
-#### POST [/users/my/mood](https://mood-io.herokuapp.com/users/my/mood)
-Set the current user's current mood.
-
-Request Body | Type
---- | ---
-
-#### GET [/users/my/mood/previously](https://mood-io.herokuapp.com/users/my/mood)
-[//]: # (@TODO: blackchaosnl)
-
-Request Body | Type
---- | ---
-
 
 ### Likerts
 #### GET [/:id](https://mood-io.herokuapp.com/likerts/0)

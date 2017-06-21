@@ -20,7 +20,7 @@ module.exports = (userId) => {
 		}).then(mood => {
 			return {
 				ok: true,
-				message: mood.get('name')
+				message: mood
 			}
 		}).catch(err => {
 			return {
