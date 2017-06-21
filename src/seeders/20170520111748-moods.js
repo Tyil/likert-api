@@ -21,22 +21,26 @@ module.exports = {
 			},
 			{
 				id: 5,
+				name: "Hyper"
+			},			
+			{
+				id: 6,
 				name: "Peaceful"
 			},
 			{
-				id: 6,
+				id: 7,
 				name: "Sad"
 			},
 			{
-				id: 7,
+				id: 8,
 				name: "Shocked"
 			},
 			{
-				id: 8,
+				id: 9,
 				name: "Sick"
 			},
 			{
-				id: 9,
+				id: 10,
 				name: "Tired"
 			}
 		]);
