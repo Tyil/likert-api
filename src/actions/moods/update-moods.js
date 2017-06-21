@@ -17,7 +17,6 @@ module.exports = (oldMood, newMood) => {
 		}).then(result => {
 			return {
 				ok: true,
-				message: 'The mood has been updated.'
 			};
 		}).catch(err => {
 			return {

@@ -1,7 +1,7 @@
 const previous_moods = require('../../models').previous_mood;
 
 module.exports = (userId) => {
-	previous_moods.findAll({
+	return previous_moods.findAll({
 		where: {
 			userId: userId
 		}

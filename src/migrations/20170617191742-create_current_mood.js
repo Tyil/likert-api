@@ -1,6 +1,6 @@
 module.exports = {
 	up: function (queryInterface, Sequelize) {
-		return queryInterface.createTable('current_mood', {
+		return queryInterface.createTable('current_moods', {
 			id: {
 				allowNull: false,
 				autoIncrement: true,
@@ -32,6 +32,6 @@ module.exports = {
 	},
 
 	down: function (queryInterface, Sequelize) {
-		return queryInterface.dropTable('current_mood');
+		return queryInterface.dropTable('current_moods');
 	}
 };
