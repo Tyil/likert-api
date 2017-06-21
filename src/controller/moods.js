@@ -30,7 +30,7 @@ module.exports = router
 		if (!req.authenticated) {
 			return res.json(notLoggedIn);
 		}
-		previous(req.token.userId, 1).then(result => {
+		previous(req.token.userId, 10).then(result => {
 			return res.json(result);
 		});
 	})

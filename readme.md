@@ -111,7 +111,7 @@ Request Body | Type
 --- | ---
 
 #### GET [/recent](https://mood-io.herokuapp.com/moods/recent)
-First mood in history
+First ten moods in history
 
 Request Body | Type
 --- | ---
