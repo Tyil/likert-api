@@ -118,6 +118,25 @@ Request Body | Type
 username | String
 password | String
 
+#### GET [/users/my/mood](https://mood-io.herokuapp.com/users/my/mood)
+Request the current user's current mood.
+
+Request Body | Type
+--- | ---
+
+#### POST [/users/my/mood](https://mood-io.herokuapp.com/users/my/mood)
+Set the current user's current mood.
+
+Request Body | Type
+--- | ---
+
+#### GET [/users/my/mood/previously](https://mood-io.herokuapp.com/users/my/mood)
+[//]: # (@TODO: blackchaosnl)
+
+Request Body | Type
+--- | ---
+
+
 ### Likerts
 #### GET [/:id](https://mood-io.herokuapp.com/likerts/0)
 Request Body | Type
