@@ -1,7 +1,13 @@
 const history = require("../../models").history_song;
+const song = require("../../models").song;
+const user = require("../../models").user;
 
 module.exports = (userId, count) => {
 	return history.findAll({
+		include: [
+			{ model: song, as: "song" },
+			{ model: user, as: "user" },
+		],
 		where: {
 			userId: userId
 		},

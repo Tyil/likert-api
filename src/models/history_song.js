@@ -1,9 +1,15 @@
-module.exports = function (sequelize, DataTypes) {
-	return sequelize.define('history_song', {
-		songId: DataTypes.INTEGER,
-		userId: DataTypes.INTEGER,
+const song = require("./index").song;
+const user = require("./index").user;
+
+module.exports = (sequelize, DataTypes) => {
+	const historySong = sequelize.define('history_song', {
 		createdAt: DataTypes.DATE
 	}, {
 		timestamps: false
 	});
+
+	historySong.belongsTo(song, { as: "song" });
+	historySong.belongsTo(user);
+
+	return historySong;
 };
