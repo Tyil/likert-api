@@ -1,8 +1,11 @@
 const router = require("express").Router(),
+	my = require('../actions/moods/my-mood'),
+	previous = require('../actions/moods/my-previous-moods'),
 	add = require('../actions/moods/add-moods'),
 	remove = require('../actions/moods/remove-moods'),
 	update = require('../actions/moods/update-moods'),
 	specific = require('../actions/moods/specific-moods'),
+	update_user_mood = require('../actions/moods/update-user-mood'),
 	moods = require('../models').mood,
 	notLoggedIn = require("../responses/unauthenticated.json");
 
@@ -13,6 +16,30 @@ module.exports = router
 				ok: true,
 				message: result
 			});
+		});
+	})
+	.get('/my', (req, res) => {
+		if (!req.authenticated) {
+			return res.json(notLoggedIn);
+		}
+		my(req.token.userId).then(result => {
+			return res.json(result);
+		});
+	})
+	.get('/my/previously', (req, res) => {
+		if (!req.authenticated) {
+			return res.json(notLoggedIn);
+		}
+		previous(req.token.userId).then(result => {
+			return res.json(result);
+		});
+	})
+	.post('/my', (req, res) => {
+		if (!req.authenticated) {
+			return res.json(notLoggedIn);
+		}
+		update_user_mood(req.body.moodId, req.token.userId).then(result => {
+			return res.json(result);
 		});
 	})
 	.get('/:mood', (req, res) => {
