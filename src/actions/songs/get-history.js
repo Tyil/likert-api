@@ -1,14 +1,13 @@
 const history = require("../../models").history_song;
 
-module.export = (userId, count) => {
+module.exports = (userId, count) => {
 	return history.findAll({
 		where: {
 			userId: userId
 		},
 		limit: count,
 		order: [
-			"createdAt",
-			"DESC"
+			[ "createdAt", "DESC" ]
 		]
 	}).then(results => {
 		return {

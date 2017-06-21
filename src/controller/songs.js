@@ -13,6 +13,13 @@ module.exports = router
 			});
 		});
 	})
+	.get("/recent", (req, res) => {
+		history(req.token.userId, 1).then(result => {
+			result.message = result.message[0];
+
+			return res.json(result);
+		});
+	})
 	.get('/:id', (req, res) => {
 		return song.findOne({
 			where: {
@@ -43,11 +50,6 @@ module.exports = router
 				ok: true,
 				message: result
 			});
-		});
-	})
-	.get("/recent", (req, res) => {
-		history(req.token.userId, 1).then(result => {
-			return res.json(result);
 		});
 	})
 	.get('/recommend/:genre/:likertId', (req, res) => {

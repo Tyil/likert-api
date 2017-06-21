@@ -1,14 +1,8 @@
 module.exports = function (sequelize, DataTypes) {
-	return sequelize.define('historySong', {
-		songId: {
-			type: DataTypes.INTEGER
-		},
-		userId: {
-			type: DataTypes.INTEGER
-		},
-		createdAt: {
-			type: DataTypes.DATE
-		}
+	return sequelize.define('history_song', {
+		songId: DataTypes.INTEGER,
+		userId: DataTypes.INTEGER,
+		createdAt: DataTypes.DATE
 	}, {
 		timestamps: false
 	});
