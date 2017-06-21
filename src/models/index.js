@@ -41,6 +41,8 @@ if (process.env.NODE_ENV !== "test") {
 		"song",
 		"artist",
 		"album",
+		"current_mood",
+		"previous_mood",
 		"favorite_artist",
 		"favorite_genre",
 		"favorite_song",
