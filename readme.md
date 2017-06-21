@@ -155,6 +155,20 @@ Request Body | Type
 --- | ---
 removeItems | Array (id)
 
+### Songs
+#### GET [/recent](https://mood-io.herokuapp.com/songs/recent)
+Returns the previously listened to song of the current user.
+
+Request Body | Type
+--- | ---
+
+#### GET [/recent/:count](https://mood-io.herokuapp.com/songs/recent/1)
+Returns a list of the previously listened to songs of the current user. The
+size of the list is dependant on `:count`.
+
+Request Body | Type
+--- | ---
+
 ## Contributing
 ### Code style
 - Indent using tabs.
