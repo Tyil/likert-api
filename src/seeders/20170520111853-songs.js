@@ -60,7 +60,7 @@ module.exports = {
 			{ artistId: 4, albumId: 5, genreId: 4, moodId: 1, tag: "Vis", path: "/Puscifer - 'V' is for Vagina [2007]/07 - Trekka.mp3", name: "Trekka", },
 			{ artistId: 4, albumId: 5, genreId: 4, moodId: 1, tag: "Vis", path: "/Puscifer - 'V' is for Vagina [2007]/08 - Indigo Children.mp3", name: "Indigo Children", },
 			{ artistId: 4, albumId: 5, genreId: 4, moodId: 1, tag: "Vis", path: "/Puscifer - 'V' is for Vagina [2007]/09 - Sour Grapes.mp3", name: "Sour Grapes", },
-			{ artistId: 4, albumId: 5, genreId: 4, moodId: 1, tag: "Vis", path: "/Puscifer - 'V' is for Vagina [2007]/10 - Rev 22-30 [Dry Martini Mix].mp3", name: "Rev 22-30", },
+			{ artistId: 4, albumId: 5, genreId: 4, moodId: 1, tag: "Vis", path: "/Puscifer - 'V' is for Vagina [2007]/10 - Rev 22-20 [Dry Martini Mix].mp3", name: "Rev 22-20", },
 			{ artistId: 6, albumId: 7, genreId: 6, moodId: 1, tag: "Vis", path: "/E. S. Posthumus - Makara/01 - E. S. Posthumus - Kalki.mp3", name: "Kalki", },
 			{ artistId: 6, albumId: 7, genreId: 6, moodId: 1, tag: "Vis", path: "/E. S. Posthumus - Makara/02 - E. S. Posthumus - Varuna.mp3", name: "Varuna", },
 			{ artistId: 6, albumId: 7, genreId: 6, moodId: 1, tag: "Vis", path: "/E. S. Posthumus - Makara/03 - E. S. Posthumus - Unstoppable.mp3", name: "Unstoppable", },
