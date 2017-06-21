@@ -11,7 +11,8 @@ const entries = [
 	{ id: 8, artistId: 7, name: "Kaya", },
 	{ id: 9, artistId: 8, name: "7 Seben", },
 	{ id: 10, artistId: 9, name: "LOL (^^,)", },
-	{ id: 11, artistId: 10, name: "Caravan Palace", }
+	{ id: 11, artistId: 10, name: "Caravan Palace", },
+	{ id: 12, artistId: 11, name: "Weightless", },
 ];
 
 module.exports = {

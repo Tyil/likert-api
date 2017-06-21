@@ -42,6 +42,10 @@ module.exports = {
 			{
 				id: 10,
 				name: "Caravan Palace"
+			},
+			{
+				id: 11,
+				name: "Marconi Union"
 			}
 		]);
 	},

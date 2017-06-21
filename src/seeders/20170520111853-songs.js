@@ -76,6 +76,12 @@ module.exports = {
 			{ artistId: 6, albumId: 7, genreId: 6, moodId: 1, tag: "Vis", path: "/E. S. Posthumus - Makara/13 - E. S. Posthumus - Krosah.mp3", name: "Krosah", },
 			{ artistId: 6, albumId: 7, genreId: 6, moodId: 1, tag: "Vis", path: "/E. S. Posthumus - Makara/14 - E. S. Posthumus - Anumati.mp3", name: "Anumati", },
 			{ artistId: 6, albumId: 7, genreId: 6, moodId: 1, tag: "Vis", path: "/E. S. Posthumus - Makara/15 - E. S. Posthumus - Moonlight Sonata.mp3", name: "Moonlight Sonata", },
+			{ artistId: 11, albumId: 12, genreId: 4, moodId: 1, tag: "Vis", path: "/[2012]  Weightless/01. Marconi Union - Weightless Part 1.mp3", name: "Weightless (Part 1)", },
+			{ artistId: 11, albumId: 12, genreId: 4, moodId: 1, tag: "Vis", path: "/[2012]  Weightless/01. Marconi Union - Weightless Part 2.mp3", name: "Weightless (Part 2)", },
+			{ artistId: 11, albumId: 12, genreId: 4, moodId: 1, tag: "Vis", path: "/[2012]  Weightless/01. Marconi Union - Weightless Part 3.mp3", name: "Weightless (Part 3)", },
+			{ artistId: 11, albumId: 12, genreId: 4, moodId: 1, tag: "Vis", path: "/[2012]  Weightless/01. Marconi Union - Weightless Part 4.mp3", name: "Weightless (Part 4)", },
+			{ artistId: 11, albumId: 12, genreId: 4, moodId: 1, tag: "Vis", path: "/[2012]  Weightless/01. Marconi Union - Weightless Part 5.mp3", name: "Weightless (Part 5)", },
+			{ artistId: 11, albumId: 12, genreId: 4, moodId: 1, tag: "Vis", path: "/[2012]  Weightless/01. Marconi Union - Weightless Part 6.mp3", name: "Weightless (Part 6)", },
 		]);
 	},
 
