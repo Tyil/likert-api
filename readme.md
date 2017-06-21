@@ -105,6 +105,13 @@ Request Body | Type
 username | String
 password | String
 
+#### GET [/song/recommend/:genreId/:moodId](https://mood-io.herokuapp.com/song/recommend/0/0)
+Request Body | Type
+--- | ---
+genreId | Integer
+moodId | Integer
+
+
 ## Contributing
 ### Code style
 - Indent using tabs.
