@@ -28,6 +28,9 @@ module.exports = router
 	})
 	.get('/:id', (req, res) => {
 		return song.findOne({
+			include: [
+				{ model: artist, as: "artist" },
+			],
 			where: {
 				id: req.params.id
 			}
