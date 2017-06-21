@@ -1,3 +1,4 @@
+const addHistory = require("../actions/songs/add-history");
 const genre = require("../models").genre;
 const gimme = require("../actions/recommend-songs");
 const history = require("../actions/songs/get-history");
@@ -28,7 +29,7 @@ module.exports = router
 	.get('/:id', (req, res) => {
 		return song.findOne({
 			where: {
-				SongId: req.params.id
+				id: req.params.id
 			}
 		}).then(result => {
 			if(result === null){
@@ -37,6 +38,9 @@ module.exports = router
 					message: 'The song does not exist.'
 				});
 			}
+
+			addHistory(req.token.userId, result.id);
+
 			return res.json({
 				ok: true,
 				message: result
