@@ -81,6 +81,7 @@ function listenedMusic(genreId, moodId) { //, artistId, albumId){
 		for (var i = 0; amountResults > i; i++) {
 			var index = results.indexOf(Math.max.apply(null, results.averageScore))
 			songs.push({ songId: results[index].songid, listened: "Y" })
+			result.splice(index, 1)
 		}
 
 	})
