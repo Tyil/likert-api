@@ -6,7 +6,9 @@ module.exports = {
 			{
 				id: 1,
 				templateId: 1,
-				value: "Depression,Sad,Neutral,Happy,Euphoric"
+				value: "Depression,Sad,Neutral,Happy,Euphoric",
+				createdAt: new Date().toISOString(),
+				updatedAt: new Date().toISOString()
 			}
 		]);
 	},
