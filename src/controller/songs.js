@@ -46,8 +46,8 @@ module.exports = router
 			});
 		});
 	})
-	.get('/recommend/:genreid/moodid', (req, res) => {
-		gimme(req.params.genre, req.params.mood).then(result => {
+	.get('/recommend/:genreId/moodId', (req, res) => {
+		gimme(req.params.genreId, req.params.moodId).then(result => {
 			return res.json(result);
 		});
 	})
