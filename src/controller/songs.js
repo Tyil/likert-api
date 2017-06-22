@@ -8,7 +8,11 @@ const song = require("../models").song;
 
 module.exports = router
 	.get('/', (req, res) => {
-		song.findAll().then(result => {
+		song.findAll({
+			include: [
+				{ model: artist, as: "artist" }
+			]
+		}).then(result => {
 			return res.json({
 				ok: true,
 				message: result
