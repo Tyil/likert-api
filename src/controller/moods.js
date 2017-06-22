@@ -4,6 +4,9 @@ const router = require("express").Router(),
 	update = require('../actions/moods/update-moods'),
 	specific = require('../actions/moods/specific-moods'),
 	moods = require('../models').mood,
+	my = require('../actions/moods/my-mood'),
+	previous = require('../actions/moods/my-previous-moods'),
+	update_user_mood = require('../actions/moods/update-user-mood'),
 	notLoggedIn = require("../responses/unauthenticated.json");
 
 module.exports = router
@@ -15,8 +18,40 @@ module.exports = router
 			});
 		});
 	})
-	.get('/:mood', (req, res) => {
-		specific(req.params.mood).then(result => {
+	.get('/my', (req, res) => {
+		if (!req.authenticated) {
+			return res.json(notLoggedIn);
+		}
+		my(req.token.userId).then(result => {
+			return res.json(result);
+		});
+	})
+	.get('/recent', (req, res) => {
+		if (!req.authenticated) {
+			return res.json(notLoggedIn);
+		}
+		previous(req.token.userId, 10).then(result => {
+			return res.json(result);
+		});
+	})
+	.get('/recent/:count', (req, res) => {
+		if (!req.authenticated) {
+			return res.json(notLoggedIn);
+		}
+		previous(req.token.userId, req.params.count).then(result => {
+			return res.json(result);
+		});
+	})
+	.post('/my', (req, res) => {
+		if (!req.authenticated) {
+			return res.json(notLoggedIn);
+		}
+		update_user_mood(req.body.moodId, req.token.userId).then(result => {
+			return res.json(result);
+		});
+	})
+	.get('/:moodId', (req, res) => {
+		specific(req.params.moodId).then(result => {
 			return res.json(result);
 		});
 	})
