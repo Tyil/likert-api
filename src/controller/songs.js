@@ -1,4 +1,5 @@
 const addHistory = require("../actions/songs/add-history");
+const artist = require("../models").artist;
 const genre = require("../models").genre;
 const gimme = require("../actions/recommend-songs");
 const history = require("../actions/songs/get-history");
@@ -7,7 +8,11 @@ const song = require("../models").song;
 
 module.exports = router
 	.get('/', (req, res) => {
-		song.findAll().then(result => {
+		song.findAll({
+			include: [
+				{ model: artist, as: "artist" }
+			]
+		}).then(result => {
 			return res.json({
 				ok: true,
 				message: result
@@ -28,6 +33,9 @@ module.exports = router
 	})
 	.get('/:id', (req, res) => {
 		return song.findOne({
+			include: [
+				{ model: artist, as: "artist" },
+			],
 			where: {
 				id: req.params.id
 			}

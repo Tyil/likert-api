@@ -1,10 +1,11 @@
 const previous_moods = require('../../models').previous_mood;
 
-module.exports = (userId) => {
+module.exports = (userId, limit) => {
 	return previous_moods.findAll({
 		where: {
 			userId: userId
-		}
+		},
+		limit: limit
 	}).then(result => {
 		if (result === null) {
 			return {

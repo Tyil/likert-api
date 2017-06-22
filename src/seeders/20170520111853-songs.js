@@ -60,7 +60,7 @@ module.exports = {
 			{ artistId: 4, albumId: 5, genreId: 4, moodId: 1, tag: "Vis", path: "/Puscifer - 'V' is for Vagina [2007]/07 - Trekka.mp3", name: "Trekka", },
 			{ artistId: 4, albumId: 5, genreId: 4, moodId: 2, tag: "Vis", path: "/Puscifer - 'V' is for Vagina [2007]/08 - Indigo Children.mp3", name: "Indigo Children", },
 			{ artistId: 4, albumId: 5, genreId: 4, moodId: 1, tag: "Vis", path: "/Puscifer - 'V' is for Vagina [2007]/09 - Sour Grapes.mp3", name: "Sour Grapes", },
-			{ artistId: 4, albumId: 5, genreId: 4, moodId: 2, tag: "Vis", path: "/Puscifer - 'V' is for Vagina [2007]/10 - Rev 22-30 [Dry Martini Mix].mp3", name: "Rev 22-30", },
+			{ artistId: 4, albumId: 5, genreId: 4, moodId: 2, tag: "Vis", path: "/Puscifer - 'V' is for Vagina [2007]/10 - Rev 22-20 [Dry Martini Mix].mp3", name: "Rev 22-20", },
 			{ artistId: 6, albumId: 7, genreId: 6, moodId: 1, tag: "Vis", path: "/E. S. Posthumus - Makara/01 - E. S. Posthumus - Kalki.mp3", name: "Kalki", },
 			{ artistId: 6, albumId: 7, genreId: 6, moodId: 1, tag: "Vis", path: "/E. S. Posthumus - Makara/02 - E. S. Posthumus - Varuna.mp3", name: "Varuna", },
 			{ artistId: 6, albumId: 7, genreId: 6, moodId: 9, tag: "Vis", path: "/E. S. Posthumus - Makara/03 - E. S. Posthumus - Unstoppable.mp3", name: "Unstoppable", },
@@ -76,6 +76,12 @@ module.exports = {
 			{ artistId: 6, albumId: 7, genreId: 6, moodId: 4, tag: "Vis", path: "/E. S. Posthumus - Makara/13 - E. S. Posthumus - Krosah.mp3", name: "Krosah", },
 			{ artistId: 6, albumId: 7, genreId: 6, moodId: 2, tag: "Vis", path: "/E. S. Posthumus - Makara/14 - E. S. Posthumus - Anumati.mp3", name: "Anumati", },
 			{ artistId: 6, albumId: 7, genreId: 6, moodId: 6, tag: "Vis", path: "/E. S. Posthumus - Makara/15 - E. S. Posthumus - Moonlight Sonata.mp3", name: "Moonlight Sonata", },
+			{ artistId: 11, albumId: 12, genreId: 4, moodId: 8, tag: "Vis", path: "/[2012]  Weightless/01. Marconi Union - Weightless Part 1.mp3", name: "Weightless (Part 1)", },
+			{ artistId: 11, albumId: 12, genreId: 4, moodId: 8, tag: "Vis", path: "/[2012]  Weightless/01. Marconi Union - Weightless Part 2.mp3", name: "Weightless (Part 2)", },
+			{ artistId: 11, albumId: 12, genreId: 4, moodId: 8, tag: "Vis", path: "/[2012]  Weightless/01. Marconi Union - Weightless Part 3.mp3", name: "Weightless (Part 3)", },
+			{ artistId: 11, albumId: 12, genreId: 4, moodId: 8, tag: "Vis", path: "/[2012]  Weightless/01. Marconi Union - Weightless Part 4.mp3", name: "Weightless (Part 4)", },
+			{ artistId: 11, albumId: 12, genreId: 4, moodId: 8, tag: "Vis", path: "/[2012]  Weightless/01. Marconi Union - Weightless Part 5.mp3", name: "Weightless (Part 5)", },
+			{ artistId: 11, albumId: 12, genreId: 4, moodId: 8, tag: "Vis", path: "/[2012]  Weightless/01. Marconi Union - Weightless Part 6.mp3", name: "Weightless (Part 6)", },
 		]);
 	},
 
