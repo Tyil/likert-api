@@ -1,21 +1,43 @@
-const router = require("express").Router(),
-	song = require("../models").song,
-	genre = require("../models").genre,
-	gimme = require("../actions/recommend-songs");
+const addHistory = require("../actions/songs/add-history");
+const artist = require("../models").artist;
+const genre = require("../models").genre;
+const gimme = require("../actions/recommend-songs");
+const history = require("../actions/songs/get-history");
+const router = require("express").Router();
+const song = require("../models").song;
 
 module.exports = router
 	.get('/', (req, res) => {
-		song.findAll().then(result => {
+		song.findAll({
+			include: [
+				{ model: artist, as: "artist" }
+			]
+		}).then(result => {
 			return res.json({
 				ok: true,
 				message: result
 			});
 		});
 	})
+	.get("/recent", (req, res) => {
+		history(req.token.userId, 1).then(result => {
+			result.message = result.message[0];
+
+			return res.json(result);
+		});
+	})
+	.get("/recent/:count", (req, res) => {
+		history(req.token.userId, req.params.count).then(result => {
+			return res.json(result);
+		});
+	})
 	.get('/:id', (req, res) => {
 		return song.findOne({
+			include: [
+				{ model: artist, as: "artist" },
+			],
 			where: {
-				SongId: req.params.id
+				id: req.params.id
 			}
 		}).then(result => {
 			if(result === null){
@@ -24,6 +46,9 @@ module.exports = router
 					message: 'The song does not exist.'
 				});
 			}
+
+			addHistory(req.token.userId, result.id);
+
 			return res.json({
 				ok: true,
 				message: result
@@ -44,8 +69,8 @@ module.exports = router
 			});
 		});
 	})
-	.get('/recommend/:genre', (req, res) => {
-		gimme(req.params.genre).then(result => {
+	.get('/recommend/:genre/:likertId', (req, res) => {
+		gimme(req.params.genre, req.params.likertId).then(result => {
 			return res.json(result);
 		});
 	})

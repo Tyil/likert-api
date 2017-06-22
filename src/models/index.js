@@ -39,10 +39,18 @@ if (process.env.NODE_ENV !== "test") {
 		"like_dislike_genre",
 		"mood",
 		"song",
+		"artist",
+		"album",
+		"current_mood",
+		"previous_mood",
+		"favorite_artist",
+		"favorite_genre",
+		"favorite_song",
 		"likert_template",
 		"likert_template_result",
 		"likert_template_steps",
 		"likert_template_value",
+		"history_song",
 	].forEach(model => {
 		module.exports[model] = connection.import(__dirname + "/" + model);
 	});
@@ -63,17 +71,23 @@ if (process.env.NODE_ENV !== "test") {
 	});
 
 	module.exports.artist = connection.define("artist", {
-			id: 1,
-			name: "Micro Jackson"
-		}
-	);
-
-	module.exports.genre = connection.define("genre", {
-		GenreId: 1,
-		Name: "rock"
+		id: 1,
+		name: "Micro Jackson"
 	});
 
-	module.exports.mood = connection.define("mood", {});
+	module.exports.genre = connection.define("genre", {
+		id: 1,
+		name: "rock"
+	});
+
+	module.exports.album = connection.define("album");
+	module.exports.artist = connection.define("artist");
+	module.exports.mood = connection.define("mood");
+	module.exports.song = connection.define("song");
+	module.exports.favorite_album = connection.define("favorite_album");
+	module.exports.favorite_artist = connection.define("favorite_artist");
+	module.exports.favorite_song = connection.define("favorite_song");
+	module.exports.favorite_genre = connection.define("favorite_genre");
 }
 
 module.exports.sequelize = connection;

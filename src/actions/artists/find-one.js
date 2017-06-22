@@ -15,10 +15,7 @@ module.exports = id => {
 
 		return {
 			ok: true,
-			artist: {
-				id: result.get("id"),
-				name: result.get("name")
-			}
+			message: result
 		};
 	});
 };

@@ -1,5 +1,7 @@
+const artist = require("./index").artist;
+
 module.exports = function (sequelize, DataTypes) {
-	return sequelize.define('song', {
+	const song = sequelize.define('song', {
 		id: {
 			allowNull: false,
 			autoIncrement: true,
@@ -38,4 +40,8 @@ module.exports = function (sequelize, DataTypes) {
 	}, {
 		timestamps: false
 	});
+
+	song.belongsTo(artist, { as: "artist" });
+
+	return song;
 };

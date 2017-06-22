@@ -5,7 +5,7 @@ const router = require("express").Router(),
 	notLoggedIn = require("../responses/unauthenticated.json");
 
 module.exports = router
-	.get('/', auth, (req, res) => {
+	.get('/', (req, res) => {
 		if (!req.authenticated) {
 			return res.json(notLoggedIn);
 		}
@@ -13,7 +13,7 @@ module.exports = router
 			return res.json(result);
 		});
 	})
-	.get('/:user', auth, (req, res) => {
+	.get('/:user', (req, res) => {
 		if (!req.authenticated) {
 			return res.json(notLoggedIn);
 		}
@@ -29,7 +29,7 @@ module.exports = router
 			return res.json(result);
 		});
 	})
-	.put('/:id', auth, (req, res) => {
+	.put('/:id', (req, res) => {
 		if (!req.authenticated) {
 			return res.json(notLoggedIn);
 		}
