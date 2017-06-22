@@ -96,7 +96,6 @@ mood | String
 #### GET [/:moodId](https://mood-io.herokuapp.com/mood/1)
 Request Body | Type
 --- | ---
-moodId | Integer
 
 #### GET [/my](https://mood-io.herokuapp.com/moods/my/)
 Request the current user's current mood.
@@ -109,6 +108,7 @@ Changes the mood and puts the mood into history
 
 Request Body | Type
 --- | ---
+moodId | Integer
 
 #### GET [/recent](https://mood-io.herokuapp.com/moods/recent)
 First ten moods in history
