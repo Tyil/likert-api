@@ -16,7 +16,7 @@ module.exports = router
 		});
 	})
 	.get("/:id", (req, res) => {
-		actions.findOne(req.body.id).then(response => {
+		actions.findOne(req.params.id).then(response => {
 			res.json(response);
 		});
 	})
