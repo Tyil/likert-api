@@ -42,8 +42,7 @@ module.exports = (moodId, userId) => {
 					moodId: moodId
 				}, {
 					where: {
-						userId: userId,
-						moodId: moodId
+						userId: userId
 					}
 				}).then(resp => {
 					return {
