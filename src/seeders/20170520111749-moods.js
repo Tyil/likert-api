@@ -5,15 +5,43 @@ module.exports = {
 		return queryInterface.bulkInsert("moods", [
 			{
 				id: 1,
-				name: "Happy"
+				name: "Angry"
 			},
 			{
 				id: 2,
-				name: "Sad"
+				name: "Bored"
 			},
 			{
 				id: 3,
-				name: "Euphoric"
+				name: "Depressed"
+			},
+			{
+				id: 4,
+				name: "Happy"
+			},
+			{
+				id: 5,
+				name: "Hyper"
+			},			
+			{
+				id: 6,
+				name: "Peaceful"
+			},
+			{
+				id: 7,
+				name: "Sad"
+			},
+			{
+				id: 8,
+				name: "Shocked"
+			},
+			{
+				id: 9,
+				name: "Sick"
+			},
+			{
+				id: 10,
+				name: "Tired"
 			}
 		]);
 	},
